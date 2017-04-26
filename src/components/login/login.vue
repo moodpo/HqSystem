@@ -8,8 +8,10 @@
 	    </div>
 	    <vue-form :state="formstate" @submit.prevent="saveForm" class="saveForm">
 	        <validate  class="form-group">
-	          <input v-model="form.userName" required name="userName" placeholder="用户名 " class="form-control"  :class="[fieldClassName(formstate.userName)]"/>
+
+	          <input v-model="form.userName" required name="user" placeholder="用户名 " class="form-control"  :class="[fieldClassName(formstate.userName)]"/>
 	          <i class="iconfont icon-user"></i>
+
 	        </validate>
 	        <validate  class="form-group">
 	          <input v-model="form.passwd" class="form-control" name="passwd" placeholder="密码" type="password" required :class="[fieldClassName(formstate.passwd)]" />
@@ -31,7 +33,7 @@
 			return {
 				formstate: {},
 				form: {
-					userName: '',
+					user: '',
 					passwd: ''
 				},
 				formClass: {
@@ -58,14 +60,32 @@
 				console.log(this.serverUrl)
 				this.axios.post(this.serverUrl, {
 					action: 'GetToken',
-					userName: this.form.userName,
+					user: this.form.user,
 					passwd: this.form.passwd
 				}).then((res) => {
+					console.log(res)
+					console.log(res.stationID)
+					if (res.hasOwnProperty('token')) {
 						this.$store.commit('login', res.token);
 						// 路由跳转
 						// todo
 						// this.$route 和 this.$router不一样
-						this.$router.push('/manage')
+						let userType = res.userType
+						if (userType === 'Manager') {
+							this.$router.push({
+								name: 'manage'
+							})
+						} else if (userType === 'station') {
+                            this.$router.push({
+                            	name: 'workStation',
+                            	query: {
+                            		stationID: res.stationID
+                            	}
+                            })
+						}
+					} else {
+						alert('账号密码错误，请重新登录')
+					}
 				}, (res) => {
 					console.log('failed')
 				})
