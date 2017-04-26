@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="body-content" @dblclick="getVisitorInfoDelegate($event)"  @click="manipulateDelegate($event)">
+            <div class="body-content" @dblclick="getVisitorInfoDelegate($event)"  @click="manipulateDelegate($event)" >
                 <div class="body-content-inner" v-if="detailShow == 1" >
                     <div class="nodata" v-if="queueListLength == 0">
                         暂时无数据
@@ -112,7 +112,7 @@
                                             <td>操作</td>
                                     </thead>
                                     <tbody>
-                                        <tr  v-for="(wait, index) in queueInfo.info.waitingList" :id="wait.id">
+                                        <tr  v-for="(wait, index) in queueInfo.info.waitingList" :id="wait.id" :queueID="wait.queueID">
                                             <td>{{wait.snumber}}</td>
                                             <td>{{wait.age}}</td>
                                             <td>{{wait.name}}</td>
@@ -131,7 +131,7 @@
                                             <td>操作</td>
                                     </thead>
                                     <tbody>
-                                        <tr v-for="(finish, index) in queueInfo.info.finishList" :id="finish.id">
+                                        <tr v-for="(finish, index) in queueInfo.info.finishList" :id="finish.id" :queueID="finish.queueID">
                                             <td>{{finish.id}}</td>
                                             <td>{{finish.name}}</td>
                                             <td>{{finish.orderTime}}</td>
@@ -148,7 +148,7 @@
                     <div class="nodata" v-if="queueListLength == 0">
                         暂时无数据
                     </div>
-                    <div v-for="(queueInfo, index) in queueListInfo"   v-if="workNum == index">
+                    <div v-for="(queueInfo, index) in queueListInfo"   v-if="workNum == index" >
                         <div class="tab">
                             <div class="btn" :class="{'active':queueCardTabNum[index] ==1}" @click="$set(queueCardTabNum, index, 1)">正在排队</div>
                             <div class="btn" :class="{'active':queueCardTabNum[index] ==2}" @click="$set(queueCardTabNum, index, 2)">已完成</div>
@@ -164,7 +164,7 @@
                                            <td>操作</td>
                                    </thead>
                                    <tbody>
-                                       <tr v-for="(wait, index) in queueInfo.info.waitingList" :id="wait.id">
+                                       <tr v-for="(wait, index) in queueInfo.info.waitingList" :id="wait.id" :queueID="wait.queueID">
                                            <td>{{wait.snumber}}</td>
                                            <td>{{wait.age}}</td>
                                            <td>{{wait.name}}</td>
@@ -183,7 +183,7 @@
                                             <td>操作</td>
                                     </thead>
                                     <tbody>
-                                        <tr  v-for="(finish, index) in queueInfo.info.finishList" :id="finish.id">
+                                        <tr  v-for="(finish, index) in queueInfo.info.finishList" :id="finish.id" :queueID="finish.queueID">
                                             <td>{{finish.id}}</td>
                                             <td>{{finish.name}}</td>
                                             <td>{{finish.orderTime}}</td>
@@ -198,7 +198,7 @@
                     </div>
                 </div>
             </div>
-
+            <!-- 弹出框 -->
             <modal @close="modal.modalShow = false" v-if="modal.modalShow" >
                 <div slot="body">
                     {{visitorInfo.name}}<br>
@@ -220,6 +220,7 @@
 	</div>
 </template>
 <script>
+    import draggable from 'vuedraggable'
     import modal from '../../common/modal/modal'
     import dropDownBox from '../../common/dropDownBox/dropDownBox'
 	export default {
@@ -234,6 +235,7 @@
                 queueListAll: '',
                 queueCardTabNum: [],
                 visitorID: '',
+                queueID: '',
                 modal: {
                     modalShow: false
                 },
@@ -268,7 +270,6 @@
                 console.log(this.stationID)
                 this.axios.post(this.stationUrl, {
                     action: 'getQueueListInfo',
-                    // todo 假数据
                     stationID: this.stationID
                 }).then((res) => {
                     this.cachelist = res.list
@@ -286,8 +287,7 @@
                 this.axios.post(this.stationUrl, {
                     action: 'getQueueListAll',
                     queueID: element.id,
-                    // todo 假数据
-                    stationID: 2
+                    stationID: this.stationID
                 }).then((res) => {
                     if (!this.queueCardTabNum[index]) {
                         this.$set(this.queueCardTabNum, index, 1)
@@ -296,6 +296,7 @@
                 }, (res) => {
                 })
             },
+            // 事件委托 获取病人信息
             getVisitorInfoDelegate(event) {
                 if (event.type === 'click') return
                 let nodeEle = event.target
@@ -311,27 +312,39 @@
             manipulateDelegate(event) {
                 let nodeEle = event.target
                 if (nodeEle.nodeName === 'TD' && (nodeEle.className.indexOf('manipulate') !== -1)) {
-                   this.dropDownBox.left = event.clientX
-                   this.dropDownBox.top = event.clientY
-                   this.dropDownBox.dropDownBoxShow = true
+                    let id = nodeEle.parentNode.id
+                    let queueID = nodeEle.parentNode.getAttribute('queueid')
+                    this.visitorID = id
+                    this.queueID = queueID
+                    this.dropDownBox.left = event.clientX
+                    this.dropDownBox.top = event.clientY
+                    this.dropDownBox.dropDownBoxShow = true
                 } else {
                     this.dropDownBox.dropDownBoxShow = false
                 }
             },
             // 具体操作函数
             manipulate(...params) {
-                console.log(params)
-               // if (type === 'forward') {
-               //      this.axios.post(this.stationUrl, {
-               //          action: 'getVisitorInfo',
-               //          stationID: this.stationID,
-               //          id: this.visitorID
-               //      }).then((res) => {
-               //          this.visitorInfo = res
-               //          this.modal.modalShow = true
-               //      }, (res) => {
-               //      })
-               // }
+                let data = {
+                    stationID: this.stationID,
+                    id: this.visitorID,
+                    queueID: this.queueID
+                }
+                if (params[0] === 'move') {
+                    data.action = 'visitorMoveby'
+                    data.value = params[1]
+                   this.axios.post(this.stationUrl, data).then((res) => {
+                       console.log(res)
+                   }, (res) => {
+                   })
+                } else if (params[0] === 'vip') {
+                    data.action = 'visitorProirSet'
+                    data.prior = 1
+                    this.axios.post(this.stationUrl, data).then((res) => {
+                        console.log(res)
+                    }, (res) => {
+                    })
+                }
             },
             // 获取病人信息
             getVisitorInfo() {
@@ -342,7 +355,6 @@
                 }).then((res) => {
                     this.visitorInfo = res
                     this.modal.modalShow = true
-                }, (res) => {
                 })
             },
             showWorker(index) {
@@ -351,7 +363,8 @@
         },
         components: {
             modal,
-            dropDownBox
+            dropDownBox,
+            draggable
         }
 	}
 </script>
