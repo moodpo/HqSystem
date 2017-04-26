@@ -9,7 +9,7 @@
 	    <vue-form :state="formstate" @submit.prevent="saveForm" class="saveForm">
 	        <validate  class="form-group">
 
-	          <input v-model="form.userName" required name="user" placeholder="用户名 " class="form-control"  :class="[fieldClassName(formstate.userName)]"/>
+	          <input v-model="form.user" required name="user" placeholder="用户名 " class="form-control"  :class="[fieldClassName(formstate.user)]"/>
 	          <i class="iconfont icon-user"></i>
 
 	        </validate>
