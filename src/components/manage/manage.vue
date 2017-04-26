@@ -81,7 +81,6 @@
 @media (min-width: 1078px)	
 	.manage-tab:first-child
 		margin-right: 1.2em
-	
 			
 input[type=radio]:checked + label {
     opacity: 1
