@@ -27,8 +27,8 @@
         margin-left:322px
         .body-content-inner
             .list-card
-                width:230px
-                height:315px
+                width:300px
+                height:500px
                 display:inline-block;
                 margin:20px
                 background: rgba(255,255,255,0.00);
@@ -43,7 +43,15 @@
                 .content
                     overflow:auto
                     height:200px
-                
+.manipulate
+    cursor:pointer
+.manipulate-waitinglist
+    background: #fff   
+    &>div
+        cursor: pointer
+        &:hover
+            background:#109EFC
+            color:#fff
 </style>
 <template lang="html">
 	<div class="workStation">
@@ -81,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="body-content" @dblclick="getVisitorInfoDelegate($event)" >
+            <div class="body-content" @dblclick="getVisitorInfoDelegate($event)"  @click="manipulateDelegate($event)">
                 <div class="body-content-inner" v-if="detailShow == 1" >
                     <div class="nodata" v-if="queueListLength == 0">
                         暂时无数据
@@ -109,7 +117,7 @@
                                             <td>{{wait.age}}</td>
                                             <td>{{wait.name}}</td>
                                             <td v-if="index == 0">进行中</td>
-                                            <td v-else>更多</td>
+                                            <td v-else class="manipulate">更多</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -127,7 +135,7 @@
                                             <td>{{finish.id}}</td>
                                             <td>{{finish.name}}</td>
                                             <td>{{finish.orderTime}}</td>
-                                            <td><span v-if="index == 0">进行中</span><span v-else>更多</span></td>
+                                            <td><span v-if="index == 0">进行中</span><span v-else class="manipulate">更多</span></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -140,7 +148,7 @@
                     <div class="nodata" v-if="queueListLength == 0">
                         暂时无数据
                     </div>
-                    <div v-for="(queueInfo, index) in queueListInfo"  @click="getVisitorInfoDelegate($event)" v-if="workNum == index">
+                    <div v-for="(queueInfo, index) in queueListInfo"   v-if="workNum == index">
                         <div class="tab">
                             <div class="btn" :class="{'active':queueCardTabNum[index] ==1}" @click="$set(queueCardTabNum, index, 1)">正在排队</div>
                             <div class="btn" :class="{'active':queueCardTabNum[index] ==2}" @click="$set(queueCardTabNum, index, 2)">已完成</div>
@@ -153,12 +161,15 @@
                                            <td>序号</td>
                                            <td>年龄</td>
                                            <td>姓名</td>
+                                           <td>操作</td>
                                    </thead>
                                    <tbody>
-                                       <tr v-for="wait in queueInfo.info.waitingList" :id="wait.id">
+                                       <tr v-for="(wait, index) in queueInfo.info.waitingList" :id="wait.id">
                                            <td>{{wait.snumber}}</td>
                                            <td>{{wait.age}}</td>
                                            <td>{{wait.name}}</td>
+                                           <td v-if="index == 0">进行中</td>
+                                           <td v-else class="manipulate">更多</td>
                                        </tr>
                                    </tbody>
                                </table>
@@ -169,12 +180,15 @@
                                             <td>序号</td>
                                             <td>序号</td>
                                             <td>序号</td>
+                                            <td>操作</td>
                                     </thead>
                                     <tbody>
-                                        <tr  v-for="finish in queueInfo.info.finishList" :id="finish.id">
+                                        <tr  v-for="(finish, index) in queueInfo.info.finishList" :id="finish.id">
                                             <td>{{finish.id}}</td>
                                             <td>{{finish.name}}</td>
                                             <td>{{finish.orderTime}}</td>
+                                            <td v-if="index == 0">进行中</td>
+                                            <td v-else class="manipulate">更多</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -184,6 +198,7 @@
                     </div>
                 </div>
             </div>
+
             <modal @close="modal.modalShow = false" v-if="modal.modalShow" >
                 <div slot="body">
                     {{visitorInfo.name}}<br>
@@ -191,11 +206,22 @@
                     {{visitorInfo.workerName}}<br>
                 </div>
             </modal>
+            <dropDownBox :left="dropDownBox.left" :top="dropDownBox.top" v-if="dropDownBox.dropDownBoxShow" @close="dropDownBox.dropDownBoxShow = false">
+                <div slot="body">
+                    <div class="manipulate-waitinglist">
+                      <div @click="manipulate('move', 1)">前进</div>
+                      <div @click="manipulate('move', -1)">后退</div>
+                      <div @click="manipulate('vip')">优先</div>
+                      <div @click="manipulate('')">转移</div>  
+                    </div>
+                </div>
+            </dropDownBox>
         </div>
 	</div>
 </template>
 <script>
     import modal from '../../common/modal/modal'
+    import dropDownBox from '../../common/dropDownBox/dropDownBox'
 	export default {
 		name: 'workStation',
         data() {
@@ -210,6 +236,11 @@
                 visitorID: '',
                 modal: {
                     modalShow: false
+                },
+                dropDownBox: {
+                    dropDownBoxShow: false,
+                    left: 0,
+                    top: 0
                 },
                 visitorInfo: ''
             }
@@ -276,6 +307,33 @@
                     return
                 }
             },
+            // 弹出操作框
+            manipulateDelegate(event) {
+                let nodeEle = event.target
+                if (nodeEle.nodeName === 'TD' && (nodeEle.className.indexOf('manipulate') !== -1)) {
+                   this.dropDownBox.left = event.clientX
+                   this.dropDownBox.top = event.clientY
+                   this.dropDownBox.dropDownBoxShow = true
+                } else {
+                    this.dropDownBox.dropDownBoxShow = false
+                }
+            },
+            // 具体操作函数
+            manipulate(...params) {
+                console.log(params)
+               // if (type === 'forward') {
+               //      this.axios.post(this.stationUrl, {
+               //          action: 'getVisitorInfo',
+               //          stationID: this.stationID,
+               //          id: this.visitorID
+               //      }).then((res) => {
+               //          this.visitorInfo = res
+               //          this.modal.modalShow = true
+               //      }, (res) => {
+               //      })
+               // }
+            },
+            // 获取病人信息
             getVisitorInfo() {
                 this.axios.post(this.stationUrl, {
                     action: 'getVisitorInfo',
@@ -292,7 +350,8 @@
             }
         },
         components: {
-            modal
+            modal,
+            dropDownBox
         }
 	}
 </script>
