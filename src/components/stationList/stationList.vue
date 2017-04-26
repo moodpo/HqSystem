@@ -1,7 +1,7 @@
 <template lang="html">
 	<div class="">
-	       <div class="addStation">
-		       	<div class="addstation-text"  @click="goToState('addStation')">新建分诊台</div>
+	       <div class="addstation-container">
+		       	<button class="addstation"  @click="goToState('addStation')">新建分诊台</button>
 	       </div>
 	       <middleLine height='20'></middleLine>
 		   	<div class="station-list">
@@ -71,43 +71,41 @@
 	}
 </script>
 
-<style scoped>
-.card {
-	width:230px;
-	height:300px;
-	display: inline-block;
-	margin:40px 10px;
-	text-align:center;
-}
-.card-box {
-	margin:0 auto;
-	height:260px;
-	width:200px;
-	background:no-repeat center center;
-	border:1px solid #d7d7d7;
-	margin-bottom: 20px;
-}
-.addStation {
-    height:140px;
-    text-align: center;
-}
-.addStation .addstation-text {
-	width:150px;
-    padding:10px 20px;
-    text-align: center;
-    margin: 0 auto;
-    background: -webkit-linear-gradient(left,#0097FB,#00CBFB);
-    /* todo 渐变色 兼容性问题*/
-    /*background: -moz-linear-gradient(left,#0097FB,#00CBFB);*/
-    /*background: -o-linear-gradient(left,#0097FB,#00CBFB);*/
-    color:#fff;
-    position: relative;
-    top:50%;
-    transform: translateY(-50%);
-}
-.station-list {
-	padding-left: 20px;
-}
+<style lang="stylus" scoped>
+.card
+	width:230px
+	height:300px
+	display: inline-block
+	margin:40px 10px
+	text-align:center
+	
+.card-box 
+	margin:0 auto
+	height:260px
+	width:200px
+	background:no-repeat center center
+	border:1px solid #d7d7d7
+	margin-bottom: 20px
+	
+.addstation-container
+	display: flex
+	align-items: center
+	justify-content: center
+	height: 140px
 
+.addstation
+	width: 212px
+	height: 58px
+	box-shadow: 0 5px 10px rgba(8,181,254, 0.2)
+	background: -webkit-gradient(45deg, #109EFC, #00C8FF) //chrome/Safari
+	background: -moz-linear-gradient(45deg, #109EFC, #00C8FF) //Firefox
+	background: -o-linear-gradient(45deg, #109EFC, #00C8FF)
+	background: linear-gradient(45deg, #109EFC, #00C8FF)
+	border-radius: 5px
+	color:#fff
+	font-size: 30px
+
+.station-list 
+	padding-left: 20px
 
 </style>

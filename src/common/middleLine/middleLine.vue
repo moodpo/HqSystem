@@ -22,5 +22,8 @@
 	left: 0;
 	width:100%;
 	background:#f5f5f5;
+	border-top-style: outset;
+	border-top-color: rgba(0, 0, 0, 0.1);
+	border-top-width: 1px;
 }
 </style>
