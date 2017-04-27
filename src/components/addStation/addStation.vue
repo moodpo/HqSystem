@@ -15,26 +15,25 @@
 		</div>
 	    <div class="container info">
 	     	<div class="baseinfo">
-	     		<h2>基础信息</h2>
+	     		<h3>基础信息</h3>
 	     		<vue-form :state="formstate.form3"  class="form-horizontal" @submit.prevent="testDB">
 	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">分诊台名称</label>
-	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.name" required name="name"  :class="{'form-control':formControlObj.formControl}"/>
-	     		      </div>
+	     		    	<label  class="col-sm-2 control-label">分诊台名称</label>
+	     		    	<div class="col-sm-10">
+	     		      		<input v-model="form.name" required name="name"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
 	     		    </validate>
 	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">分诊台描述</label>
-	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.descText" required name="descText"  :class="{'form-control':formControlObj.formControl}"/>
-	     		      </div>
+	     		      	<label  class="col-sm-2 control-label">分诊台描述</label>
+	     		      	<div class="col-sm-10">
+	     		      		<input v-model="form.descText" required name="descText"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
 	     		    </validate>
-	     		  </vue-form>
+	     		</vue-form>
 	     	</div>
 	     	<middleLine height='10'></middleLine>
 	     	<div class="baseinfo">
-	     	    <h2>新建分诊台</h2>
-	     		<h4>数据库信息</h4>
+	     		<h3>数据库信息</h3>
 	     		<vue-form :state="formstate.form1"  class="form-horizontal" @submit.prevent="testDB">
 	     		    <validate  class="form-group">
 	     		      <label  class="col-sm-2 control-label">数据库地址</label>
@@ -89,7 +88,7 @@
 	     	</div>
 	     	<middleLine height='10'></middleLine>
 	     	<div class="baseinfo">
-	     		<h2>SQL连接信息</h2>
+	     		<h3>SQL连接信息</h3>
 	     		<vue-form :state="formstate.form2"  class="form-horizontal" @submit.prevent="testSQL">
 	     		    <validate  class="form-group">
 	     		      <label  class="col-sm-2 control-label">字段别名(Name)</label>
@@ -443,10 +442,20 @@
 </script>
 
 <style lang="stylus" scoped>
+h2,h3,ul,label
+	margin: 0
+	padding: 0
+	font-family: PingFangSC-Regular
+
 h2
-	padding-bottom: 24px
-	border-bottom: 1px solid #f1f1f1
+	font-size: 24px
+	font-weight: 100
+	
+h3
 	font-size: 20px
+	line-height: 52px
+	border-bottom: 1px solid #f1f1f1	
+	
 
 input
 	border:0px
@@ -501,6 +510,7 @@ input
 	padding:0
 
 .baseinfo
+	height: 194px
 	z-index: -1
 
 </style>
