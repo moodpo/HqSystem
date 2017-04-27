@@ -95,7 +95,6 @@ label,ul
 
 button
 	border: none
-
 	
 .card-container
 	margin: 50px auto
@@ -180,7 +179,6 @@ button
 	display: flex
 	align-items: center
 	justify-content: center
-
 	height: 93.3px
 
 .addstation
@@ -194,5 +192,6 @@ button
 	border-radius: 5px
 	color:#fff
 	font-size: 30px
+	border: none
 
 </style>

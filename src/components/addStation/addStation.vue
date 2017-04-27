@@ -1,13 +1,20 @@
 <template lang="html">
 	<div class="addStation">
-	     <div class="container">
-	     	<div class="row settings">
-	     		<div class="btn btn-success" @click="addStation">提交</div>
-	     		<div class="btn btn-warning" @click="cancel">取消</div>
-	     		<div class="btn btn-danger" >删除</div>
-	     	</div>
-	     	<middleLine height='20'></middleLine>
-	     	<div class="row baseinfo">
+		<div class="top-bar">
+			<div class="row settings">
+				<div class="item btn btn-success" @click="addStation">提交</div>
+		     	<div class="item btn btn-warning" @click="cancel">取消</div>
+		     	<div class="item btn btn-danger" >删除</div>
+			</div>
+			<middleLine height='20'></middleLine>
+		</div>
+		<div class="tab-guide">
+			<div class="container capital">
+				<span>分诊台</span>/新建分诊台
+			</div>
+		</div>
+	    <div class="container info">
+	     	<div class="baseinfo">
 	     		<h2>基础信息</h2>
 	     		<vue-form :state="formstate.form3"  class="form-horizontal" @submit.prevent="testDB">
 	     		    <validate  class="form-group">
@@ -25,7 +32,7 @@
 	     		  </vue-form>
 	     	</div>
 	     	<middleLine height='10'></middleLine>
-	     	<div class="row baseinfo">
+	     	<div class="baseinfo">
 	     	    <h2>新建分诊台</h2>
 	     		<h4>数据库信息</h4>
 	     		<vue-form :state="formstate.form1"  class="form-horizontal" @submit.prevent="testDB">
@@ -81,7 +88,7 @@
 	     		  </vue-form>
 	     	</div>
 	     	<middleLine height='10'></middleLine>
-	     	<div class="row baseinfo">
+	     	<div class="baseinfo">
 	     		<h2>SQL连接信息</h2>
 	     		<vue-form :state="formstate.form2"  class="form-horizontal" @submit.prevent="testSQL">
 	     		    <validate  class="form-group">
@@ -435,33 +442,65 @@
 	}
 </script>
 
-<style scoped>
-h2 {
-	padding-bottom:24px;
-	border-bottom: 1px solid #f1f1f1;
-}
-input {
-	border:0px;
-	box-shadow: 0 0 ;
-	border-bottom: 1px solid #f1f1f1;
-}
-.settings {
-	text-align: center;
-	height:140px;
-	position: static;
-	line-height: 140px
-}
- .settings>div {
- 	position: absolute;
- 	color:#fff;
- 	display: inline-block;
- 	margin-left:20px;
- 	margin-right:20px;
- 	position: relative;
- 	height:58px;
- 	width:112px;
-    line-height: 58px;
-    padding:0;
- }
+<style lang="stylus" scoped>
+h2
+	padding-bottom: 24px
+	border-bottom: 1px solid #f1f1f1
+	font-size: 20px
+
+input
+	border:0px
+	box-shadow: 0 0
+	border-bottom: 1px solid #f1f1f1
+
+.top-bar
+	position: fixed
+	top: 80px
+	left: 0
+	height: auto
+	width: 100%
+	background-color: #fff
+	z-index: 666
+	
+.tab-guide
+	position: fixed
+	top: 80px
+	width: 100%
+	z-index: 666
+	
+.capital
+	font-family: PingFangSC-Light
+	font-weight: 100
+	color: black
+	font-size: 20px
+	height: 93.3px
+	display: flex
+	align-items: center
+	span
+		color: #AFAFAF
+		
+.info
+	margin-top: 193.3px
+	
+.settings
+	width: 100%
+	margin: 0
+	display: flex
+	flex-direction: row
+	justify-content: center
+	align-items: center
+	height: 93.3px
+	background-color: #fff
+
+.item
+	margin-left:20px
+	margin-right:20px
+	height:38.7px
+	width:112px
+	line-height: 38.7px
+	padding:0
+
+.baseinfo
+	z-index: -1
 
 </style>
