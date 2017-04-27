@@ -5,7 +5,7 @@
 		       	<button class="addstation"  @click="goToState('addStation')"><h3>新建分诊台</h3></button>
 
 	       </div>
-	       <middleLine height='20'></middleLine>
+	       <middleLine height='13.4'></middleLine>
 		   	<div class="card-container">
    				<div v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
    					<div class="card">

@@ -99,6 +99,18 @@
 h1
  	font-family: Arial-Black
  	font-size: 40px
+ 
+h2,h3,ul,label
+	margin: 0
+	padding: 0
+
+h2
+	font-family: PingFangSC-Light
+	font-size: 24px
+	font-weight: 100
+	
+h3
+	font-size: 20px
 
 .form-group
 	position: relative
