@@ -81,12 +81,21 @@
 h2,h3
 	font-family: PingFangSC-Light
 	font-weight: 100
+	margin: 0
+	padding: 0
 
 h2
 	font-size: 24px
 
 h3
 	font-size: 20px
+
+label,ul
+	margin: 0
+
+button
+	border: none
+
 	
 .card-container
 	margin: 50px auto

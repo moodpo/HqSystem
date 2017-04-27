@@ -96,6 +96,9 @@
 </script>
 
 <style lang="stylus" scoped>
+h1
+ 	font-family: Arial-Black
+ 	font-size: 40px
 
 .form-group
 	position: relative

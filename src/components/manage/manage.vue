@@ -34,6 +34,10 @@
 </script>
 
 <style lang="stylus" scoped>
+h2,h3,ul,label
+	margin: 0
+	padding: 0
+
 h2
 	font-family: PingFangSC-Light
 	font-size: 24px
@@ -41,6 +45,7 @@ h2
 	
 h3
 	font-size: 20px
+
 
 .manage .manage-header 
 	height: 80px
