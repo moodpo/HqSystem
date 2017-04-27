@@ -26,7 +26,7 @@ export default {
 	name: 'dropDownBox',
 	data() {
 		return {
-			position: 'fixed'
+			position: 'absolute'
 		}
 	},
 	props: ['left', 'top']

@@ -20,6 +20,7 @@ import editQueue from 'components/editQueue/editQueue'
 import editWorker from 'components/editWorker/editWorker'
 // 页面 工作页面
 import workStation from 'components/workStation/workStation'
+import workDoctor from 'components/workDoctor/workDoctor'
 Vue.use(VueRouter)
 
 // 页面刷新时，重新赋值token
@@ -40,6 +41,15 @@ const routes = [
     path: '/workStation',
     component: workStation,
     name: 'workStation',
+    meta: {
+        requireAuth: true,
+        keepAlive: true
+        }
+    },
+    {
+    path: '/workDoctor',
+    component: workDoctor,
+    name: 'workDoctor',
     meta: {
         requireAuth: true,
         keepAlive: true
@@ -175,6 +185,7 @@ router.beforeEach(({meta, path}, from, next) => {
    }
    let { requireAuth = true } = meta
    if (requireAuth && !store.state.token && path !== '/login') {
+      store.commit('logout')
       return next({path: '/login'})
    }
    next()

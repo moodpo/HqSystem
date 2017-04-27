@@ -234,7 +234,6 @@
                       <div @click="manipulate('move', -1)">前进</div>
                       <div @click="manipulate('move', 1)">后退</div>
                       <div @click="manipulate('vip')">优先</div>
-                      <div @click="manipulate('visitorLockSet')">锁定</div>
                       <div @click="manipulate('moveTo')">转移</div>  
                     </div>
                 </div>
@@ -378,13 +377,6 @@
                 } else if (params[0] === 'vip') {
                     data.action = 'visitorProirSet'
                     data.prior = 1
-                    this.axios.post(this.stationUrl, data).then((res) => {
-                        console.log(res)
-                    }, (res) => {
-                    })
-                } else if (params[0] === 'visitorLockSet') {
-                    data.action = 'visitorLockSet'
-                    data.locked = 1
                     this.axios.post(this.stationUrl, data).then((res) => {
                         console.log(res)
                     }, (res) => {

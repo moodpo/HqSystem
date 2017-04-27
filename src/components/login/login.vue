@@ -82,6 +82,13 @@
                             		stationID: res.stationID
                             	}
                             })
+						} else if (userType === 'worker') {
+                            this.$router.push({
+                            	name: 'workDoctor',
+                            	query: {
+                            		callerID: res.callerID
+                            	}
+                            })
 						}
 					} else {
 						alert('账号密码错误，请重新登录')
