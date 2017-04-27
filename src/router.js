@@ -14,6 +14,7 @@ import addWorker from 'components/addWorker/addWorker'
 import batchAddWorker from 'components/batchAddWorker/batchAddWorker'
 import addCaller from 'components/addCaller/addCaller'
 import addQueue from 'components/addQueue/addQueue'
+import editStation from 'components/editStation/editStation'
 import editCaller from 'components/editCaller/editCaller'
 import editQueue from 'components/editQueue/editQueue'
 import editWorker from 'components/editWorker/editWorker'
@@ -59,7 +60,7 @@ const routes = [
                 component: stationList,
                 meta: {
                     requireAuth: true,
-                    keepAlive: true
+                    keepAlive: false
                 }
             },
             {
@@ -79,6 +80,15 @@ const routes = [
                 meta: {
                     requireAuth: true,
                     keepAlive: true
+                }
+            },
+            {
+                name: 'editStation',
+                path: 'editStation',
+                component: editStation,
+                meta: {
+                    requireAuth: true,
+                    keepAlive: false
                 }
             },
             {
