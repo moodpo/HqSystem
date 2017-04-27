@@ -8,10 +8,7 @@
 	    </div>
 	    <vue-form :state="formstate" @submit.prevent="saveForm" class="saveForm">
 	        <validate  class="form-group">
-
-
 	          <input v-model="form.user" required name="user" placeholder="用户名 " class="form-control"  :class="[fieldClassName(formstate.user)]"/>
-
 	          <i class="iconfont icon-user"></i>
 	        </validate>
 	        <validate  class="form-group">
@@ -128,7 +125,9 @@
 	color: #fff
 	height:73px
 	text-shadow: 0px 2px 4px rgba(0,0,0,.1)
-
+	margin: 0
+	padding: 0
+	font-size: 40px
 
 .en-title span 
 	color: #47CAF9
@@ -138,6 +137,7 @@
 	color: #fff
 	height:42px
 	text-shadow: 0px 2px 4px rgba(0,0,0,.1)
+	font-size: 24px
 
 button
 	background-image: linear-gradient(45deg, #109EFC 0%, #00C8FF 100%)
@@ -146,6 +146,7 @@ button
 	border: 0
 	font-weight: 200
 	height: 53.3px
+	border: none
 
 .saveForm 
 	width: 25.89%
@@ -158,5 +159,5 @@ button
 	right: 28px
 	color: #777
 	font-size: 24px
-	
+
 </style>
