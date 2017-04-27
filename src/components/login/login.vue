@@ -9,11 +9,11 @@
 	    <vue-form :state="formstate" @submit.prevent="saveForm" class="saveForm">
 	        <validate  class="form-group">
 	          <input v-model="form.user" required name="user" placeholder="用户名 " class="form-control"  :class="[fieldClassName(formstate.user)]"/>
-	          <i class="iconfont icon-user"></i>
+	          <i class="iconfont icon-yonghu" style=""></i>
 	        </validate>
 	        <validate  class="form-group">
 	          <input v-model="form.passwd" class="form-control" name="passwd" placeholder="密码" type="password" required :class="[fieldClassName(formstate.passwd)]" />
-	          <i class="iconfont icon-iconlock"></i>
+	          <i class="iconfont icon-lock"></i>
 	        </validate>
 	        <button type="submit" class="btn btn-primary btn-block"><h2>登录</h2></button>
 	      </vue-form>
@@ -171,8 +171,14 @@ button
 	color: black
 	position: absolute
 	top: 0px
-	right: 28px
-	color: #777
-	font-size: 24px
+	right: 18.6px
+	color: #C8C8C8
+.icon-yonghu
+	font-size: 40px
+
+.icon-lock
+	font-size: 36px
+		
+	
 
 </style>
