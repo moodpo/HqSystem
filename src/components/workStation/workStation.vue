@@ -221,7 +221,6 @@
 	</div>
 </template>
 <script>
-    import draggable from 'vuedraggable'
     import modal from '../../common/modal/modal'
     import dropDownBox from '../../common/dropDownBox/dropDownBox'
 	export default {
@@ -362,8 +361,7 @@
         },
         components: {
             modal,
-            dropDownBox,
-            draggable
+            dropDownBox
         }
 	}
 </script>
