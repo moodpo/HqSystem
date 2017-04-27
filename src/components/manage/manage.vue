@@ -77,6 +77,8 @@ h3
 		font-weight: medium
 		i
 			font-weight: normal
+	@media (max-width: 540px)
+		width: 50%
 
 	@media (max-width: 1078px)
 		margin: 0
