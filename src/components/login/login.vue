@@ -2,22 +2,20 @@
 	<div class="login">
 	    <div class="login-header":style="{'backgroundImage':'url('+loginBG+')'}">
 	      <div class="title">
-	      	<p class="en-title">H<span>Q</span>MS</p>
-	      	<p class="zh-title">排队叫号管理系统</p>
+	      	<h1 class="en-title">H<span>Q</span>MS</h1>
+	      	<h2 class="zh-title">排队叫号管理系统</h2>
 	      </div>
 	    </div>
 	    <vue-form :state="formstate" @submit.prevent="saveForm" class="saveForm">
 	        <validate  class="form-group">
-
 	          <input v-model="form.userName" required name="user" placeholder="用户名 " class="form-control"  :class="[fieldClassName(formstate.userName)]"/>
 	          <i class="iconfont icon-user"></i>
-
 	        </validate>
 	        <validate  class="form-group">
 	          <input v-model="form.passwd" class="form-control" name="passwd" placeholder="密码" type="password" required :class="[fieldClassName(formstate.passwd)]" />
 	          <i class="iconfont icon-iconlock"></i>
 	        </validate>
-	        <button type="submit" class="btn btn-primary btn-block">登录</button>
+	        <button type="submit" class="btn btn-primary btn-block"><h2>登录</h2></button>
 	      </vue-form>
 	</div>
 </template>
@@ -101,17 +99,16 @@
 
 .form-group
 	position: relative
-	font-size: 40px
-	margin-bottom: 1.6em
+	margin-bottom: 42.7px
 	.form-control 
-		font-size: 28px
-		height: 80px
+		font-size: 18px
+		height: 3em
 
 .form-group:first-child 
-	margin-bottom: 0.6em
+	margin-bottom: 16.1px
 
 .login-header 
-	height: 280px
+	height: 186.7px
 	background: #0097FB
 	width:100%
 	
@@ -126,7 +123,6 @@
 .en-title 
 	font-family: 'Arial-Black'
 	color: #fff
-	font-size: 52px
 	height:73px
 	text-shadow: 0px 2px 4px rgba(0,0,0,.1)
 
@@ -137,7 +133,6 @@
 .zh-title 
 	font-family: 'PingFangSC-Regular'
 	color: #fff
-	font-size: 30px
 	height:42px
 	text-shadow: 0px 2px 4px rgba(0,0,0,.1)
 
@@ -146,20 +141,19 @@ button
 	box-shadow: 0 10px 20px 0 rgba(7,180,254,0.20)
 	border-radius: 5px
 	border: 0
-	font-size: 36px
 	font-weight: 200
-	height: 80px
+	height: 53.3px
 
 .saveForm 
 	width: 25.89%
-	margin: 1.75em auto
+	margin: 46.6px auto
 	
 .iconfont
+	color: black
 	position: absolute
-	top: 16px
+	top: 0px
 	right: 28px
 	color: #777
-	font-size: 36px
-	
+	font-size: 24px
 	
 </style>
