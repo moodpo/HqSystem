@@ -116,7 +116,7 @@
                                             <td>{{wait.snumber}}</td>
                                             <td>{{wait.age}}</td>
                                             <td>{{wait.name}}</td>
-                                            <td v-if="index == 0">进行中</td>
+                                            <td v-if="wait.status == 'doing'">进行中</td>
                                             <td v-else class="manipulate">更多</td>
                                         </tr>
                                     </tbody>
@@ -135,7 +135,8 @@
                                             <td>{{finish.id}}</td>
                                             <td>{{finish.name}}</td>
                                             <td>{{finish.orderTime}}</td>
-                                            <td><span v-if="index == 0">进行中</span><span v-else class="manipulate">更多</span></td>
+                                            <td v-if="wait.status == 'doing'">进行中</td>
+                                            <td v-else class="manipulate">更多</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -164,13 +165,13 @@
                                            <td>操作</td>
                                    </thead>
                                    <tbody>
-                                       <tr v-for="(wait, index) in queueInfo.info.waitingList" :id="wait.id" :queueID="wait.queueID">
-                                           <td>{{wait.snumber}}</td>
-                                           <td>{{wait.age}}</td>
-                                           <td>{{wait.name}}</td>
-                                           <td v-if="index == 0">进行中</td>
-                                           <td v-else class="manipulate">更多</td>
-                                       </tr>
+                                         <tr v-for="(wait, index) in queueInfo.info.waitingList" :id="wait.id" :queueID="wait.queueID">
+                                             <td>{{wait.snumber}}</td>
+                                             <td>{{wait.age}}</td>
+                                             <td>{{wait.name}}</td>
+                                             <td v-if="wait.status == 'doing'">进行中</td>
+                                             <td v-else class="manipulate">更多</td>
+                                         </tr> 
                                    </tbody>
                                </table>
                             </div>
@@ -209,8 +210,8 @@
             <dropDownBox :left="dropDownBox.left" :top="dropDownBox.top" v-if="dropDownBox.dropDownBoxShow" @close="dropDownBox.dropDownBoxShow = false">
                 <div slot="body">
                     <div class="manipulate-waitinglist">
-                      <div @click="manipulate('move', 1)">前进</div>
-                      <div @click="manipulate('move', -1)">后退</div>
+                      <div @click="manipulate('move', -1)">前进</div>
+                      <div @click="manipulate('move', 1)">后退</div>
                       <div @click="manipulate('vip')">优先</div>
                       <div @click="manipulate('')">转移</div>  
                     </div>
