@@ -2,9 +2,9 @@
 	<div class="addStation">
 	     <div class="container">
 	     	<div class="row settings">
-	     		<div class="btn btn-success" @click="addStation">提交</div>
+	     		<div class="btn btn-success" @click="editStation">提交</div>
 	     		<div class="btn btn-warning" @click="cancel">取消</div>
-	     		<div class="btn btn-danger" >删除</div>
+	     		<div class="btn btn-danger" @click="del">删除</div>
 	     	</div>
 	     	<middleLine height='20'></middleLine>
 	     	<div class="row baseinfo">
@@ -13,20 +13,20 @@
 	     		    <validate  class="form-group">
 	     		      <label  class="col-sm-2 control-label">分诊台名称</label>
 	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.name" required name="name"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	<input v-model="form.host" required name="host"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-group">
 	     		      <label  class="col-sm-2 control-label">分诊台描述</label>
 	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.descText" required name="descText"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	<input v-model="form.user" required name="user"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      </div>
 	     		    </validate>
 	     		  </vue-form>
 	     	</div>
 	     	<middleLine height='10'></middleLine>
 	     	<div class="row baseinfo">
-	     	    <h2>新建分诊台</h2>
+	     	    <h2>配置分诊台</h2>
 	     		<h4>数据库信息</h4>
 	     		<vue-form :state="formstate.form1"  class="form-horizontal" @submit.prevent="testDB">
 	     		    <validate  class="form-group">
@@ -210,35 +210,36 @@
 					form2: {},
 					form3: {}
 				},
-				form: {
-					name: 'name',
-					descText: 'descText',
-					DBType: 'mysql',
-					host: '192.168.17.184',
-					port: '3306',
-					charset: 'utf8',
-					user: 'root',
-					passwd: '123456',
-					DBName: 'HisQueue',
-					tableName: 'visitors',
-					aliasName: 'name',
-					aliasAge: 'age',
-					aliasQueue: 'queue',
-					aliasID: 'ID',
-					aliasOrderDate: 'orderDate',
-					aliasOrderTime: 'orderTime',
-					aliasRegistDate: 'registDate',
-					aliasRegistTime: 'registTime',
-					aliasVIP: 'emergency',
-					aliasSnumber: 'snumber',
-					aliasOrderType: 'orderType',
-					aliasWorkerID: 'workerID',
-					aliasWorkerName: 'workerName',
-					aliasDepartment: 'department',
-					aliasDescText: 'descText',
-					aliasStatus: 'status',
-					renewPeriod: '10s'
-				},
+				// form: {
+				// 	name: '',
+				// 	describe: '',
+				// 	DBType: 'mysql',
+				// 	host: '192.168.17.184',
+				// 	port: '3306',
+				// 	charset: 'utf8',
+				// 	user: 'root',
+				// 	passwd: '123456',
+				// 	DBName: 'HisQueue',
+				// 	tableName: 'visitors',
+				// 	aliasName: 'name',
+				// 	aliasAge: 'age',
+				// 	aliasQueue: 'quene',
+				// 	aliasID: 'ID',
+				// 	aliasOrderDate: 'orderDate',
+				// 	aliasOrderTime: 'orderTime',
+				// 	aliasRegistDate: 'registDate',
+				// 	aliasRegistTime: 'registTime',
+				// 	aliasVIP: 'emergency',
+				// 	aliasSnumber: 'snumber',
+				// 	aliasOrderType: 'orderType',
+				// 	aliasWorkerID: 'workerID',
+				// 	aliasWorkerName: 'workerName',
+				// 	aliasDepartment: 'department',
+				// 	aliasDescText: 'descText',
+				// 	aliasStatus: 'status',
+				// 	renewPeriod: '10s'
+				// },
+				form: {},
 				formControlObj: {
 					formControl: true,
 					form1BtnVal: '',
@@ -252,6 +253,9 @@
 			}
 		},
 		computed: {
+			stationID() {
+				return Number(this.$route.query.stationID);
+			},
 			serverUrl() {
 				return this.$store.getters.postUrl('manager', 'station')
 			}
@@ -270,6 +274,7 @@
 			_init() {
 				this.formControlObj.form1BtnVal = this.formBtnVal[1]
 				this.formControlObj.form2BtnVal = this.formBtnVal[1]
+				this.getInfo()
 			},
 			// 测试工作站数据源
 			testDB() {
@@ -354,10 +359,10 @@
 							this.modal.modalShow = true;
 							this.formControlObj.form2BtnVal = this.formBtnVal[0]
 						} else {
-							this.formstate.form2.linkTest = true;
-							this.formControlObj.form2BtnVal = this.formBtnVal[2]
 							this.modal.modalContent = '连接成功';
 							this.modal.modalShow = true;
+							this.formstate.form2.linkTest = true;
+							this.formControlObj.form2BtnVal = this.formBtnVal[2]
 						}
 					}, (res) => {
 						console.log('failed')
@@ -365,8 +370,16 @@
 				}
                 console.log('testSQL')
 			},
-			// 添加工作站
-			addStation() {
+			getInfo() {
+               this.axios.post(this.serverUrl, {
+               	action: 'getInfo',
+               	stationID: this.stationID
+               }).then((res) => {
+               	this.form = res
+               })
+			},
+			// 编辑工作站
+			editStation() {
 				if (!this.formstate.form1.linkTest) {
                    this.modal.modalContent = '请先测试数据库信息';
                    this.modal.modalShow = true;
@@ -425,6 +438,23 @@
 					})
 				}
                 console.log('testSQL')
+			},
+			// 删除
+			del() {
+				// todo
+				// 弹出框优化
+				var flag = confirm('确定删除？')
+				if (!flag) {
+					return;
+				}
+				this.axios.post(this.serverUrl, {
+					action: 'delete',
+					stationID: this.stationID
+				}).then((res) => {
+                   alert('删除成功')
+                   this.cancel()
+				}, (res) => {
+				})
 			},
 			cancel() {
 				// todo

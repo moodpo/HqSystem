@@ -19,6 +19,7 @@
 	               	     <div class="station-name" @click="showInfo(0)">医生信息</div>
 	               	     <div class="station-name" @click="showInfo(1)">队列</div>
 	               	     <div class="station-name" @click="showInfo(2)">叫号器</div>
+	               	     <div class="station-name" @click="edit('editStation', {'stationID':stationID} )">配置分诊台</div>
 	               </div>
 	               <div class="nav-info">
 	               	   <div class="workList" v-if="showInfoNumber == 0">
@@ -117,7 +118,6 @@
            this._init()
 		},
 		mounted() {
-			console.log(this.$route)
 		},
 		methods: {
 			_init() {
