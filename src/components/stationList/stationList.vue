@@ -1,14 +1,18 @@
 <template lang="html">
 	<div class="">
 	       <div class="addstation-container">
-		       	<button class="addstation"  @click="goToState('addStation')">新建分诊台</button>
+
+		       	<button class="addstation"  @click="goToState('addStation')"><h3>新建分诊台</h3></button>
+
 	       </div>
 	       <middleLine height='20'></middleLine>
-		   	<div class="station-list">
-		   		<div v-for="station in stationList" class="card" @click="goToStationDetail(station)">
-		   		    <div class="card-box" :style="{'backgroundImage':'url('+stationLogo+')'}"></div>
-		   			{{station.name}}
-		   		</div>
+		   	<div class="card-container">
+   				<div v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
+   					<div class="card">
+   						<div class="card-bg" :style="{'backgroundImage':'url('+stationLogo+')'}"></div>
+   						<h3>{{station.name}}</h3>
+   					</div>
+   				</div>
 		   	</div>
         <keep-alive>
           <router-view></router-view>
@@ -26,6 +30,7 @@
 			return {
 				stationList: '',
 				stationLogo: stationLogo
+				// length: ''
 			}
 		},
 		computed: {
@@ -48,7 +53,8 @@
 				this.axios.post(this.serverUrl, {
 					action: 'getList'
 				}).then((res) => {
-                    this.stationList = res.stationList;
+                    this.stationList = res.stationList
+                    // this.length = res.stationList.length
 				}, (res) => {
 					console.log('failed')
 				})
@@ -72,26 +78,122 @@
 </script>
 
 <style lang="stylus" scoped>
-.card
-	width:230px
-	height:300px
-	display: inline-block
-	margin:40px 10px
-	text-align:center
+
+
+.card-container
+	margin: 50px auto
+	display: -webkit-flex
+	flex-wrap: wrap
+	six2(num)
+		if (num%6 == 0)
+			justify-content: flex-start
+			.card-box
+			.card-box:nth-of-type(4n)
+			.card-box:nth-of-type(5n)
+				margin-right: 66.7px
+			.card-box:nth-of-type(6n)
+				margin-right: 0
+		else
+			justify-content: space-between
+	six(num)
+		if (num%6 == 0)
+			justify-content: flex-start
+			.card-box
+			.card-box:nth-of-type(4n)
+			.card-box:nth-of-type(5n)
+				margin-right: calc((85vw - 799.8px)/5)
+			.card-box:nth-of-type(6n)
+				margin-right: 0
+		else
+			justify-content: space-between
+	five(num)
+		if (num%5 == 0)
+			justify-content: flex-start
+			.card-box
+			.card-box:nth-of-type(4n)
+				margin-right: calc((85vw - 666.5px)/4)
+			.card-box:nth-of-type(5n)
+				margin-right: 0
+		else
+			justify-content: space-between
+	four(num)
+		if (num%4 == 0)
+			justify-content: flex-start
+			.card-box
+				margin-right: 35.6px
+			.card-box:nth-of-type(4n)
+				margin-right: 0
+		else
+			justify-content: space-between
+			
+	@media (max-width: 772px)
+		justify-content: space-between
+		width:80%
 	
-.card-box 
-	margin:0 auto
-	height:260px
-	width:200px
+	@media (min-width: 773px)
+		width:640px
+		four(4)
+	@media (min-width: 933.38px)
+		width: 85vw
+		five(5)
+	@media (min-width: 1066.72px)
+		width: 85vw
+		six(6)
+	@media (min-width: 1280px)
+		width: 1133.4px
+		six2(6)
+		
+	
+.card-box
+	width: 133.3px
+	
+.card
+	h3
+		text-align: center
+		margin-top: 0.67em
+		margin-bottom: 1.33em
+
+// .card
+// 	// width:230px
+// 	height:300px
+// 	display: inline-block
+// 	// margin:40px 10px
+// 	text-align:center
+	
+// .card-box 
+// 	// margin:0 auto
+// 	height:260px
+// 	// width:200px
+// 	background:no-repeat center center
+// 	border:1px solid #d7d7d7
+// 	// margin-bottom: 20px
+.card-bg
+	height: 173.3px
 	background:no-repeat center center
 	border:1px solid #d7d7d7
-	margin-bottom: 20px
-	
+
+
+
+
 .addstation-container
 	display: flex
 	align-items: center
 	justify-content: center
-	height: 140px
+
+	height: 93.3px
+
+.addstation
+	width: 4.73em
+	height: 1.3em
+	box-shadow: 0 5px 10px rgba(8,181,254, 0.2)
+	background: -webkit-gradient(45deg, #109EFC, #00C8FF) //chrome/Safari
+	background: -moz-linear-gradient(45deg, #109EFC, #00C8FF) //Firefox
+	background: -o-linear-gradient(45deg, #109EFC, #00C8FF)
+	background: linear-gradient(45deg, #109EFC, #00C8FF)
+	border-radius: 5px
+	color:#fff
+	font-size: 30px
+
 
 .addstation
 	width: 212px
