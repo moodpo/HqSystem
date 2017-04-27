@@ -116,7 +116,7 @@
                                             <td>{{wait.snumber}}</td>
                                             <td>{{wait.age}}</td>
                                             <td>{{wait.name}}</td>
-                                            <td v-if="wait.status == 'doing'">进行中</td>
+                                            <td v-if="wait.localStatus == 'doing'">进行中</td>
                                             <td v-else class="manipulate">更多</td>
                                         </tr>
                                     </tbody>
@@ -135,7 +135,7 @@
                                             <td>{{finish.id}}</td>
                                             <td>{{finish.name}}</td>
                                             <td>{{finish.orderTime}}</td>
-                                            <td v-if="wait.status == 'doing'">进行中</td>
+                                            <td v-if="finish.localStatus == 'doing'">进行中</td>
                                             <td v-else class="manipulate">更多</td>
                                         </tr>
                                     </tbody>
@@ -169,7 +169,7 @@
                                              <td>{{wait.snumber}}</td>
                                              <td>{{wait.age}}</td>
                                              <td>{{wait.name}}</td>
-                                             <td v-if="wait.status == 'doing'">进行中</td>
+                                             <td v-if="wait.localStatus == 'doing'">进行中</td>
                                              <td v-else class="manipulate">更多</td>
                                          </tr> 
                                    </tbody>
@@ -188,8 +188,8 @@
                                             <td>{{finish.id}}</td>
                                             <td>{{finish.name}}</td>
                                             <td>{{finish.orderTime}}</td>
-                                            <td v-if="index == 0">进行中</td>
-                                            <td v-else class="manipulate">更多</td>
+                                            <td v-if="finish.localStatus == 'doing'">进行中</td>
+                                             <td v-else class="manipulate">更多</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -267,8 +267,6 @@
                 this.getQueueListInfo()
             },
             getQueueListInfo() {
-                console.log(this.$route.query)
-                console.log(this.stationID)
                 this.axios.post(this.stationUrl, {
                     action: 'getQueueListInfo',
                     stationID: this.stationID
