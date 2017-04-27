@@ -78,8 +78,16 @@
 </script>
 
 <style lang="stylus" scoped>
+h2,h3
+	font-family: PingFangSC-Light
+	font-weight: 100
 
+h2
+	font-size: 24px
 
+h3
+	font-size: 20px
+	
 .card-container
 	margin: 50px auto
 	display: -webkit-flex
@@ -149,31 +157,15 @@
 	
 .card
 	h3
+		font-family: PingFangSC-Light
 		text-align: center
 		margin-top: 0.67em
 		margin-bottom: 1.33em
 
-// .card
-// 	// width:230px
-// 	height:300px
-// 	display: inline-block
-// 	// margin:40px 10px
-// 	text-align:center
-	
-// .card-box 
-// 	// margin:0 auto
-// 	height:260px
-// 	// width:200px
-// 	background:no-repeat center center
-// 	border:1px solid #d7d7d7
-// 	// margin-bottom: 20px
 .card-bg
 	height: 173.3px
 	background:no-repeat center center
 	border:1px solid #d7d7d7
-
-
-
 
 .addstation-container
 	display: flex
@@ -193,21 +185,5 @@
 	border-radius: 5px
 	color:#fff
 	font-size: 30px
-
-
-.addstation
-	width: 212px
-	height: 58px
-	box-shadow: 0 5px 10px rgba(8,181,254, 0.2)
-	background: -webkit-gradient(45deg, #109EFC, #00C8FF) //chrome/Safari
-	background: -moz-linear-gradient(45deg, #109EFC, #00C8FF) //Firefox
-	background: -o-linear-gradient(45deg, #109EFC, #00C8FF)
-	background: linear-gradient(45deg, #109EFC, #00C8FF)
-	border-radius: 5px
-	color:#fff
-	font-size: 30px
-
-.station-list 
-	padding-left: 20px
 
 </style>
