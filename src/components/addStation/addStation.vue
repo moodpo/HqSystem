@@ -444,18 +444,17 @@
 h2,h3,ul,label
 	margin: 0
 	padding: 0
-	font-family: PingFangSC-Regular
+	font-family: PingFangSC
+	font-weight: 300
 
 h2
 	font-size: 24px
-	font-weight: 100
 	
 h3
 	font-size: 20px
 	line-height: 60px
 	border-bottom: 1px solid #f1f1f1
 	margin-bottom: 15px
-	
 
 input
 	border:0px
@@ -484,8 +483,8 @@ a, button, input
 	align-self: center
 	
 .capital
-	font-family: PingFangSC-Light
-	font-weight: 100
+	font-family: PingFangSC
+	font-weight: 300
 	color: black
 	font-size: 20px
 	position: absolute
@@ -528,10 +527,10 @@ a, button, input
 .control-label
 	width: auto
 	flex-grow: none
-	font-family: PingFangSC-Light
+	font-family: PingFangSC
 	font-size: 20px
 	color: #AFAFAF
-	font-weight: 100
+	font-weight: 300
 	
 .input-bar
 	flex-grow: 1

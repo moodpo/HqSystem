@@ -107,7 +107,7 @@ h2,h3,ul,label
 h2
 	font-family: PingFangSC-Light
 	font-size: 24px
-	font-weight: 100
+	font-weight: 300
 	
 h3
 	font-size: 20px
@@ -148,7 +148,7 @@ h3
 	color: #47CAF9
 
 .zh-title 
-	font-family: 'PingFangSC-Regular'
+	font-family: PingFangSC
 	color: #fff
 	height:42px
 	text-shadow: 0px 2px 4px rgba(0,0,0,.1)
@@ -159,7 +159,7 @@ button
 	box-shadow: 0 10px 20px 0 rgba(7,180,254,0.20)
 	border-radius: 5px
 	border: 0
-	font-weight: 200
+	font-weight: 300
 	height: 53.3px
 	border: none
 

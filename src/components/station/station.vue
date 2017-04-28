@@ -58,8 +58,8 @@
  }
 
  .station-name, .tab-title,.table thead {
- 	font-family: PingFangSC-Light;
- 	font-weight: 100;
+ 	font-family: PingFangSC;
+ 	font-weight: 300;
  }
 
  .tab-title {

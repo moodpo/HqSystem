@@ -39,12 +39,14 @@
 h2,h3,ul,label
 	margin: 0
 	padding: 0
+	
+h2, h3
+	font-family: PingFangSC
+	font-weight: 200
 
 h2
-	font-family: PingFangSC-Light
 	font-size: 24px
-	font-weight: 100
-	
+
 h3
 	font-size: 20px
 
@@ -99,8 +101,7 @@ h3
 @media (min-width: 1078px)	
 	.manage-tab:first-child
 		margin-right: 1.2em
-
-			
+	
 input[type=radio]:checked + label {
     opacity: 1
 }
