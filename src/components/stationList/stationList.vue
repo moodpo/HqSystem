@@ -5,7 +5,7 @@
 		       	<button class="addstation"  @click="goToState('addStation')"><h3>新建分诊台</h3></button>
 
 	       </div>
-	       <middleLine height='20'></middleLine>
+	       <middleLine height='13.4'></middleLine>
 		   	<div class="card-container">
    				<div v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
    					<div class="card">
@@ -78,8 +78,30 @@
 </script>
 
 <style lang="stylus" scoped>
+h2,h3
+	font-family: PingFangSC-Light
+	font-weight: 100
+	margin: 0
+	padding: 0
 
+h2
+	font-size: 24px
 
+h3
+	font-size: 20px
+
+label,ul
+	margin: 0
+
+button
+	border: none
+
+// 去掉button等默认点击效果 
+a, button, input
+	webkit-tap-highlight-color: rgba(0,0,0,0)
+	webkit-user-modify: read-write-plaintext-only
+	outline: none
+	
 .card-container
 	margin: 50px auto
 	display: -webkit-flex
@@ -149,38 +171,22 @@
 	
 .card
 	h3
+		font-family: PingFangSC-Light
 		text-align: center
 		margin-top: 0.67em
 		margin-bottom: 1.33em
 
-// .card
-// 	// width:230px
-// 	height:300px
-// 	display: inline-block
-// 	// margin:40px 10px
-// 	text-align:center
-	
-// .card-box 
-// 	// margin:0 auto
-// 	height:260px
-// 	// width:200px
-// 	background:no-repeat center center
-// 	border:1px solid #d7d7d7
-// 	// margin-bottom: 20px
 .card-bg
 	height: 173.3px
 	background:no-repeat center center
 	border:1px solid #d7d7d7
 
-
-
-
 .addstation-container
 	display: flex
 	align-items: center
 	justify-content: center
-
 	height: 93.3px
+	margin-top: 80px
 
 .addstation
 	width: 4.73em
@@ -193,21 +199,6 @@
 	border-radius: 5px
 	color:#fff
 	font-size: 30px
-
-
-.addstation
-	width: 212px
-	height: 58px
-	box-shadow: 0 5px 10px rgba(8,181,254, 0.2)
-	background: -webkit-gradient(45deg, #109EFC, #00C8FF) //chrome/Safari
-	background: -moz-linear-gradient(45deg, #109EFC, #00C8FF) //Firefox
-	background: -o-linear-gradient(45deg, #109EFC, #00C8FF)
-	background: linear-gradient(45deg, #109EFC, #00C8FF)
-	border-radius: 5px
-	color:#fff
-	font-size: 30px
-
-.station-list 
-	padding-left: 20px
+	border: none
 
 </style>

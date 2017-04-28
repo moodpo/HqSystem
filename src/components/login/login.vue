@@ -8,15 +8,12 @@
 	    </div>
 	    <vue-form :state="formstate" @submit.prevent="saveForm" class="saveForm">
 	        <validate  class="form-group">
-
-
 	          <input v-model="form.user" required name="user" placeholder="用户名 " class="form-control"  :class="[fieldClassName(formstate.user)]"/>
-
-	          <i class="iconfont icon-user"></i>
+	          <i class="iconfont icon-yonghu" style=""></i>
 	        </validate>
 	        <validate  class="form-group">
 	          <input v-model="form.passwd" class="form-control" name="passwd" placeholder="密码" type="password" required :class="[fieldClassName(formstate.passwd)]" />
-	          <i class="iconfont icon-iconlock"></i>
+	          <i class="iconfont icon-lock"></i>
 	        </validate>
 	        <button type="submit" class="btn btn-primary btn-block"><h2>登录</h2></button>
 	      </vue-form>
@@ -99,6 +96,21 @@
 </script>
 
 <style lang="stylus" scoped>
+h1
+ 	font-family: Arial-Black
+ 	font-size: 40px
+ 
+h2,h3,ul,label
+	margin: 0
+	padding: 0
+
+h2
+	font-family: PingFangSC-Light
+	font-size: 24px
+	font-weight: 100
+	
+h3
+	font-size: 20px
 
 .form-group
 	position: relative
@@ -128,7 +140,9 @@
 	color: #fff
 	height:73px
 	text-shadow: 0px 2px 4px rgba(0,0,0,.1)
-
+	margin: 0
+	padding: 0
+	font-size: 40px
 
 .en-title span 
 	color: #47CAF9
@@ -138,6 +152,7 @@
 	color: #fff
 	height:42px
 	text-shadow: 0px 2px 4px rgba(0,0,0,.1)
+	font-size: 24px
 
 button
 	background-image: linear-gradient(45deg, #109EFC 0%, #00C8FF 100%)
@@ -146,6 +161,7 @@ button
 	border: 0
 	font-weight: 200
 	height: 53.3px
+	border: none
 
 .saveForm 
 	width: 25.89%
@@ -155,8 +171,14 @@ button
 	color: black
 	position: absolute
 	top: 0px
-	right: 28px
-	color: #777
-	font-size: 24px
+	right: 18.6px
+	color: #C8C8C8
+.icon-yonghu
+	font-size: 40px
+
+.icon-lock
+	font-size: 36px
+		
 	
+
 </style>
