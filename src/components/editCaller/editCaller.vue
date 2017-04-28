@@ -2,6 +2,9 @@
 .caller-type {
 	margin-left: 20px;
 }
+
+
+
 </style>
 <template lang="html">
 	<div class="editCaller">
@@ -63,10 +66,12 @@
 		         		    </div>
 	         		    </div> -->
              		    <div class="form-group flex-container">
+
     		         		        <div class="form-group form-item flex-container" v-for="worker in form.workerList">
             		         		    	<input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
             	         		        <div  class="col-sm-3 ">{{worker.name}}</div>
     		         		        </div>
+
              		    </div>
 	         		    <h4>优先队列</h4>
 	         		    <!-- <div class="form-group flex-container">
@@ -81,6 +86,7 @@
 			         		    </div>
 		         		    </div>
 	         		    </div> -->
+
              		    <div class="orm-group form-flex-container">
 	         		        <div  v-for="queue in form.queueList" class="form-group form-item flex-container">
 		    	         		    <div class="col-sm-1 ">
@@ -88,6 +94,8 @@
 		    	         		    </div>
 		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
 	         		        </div>
+
+
              		    </div>
 		     		  </vue-form>
 		     	</div>
