@@ -455,7 +455,7 @@ h3
 	font-size: 20px
 	line-height: 60px
 	border-bottom: 1px solid #f1f1f1
-	margin-bottom: 15px	
+	margin-bottom: 15px
 	
 
 input
