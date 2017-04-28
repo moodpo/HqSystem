@@ -177,6 +177,7 @@
 				}
 			},
 			getWorkerList() {
+				console.log('getWorkerList')
 				this.axios.post(this.workerUrl, {
 					action: 'getList',
 					stationID: this.stationID
@@ -187,6 +188,7 @@
 				})
 			},
 			getQueueList() {
+				console.log('getQueueList')
 				this.axios.post(this.queueInfoUrl, {
 					action: 'getList',
 					stationID: this.stationID

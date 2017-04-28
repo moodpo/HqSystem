@@ -1,5 +1,7 @@
 <style scoped>
-
+.caller-type {
+	margin-left: 20px;
+}
 </style>
 <template lang="html">
 	<div class="editCaller">
@@ -61,16 +63,10 @@
 		         		    </div>
 	         		    </div> -->
              		    <div class="form-group flex-container">
-    	         		    <div  class="col-sm-11 col-sm-offset-1" >
-    		         		    <div class="row">
-    		         		        <div class="" v-for="worker in form.workerList">
-            		         		    <div class="col-sm-1 ">
-            		         		    	<input class="pull-right" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
-            		         		    </div>
+    		         		        <div class="form-group form-item flex-container" v-for="worker in form.workerList">
+            		         		    	<input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
             	         		        <div  class="col-sm-3 ">{{worker.name}}</div>
     		         		        </div>
-    		         		    </div>
-    	         		    </div>
              		    </div>
 	         		    <h4>优先队列</h4>
 	         		    <!-- <div class="form-group flex-container">
@@ -85,17 +81,13 @@
 			         		    </div>
 		         		    </div>
 	         		    </div> -->
-             		    <div class="form-group flex-container">
-    	         		    <div  class="col-sm-11 col-sm-offset-1" >
-    		         		    <div class="row">
-    		         		        <div  v-for="queue in form.queueList">
-     		    	         		    <div class="col-sm-1 ">
-     		    	         		    	<input class="pull-right" type="radio"  v-model="form.priorQueue"  :value="queue.id" >
-     		    	         		    </div>
-     		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
-    		         		        </div>
-    		         		    </div>
-    	         		    </div>
+             		    <div class="orm-group form-flex-container">
+	         		        <div  v-for="queue in form.queueList" class="form-group form-item flex-container">
+		    	         		    <div class="col-sm-1 ">
+		    	         		    	<input class="control-label input-btn" type="radio"  v-model="form.priorQueue"  :value="queue.id" >
+		    	         		    </div>
+		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
+	         		        </div>
              		    </div>
 		     		  </vue-form>
 		     	</div>
