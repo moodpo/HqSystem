@@ -6,9 +6,8 @@
 					<span>分诊台</span>/新建分诊台
 				</div>
 				<div class="btn-bar">
-					<div class="item btn btn-success"@click="addStation">提交</div>
-			     	<div class="item btn btn-warning"@click="cancel">取消</div>
-			     	<div class="item btn btn-danger">删除</div>
+					<div class="item btn btn-success" @click="addStation">提交</div>
+			     	<div class="item btn btn-warning" @click="cancel">取消</div>
 				</div>
 			</div>
 			<middleLine height='13.4'></middleLine>

@@ -1,22 +1,6 @@
 <style scoped>
-.settings {
-	text-align: center;
-	height:140px;
-	position: static;
-	line-height: 140px
-}
-/* .settings>div {
- 	position: absolute;
- 	color:#fff;
- 	display: inline-block;
- 	margin-left:20px;
- 	margin-right:20px;
- 	position: relative;
- 	height:58px;
- 	width:112px;
-    line-height: 58px;
-    padding:0;
- }*/
+
+
  .station-content {
  	width:100%;
  }
@@ -31,62 +15,83 @@
  }
  .station-content .nav-bar .station-name {
     font-family: PingFangSC-Semibold;
-    font-size: 36px;
+    font-size: 24px;
     color: #FFFFFF;
     border-bottom: 1px solid rgba(241,241,241,.5);
     padding:10px 0;
  }
- .station-content .nav-bar>.tab:hover {
+  .station-content .nav-bar>.tab-title {
+  	height:50px;
+  	line-height: 50px;
+  	font-size: 20px;
+  	position:relative;
+  }
+ .station-content .nav-bar>.tab-title:hover {
     background: #4DB8FF; 
+ }
+ .station-content .nav-bar>.tab-title::after {
+    content:' ';
+    display: inline-block;
+    width:0px;
+    height: 0px;
+    border-right: 20px;
+    border-color: #ff3300 #ffffff #ffffff #ffffff;
+    position:absolute;
+    right:10px;
+    top:10px;
  }
  .station-content .nav-info {
     margin-left:220px;
  }
- .btn.btn-success{
- 		width:150px;
- 	    padding:10px 20px;
- 	    text-align: center;
- 	    margin: 0 auto;
- 	    background: -webkit-linear-gradient(left,#0097FB,#00CBFB);
- 	    /* todo 渐变色 兼容性问题*/
- 	    /*background: -moz-linear-gradient(left,#0097FB,#00CBFB);*/
- 	    /*background: -o-linear-gradient(left,#0097FB,#00CBFB);*/
- 	    color:#fff;
- 	    position: relative;
- 	    border:0;
- }
+ 
  .nav-info-content {
  	 padding:37px 35px;
  }
  .nav-info-content {
 
  }
+ .clearfix {
+ /*	display: block
+ 	margin-left: */
+ }
+ .no-left-padding{
+ 	padding-left: 0
+ }
+
 
 
  
 </style>
 <template lang="html">
-	<div class="station">
-               <div class="settings">
-                  <div v-if="showInfoNumber == 0">
-   	               	<div class="btn btn-success" @click="add('addWorker')">添加医生</div>
-   	               	<div class="btn btn-success" @click="add('batchAddWorker')">批量添加医生</div>
-                  </div>
-                 <div v-if="showInfoNumber == 1">
-  	               	<div class="btn btn-success" @click="add('addQueue')">添加队列</div>
-                 </div>
-                 <div v-if="showInfoNumber == 2">
-  	               	<div class="btn btn-success" @click="add('addCaller')">添加叫号器</div>
-                 </div>
-               </div>
-               <middleLine height='20'></middleLine>
-               <div class="station-content clearfix">
+    <div>
+ 	<div class="station">
+ 			<div class="top-bar">
+ 				<div class="container settings">
+ 					<div class="capital">
+ 						<span>分诊台</span>/分诊台详情
+ 					</div>
+	                <div v-if="showInfoNumber == 0" class="btn-bar">
+	 	               	<div class="item btn btn-success" @click="add('addWorker')">添加医生</div>
+	 	               	<div class="item btn btn-warning" @click="add('batchAddWorker')">批量添加医生</div>
+	                </div>
+	               <div v-if="showInfoNumber == 1" class="btn-bar">
+		               	<div class="item btn btn-success" @click="add('addQueue')">添加队列</div>
+	               </div>
+	               <div v-if="showInfoNumber == 2" class="btn-bar">
+		               	<div class="item btn btn-success" @click="add('addCaller')">添加叫号器</div>
+	               </div>
+ 						<!-- <div class="item btn btn-success" @click="addStation">提交</div>
+ 				     	<div class="item btn btn-warning" @click="cancel">取消</div> -->
+ 				</div>
+ 				<middleLine height='13.4'></middleLine>
+ 			</div>
+            <div class="station-content  container info no-left-padding">
 	               <div class="nav-bar">
 	               	     <div class="station-name ">{{stationName}}</div>
-	               	     <div class="tab  text-center" @click="showInfo(0)">医生信息</div>
-	               	     <div class="tab text-center" @click="showInfo(1)">队列</div>
-	               	     <div class="tab text-center" @click="showInfo(2)">叫号器</div>
-	               	     <div class="tab text-center" @click="edit('editStation', {'stationID':stationID} )">配置分诊台</div>
+	               	     <div class="tab-title  text-center" @click="showInfo(0)">医生信息</div>
+	               	     <div class="tab-title text-center" @click="showInfo(1)">队列</div>
+	               	     <div class="tab-title text-center" @click="showInfo(2)">叫号器</div>
+	               	     <div class="tab-title text-center" @click="edit('editStation', {'stationID':stationID} )">配置分诊台</div>
 	               </div>
 	               <div class="nav-info">
 	               	   <div class="workList nav-info-content" v-if="showInfoNumber == 0">
@@ -150,8 +155,10 @@
 		               	   </table>
 	               	   </div>
 	               </div>
-               </div>
-	</div>
+            </div>
+ 	</div>   	
+    </div>
+
 </template>
 <script >
     import middleLine from '../../common/middleLine/middleLine'
