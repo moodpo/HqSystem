@@ -20,7 +20,6 @@
 		</div>
 
 	     <div class="container info">
-	     	<div class="row baseinfo">
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
 	     		    <validate  class="form-group flex-container">
@@ -61,7 +60,7 @@
 	     		      	上传
 	     		      </div>
 	     		    </validate>
-	     		    <h2>账号信息</h2>
+	     		    <h3>账号信息</h3>
 	     		    <div class="form-group flex-container">
 	     		    	<label  class="control-label">账号</label>
 	     		    	<div class="input-bar">
@@ -75,7 +74,6 @@
 	     		    	</div>
 	     		    </div>
 	     		  </vue-form>
-	     	</div>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
 	     		<p slot='body'>{{modal.modalContent}}</p>
 	     	</modal>
