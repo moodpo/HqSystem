@@ -1,3 +1,70 @@
+<style scoped>
+.settings {
+	text-align: center;
+	height:140px;
+	position: static;
+	line-height: 140px
+}
+/* .settings>div {
+ 	position: absolute;
+ 	color:#fff;
+ 	display: inline-block;
+ 	margin-left:20px;
+ 	margin-right:20px;
+ 	position: relative;
+ 	height:58px;
+ 	width:112px;
+    line-height: 58px;
+    padding:0;
+ }*/
+ .station-content {
+ 	width:100%;
+ }
+ .station-content .nav-bar {
+    width:200px;
+    float: left;
+    background: #109EFC;
+    color:#fff;
+    heigth:100%;
+    min-height:980px;
+    text-align: center;
+ }
+ .station-content .nav-bar .station-name {
+    font-family: PingFangSC-Semibold;
+    font-size: 36px;
+    color: #FFFFFF;
+    border-bottom: 1px solid rgba(241,241,241,.5);
+    padding:10px 0;
+ }
+ .station-content .nav-bar>.tab:hover {
+    background: #4DB8FF; 
+ }
+ .station-content .nav-info {
+    margin-left:220px;
+ }
+ .btn.btn-success{
+ 		width:150px;
+ 	    padding:10px 20px;
+ 	    text-align: center;
+ 	    margin: 0 auto;
+ 	    background: -webkit-linear-gradient(left,#0097FB,#00CBFB);
+ 	    /* todo 渐变色 兼容性问题*/
+ 	    /*background: -moz-linear-gradient(left,#0097FB,#00CBFB);*/
+ 	    /*background: -o-linear-gradient(left,#0097FB,#00CBFB);*/
+ 	    color:#fff;
+ 	    position: relative;
+ 	    border:0;
+ }
+ .nav-info-content {
+ 	 padding:37px 35px;
+ }
+ .nav-info-content {
+
+ }
+
+
+ 
+</style>
 <template lang="html">
 	<div class="station">
                <div class="settings">
@@ -15,30 +82,39 @@
                <middleLine height='20'></middleLine>
                <div class="station-content clearfix">
 	               <div class="nav-bar">
-	               	     <div class="station-name">{{stationName}}</div>
-	               	     <div class="station-name" @click="showInfo(0)">医生信息</div>
-	               	     <div class="station-name" @click="showInfo(1)">队列</div>
-	               	     <div class="station-name" @click="showInfo(2)">叫号器</div>
+	               	     <div class="station-name ">{{stationName}}</div>
+	               	     <div class="tab  text-center" @click="showInfo(0)">医生信息</div>
+	               	     <div class="tab text-center" @click="showInfo(1)">队列</div>
+	               	     <div class="tab text-center" @click="showInfo(2)">叫号器</div>
+	               	     <div class="tab text-center" @click="edit('editStation', {'stationID':stationID} )">配置分诊台</div>
 	               </div>
 	               <div class="nav-info">
-	               	   <div class="workList" v-if="showInfoNumber == 0">
+	               	   <div class="workList nav-info-content" v-if="showInfoNumber == 0">
 	               	   	   <table class="table">
-	               	   	        <tr>
-	               	   	        	<th>姓名</th>
-	               	   	        	<th>职务</th>
-	               	   	        	<th>操作</th>
-	               	   	        </tr>
+	               	   	        <thead>
+	               	   	           <tr>
+	               	   	        	    <th>序号</th>
+	               	   	        	    <th>名称</th>
+	               	   	        	    <th>IP</th>
+	               	   	        	    <th>类型</th>
+	               	   	        		<th>所属医生</th>
+	               	   	        		<th>操作</th>
+	               	   	           </tr>
+	               	   	        </thead>
 	               	   	   	    <tbody>
 	               	   	   	        <div class="noData" v-if="workerList.length == 0">没有医生</div>
 	               	   	   	        <tr v-for="worker in workerList">
-	               	   	   	        	<td>{{worker.name}}</td>
+	               	   	   	            <td>{{worker.name}}</td>
+	               	   	   	            <td>{{worker.name}}</td>
+	               	   	   	        	<td>{{worker.ip}}</td>
+	               	   	   	        	<td>{{worker.type}}</td>
 	               	   	   	        	<td>{{worker.title}}</td>
 	               	   	   	        	<td @click="edit('editWorker', worker)">编辑</td>
 	               	   	   	        </tr>	
 	               	   	   	    </tbody>
 	               	   	   </table>
 	               	   </div>
-	               	   <div class="callerList" v-if="showInfoNumber == 1">
+	               	   <div class="callerList nav-info-content" v-if="showInfoNumber == 1">
 		               	   <table class="table">
 		               	        <tr>
 		               	        	<th>队列名字</th>
@@ -56,7 +132,7 @@
 		               	   	    </tbody>
 		               	   </table>
 	               	   </div>
-	               	   <div class="queueList" v-if="showInfoNumber == 2">
+	               	   <div class="queueList nav-info-content" v-if="showInfoNumber == 2">
 		               	   <table class="table">
 		               	        <tr>
 		               	        	<th>叫号器name</th>
@@ -117,7 +193,6 @@
            this._init()
 		},
 		mounted() {
-			console.log(this.$route)
 		},
 		methods: {
 			_init() {
@@ -178,31 +253,3 @@
 	}
 </script>
 
-<style scoped>
-.settings {
-	text-align: center;
-	height:140px;
-	position: static;
-	line-height: 140px
-}
-/* .settings>div {
- 	position: absolute;
- 	color:#fff;
- 	display: inline-block;
- 	margin-left:20px;
- 	margin-right:20px;
- 	position: relative;
- 	height:58px;
- 	width:112px;
-    line-height: 58px;
-    padding:0;
- }*/
- .station-content .nav-bar {
-    width:200px;
-    float: left;
- }
- .station-content .nav-info {
-    margin-left:220px;
- }
-
-</style>

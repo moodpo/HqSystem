@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App'
-import vueTap from 'v-tap'
-import fastclick from 'fastclick'
+
 
 // vuex store
 import store from './store'
