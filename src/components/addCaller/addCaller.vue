@@ -8,6 +8,9 @@
 		box-shadow: 0 0 ;
 		border-bottom: 1px solid #f1f1f1;
 	}*/
+	.caller-type {
+		margin-left: 20px;
+	}
 </style>
 
 
@@ -25,11 +28,6 @@
 				</div>
 				<middleLine height='13.4'></middleLine>
 			</div>
-
-	     	<!-- <div class="row settings">
-	     		<div class="btn btn-success" @click="addCaller">保存</div>
-	     		<div class="btn btn-warning" @click="cancel">取消</div>
-	     	</div> -->
 	     	<div class="container info">
 		     	<div class="row baseinfo">
 		     	    <h2>新建叫号器</h2>
