@@ -168,6 +168,9 @@ a, button, input
 	
 .card-box
 	width: 133.3px
+
+.card-box:hover
+	cursor: pointer
 	
 .card
 	h3
