@@ -1,64 +1,74 @@
+<style scoped>
+
+</style>
+
 <template lang="html">
 	<div class="editWorker">
-	     <div class="container">
-	     	<div class="row settings">
-	     		<div class="btn btn-success" @click="editWorker">保存</div>
-	     		<div class="btn btn-warning" @click="cancel">取消</div>
-	     		<div class="btn btn-danger" @click="del">删除</div>
-	     	</div>
-	     	<middleLine height='20'></middleLine>
+		<div class="top-bar">
+		    <div class="container settings">
+				<div class="capital">
+					<span>分诊台</span>/新建分诊台
+				</div>
+				<div class="btn-bar">
+					<div class="item btn btn-success" @click="addStation">提交</div>
+			     	<div class="item btn btn-warning" @click="cancel">取消</div>
+			     	<div class="item btn btn-danger" @click="del">删除</div>
+				</div>
+			</div>
+			<middleLine height='13.4'></middleLine>
+		</div>
+	     <div class="container info">
 	     	<div class="row baseinfo">
-     		    <h2>编辑医生信息</h2>
-     			<h4>基础信息</h4>
+     			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">账号</label>
-	     		      <div class="col-sm-10 clearfix">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">账号</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.id" required name="id" class="form-control" @blur="verifyID"/>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">姓名</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">姓名</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.name" required name="name" class="form-control"/>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">职称</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">职称</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.title" required name="title" class="form-control"/>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">科室</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">科室</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.department" required name="department" class="form-control"/>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">简介</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">简介</label>
+	     		      <div class="input-bar">
 	     		      	<textarea v-model="form.descText" required name="descText" class="form-control"></textarea>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">头像</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">头像</label>
+	     		      <div class="input-bar">
 	     		      <!-- todo 上传 功能 -->
 	     		      	<input type="file" id="uploadImg">
 	     		      	上传
 	     		      </div>
 	     		    </validate>
-	     		    <h2>账号信息</h2>
-	     		    <div class="form-group">
-	     		    	<label  class="col-sm-2 control-label">账号</label>
-	     		    	<div class="col-sm-10">
+	     		    <h3>账号信息</h3>
+	     		    <div class="form-group flex-container">
+	     		    	<label  class="control-label">账号</label>
+	     		    	<div class="input-bar">
 		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />（和基础信息账号名一样）
 	     		    	</div>
 	     		    </div>
-	     		    <div class="form-group">
-	     		    	<label  class="col-sm-2 control-label">密码</label>
-	     		    	<div class="col-sm-10">
+	     		    <div class="form-group flex-container">
+	     		    	<label  class="control-label">密码</label>
+	     		    	<div class="input-bar">
 	     		    		<input v-model="form.password"   required name="user" class="form-control" />
 	     		    	</div>
 	     		    </div>
@@ -222,33 +232,3 @@
 	}
 </script>
 
-<style scoped>
-h2 {
-	padding-bottom:24px;
-	border-bottom: 1px solid #f1f1f1;
-}
-input {
-	border:0px;
-	box-shadow: 0 0 ;
-	border-bottom: 1px solid #f1f1f1;
-}
-.settings {
-	text-align: center;
-	height:140px;
-	position: static;
-	line-height: 140px
-}
- .settings>div {
- 	position: absolute;
- 	color:#fff;
- 	display: inline-block;
- 	margin-left:20px;
- 	margin-right:20px;
- 	position: relative;
- 	height:58px;
- 	width:112px;
-    line-height: 58px;
-    padding:0;
- }
-
-</style>
