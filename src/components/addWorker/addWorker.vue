@@ -20,6 +20,7 @@
 		</div>
 
 	     <div class="container info">
+
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
 	     		    <validate  class="form-group flex-container">
@@ -61,6 +62,7 @@
 	     		      </div>
 	     		    </validate>
 	     		    <h3>账号信息</h3>
+
 	     		    <div class="form-group flex-container">
 	     		    	<label  class="control-label">账号</label>
 	     		    	<div class="input-bar">
