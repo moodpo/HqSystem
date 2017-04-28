@@ -79,7 +79,6 @@
 	color: #A5A5A5;
 }
 
-
 </style>
 <template lang="html">
     <div>

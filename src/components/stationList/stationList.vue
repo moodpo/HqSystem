@@ -89,6 +89,8 @@ h2
 
 h3
 	font-size: 20px
+	line-height: 39px
+	border-bottom: none 
 
 label,ul
 	margin: 0
