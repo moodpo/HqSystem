@@ -39,23 +39,21 @@
 	     		    </div>
 	     		    <middleLine height='6.6'></middleLine>
          		    <h3>策略配置</h3>
-         		    <div class="form-group flex-container form-flex-container">
-	         		    <div class="form-group input-bar form-item" v-for="(sceneSupport, index) in form.sceneSupportList">
-		         			<div class="">
-		         		    	<input class="pull-right" type="radio" :id="sceneSupport"  v-model="form.sceneSupportRadio"  :value="sceneSupport" >
-		         		    </div>
-	         		        <div  class="input-bar">{{sceneSupport}}</div>
+         		    <div class="form-group form-flex-container">
+	         		    <div class="form-group form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
+		         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.sceneSupportRadio"  :value="sceneSupport" >
+	         		        <div class="input-bar">{{sceneSupport}}</div>
 	         		    </div>
          		    </div>
-         		    <h4>所属医生</h4>
-         		    <div class="form-group flex-container">
-	         		    <div  class="form-group flex-container" v-for="worker in form.workerList">
-		         		    <div class="input-bar">
-		         		    	<input class="pull-right" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
-		         		    </div>
+         		    <middleLine height='6.6'></middleLine>
+         		    <h3>所属医生</h3>
+         		    <div class="form-group form-flex-container footer-space">
+	         		    <div class="form-group form-item flex-container" v-for="worker in form.workerList">
+		         		    <input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
 	         		        <div  class="input-bar">{{worker.name}}</div>
 	         		    </div>
          		    </div>
+
 <!-- 	     		    <h4>账号信息</h4>
 	     		    <div class="form-group">
 	     		    	<label  class="control-label">账号</label>
@@ -224,8 +222,15 @@ a, button, input, select, select:active, select:visited
 .btn-select
 	width: 10em
 	margin-left: 15px
+
+.input-btn
+	margin: 1em
 	
-	
+.input-bar
+	line-height: 60px
+
+.footer-space
+	margin-bottom: 40.6px
 
 	
 </style>
