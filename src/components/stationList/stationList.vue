@@ -180,6 +180,7 @@ button
 	align-items: center
 	justify-content: center
 	height: 93.3px
+	margin-top: 80px
 
 .addstation
 	width: 4.73em
