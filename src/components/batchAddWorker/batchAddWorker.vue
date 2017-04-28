@@ -1,122 +1,128 @@
 <template lang="html">
 	<div class="batchAddWorker">
-	     <div class="container">
-	     	<div class="row settings">
-	     		<div class="btn btn-success" @click="batchAddWorker">导入</div>
-	     		<div class="btn btn-warning" @click="cancel">取消</div>
-	     	</div>
-	     	<middleLine height='20'></middleLine>
+		<div class="top-bar">
+			<div class="container settings">
+				<div class="capital">
+					<span>分诊台</span>/批量添加医生
+				</div>
+				<div class="btn-bar">
+					<div class="item btn btn-success" @click="batchAddWorker">导入</div>
+	     			<div class="item btn btn-warning" @click="cancel">取消</div>
+				</div>
+			</div>
+			<middleLine height='13.4'></middleLine>
+		</div>
+	     <div class="container info">
 	     	<div class="row baseinfo">
-	     	    <h2>批量添加医生</h2>
-	     		<h4>数据库信息</h4>
+	     		<h3>数据库信息</h3>
 	     		<vue-form :state="formstate.form1"  class="form-horizontal" @submit.prevent="testDB">
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">数据库地址</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">数据库地址</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.host" required name="host" :class="[fieldClassName(formstate.form1.host),'form-control']"/>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">用户名</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">用户名</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.user" required name="user" :class="[fieldClassName(formstate.form1.user),'form-control']" />
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">密码</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">密码</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.passwd" required name="passwd" :class="[fieldClassName(formstate.form1.passwd),'form-control']" />
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">端口</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">端口</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.port" required name="port" :class="[fieldClassName(formstate.form1.port),'form-control']" />
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">字符集</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">字符集</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.charset" required name="charset" :class="[fieldClassName(formstate.form1.charset),'form-control']" />
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">数据库名</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">数据库名</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.DBName" required name="DBName" :class="[fieldClassName(formstate.form1.DBName),'form-control']" />
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">数据库类型</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">数据库类型</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.DBType" required name="DBType" :class="[fieldClassName(formstate.form1.DBType),'form-control']" />
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">数据库表名</label>
-	     		      <div class="col-sm-10">
+	     		    <validate  class="form-group flex-container">
+	     		      <label  class="control-label">数据库表名</label>
+	     		      <div class="input-bar">
 	     		      	<input v-model="form.table" required name="table" :class="[fieldClassName(formstate.form1.table),'form-control']" />
 	     		      </div>
 	     		    </validate>
-	     		    <button type="submit" class="center-block btn btn btn-primary">{{formControlObj.form1BtnVal}}</button>
+	     		    <button type="submit" class="center-block test-btn">{{formControlObj.form1BtnVal}}</button>
 	     		</vue-form>
-	     		<h4>SQL信息</h4>
+	     		<h3>SQL信息</h3>
 	     		<vue-form :state="formstate.form2"  class="form-horizontal" @submit.prevent="testSQL">
-	     		      <validate  class="form-group">
-	     		        <label  class="col-sm-2 control-label">字段别名(ID)</label>
-	     		        <div class="col-sm-10">
+	     		      <validate  class="form-group flex-container">
+	     		        <label  class="control-label">字段别名(ID)</label>
+	     		        <div class="input-bar">
 	     		        	<input v-model="form.aliasID" required name="host" :class="{'form-control':formControlObj.formControl}" />
 	     		        </div>
 	     		      </validate>
-	     		      <validate  class="form-group">
-	     		        <label  class="col-sm-2 control-label">字段别名(Name)</label>
-	     		        <div class="col-sm-10">
+	     		      <validate  class="form-group flex-container">
+	     		        <label  class="control-label">字段别名(Name)</label>
+	     		        <div class="input-bar">
 	     		        	<input v-model="form.aliasName" required name="user" :class="{'form-control':formControlObj.formControl}" />
 	     		        </div>
 	     		      </validate>
-	     		      <validate  class="form-group">
-	     		        <label  class="col-sm-2 control-label">字段别名(title)</label>
-	     		        <div class="col-sm-10">
+	     		      <validate  class="form-group flex-container">
+	     		        <label  class="control-label">字段别名(title)</label>
+	     		        <div class="input-bar">
 	     		        	<input v-model="form.aliasTitle"  name="passwd" :class="{'form-control':formControlObj.formControl}" />
 	     		        </div>
 	     		      </validate>
-	     		      <validate  class="form-group">
-	     		        <label  class="col-sm-2 control-label">字段别名(Department)</label>
-	     		        <div class="col-sm-10">
+	     		      <validate  class="form-group flex-container">
+	     		        <label  class="control-label">字段别名(Department)</label>
+	     		        <div class="input-bar">
 	     		        	<input v-model="form.aliasDepartment"  name="charset" :class="{'form-control':formControlObj.formControl}" />
 	     		        </div>
 	     		      </validate>
-	     		      <validate  class="form-group">
-	     		        <label  class="col-sm-2 control-label">字段别名(DescText)</label>
-	     		        <div class="col-sm-10">
+	     		      <validate  class="form-group flex-container">
+	     		        <label  class="control-label">字段别名(DescText)</label>
+	     		        <div class="input-bar">
 	     		        	<input v-model="form.aliasDescText"  name="DBName" :class="{'form-control':formControlObj.formControl}" />
 	     		        </div>
 	     		      </validate>
-	     		      <validate  class="form-group">
-	     		        <label  class="col-sm-2 control-label">字段别名(HeadPic)</label>
-	     		        <div class="col-sm-10">
+	     		      <validate  class="form-group flex-container">
+	     		        <label  class="control-label">字段别名(HeadPic)</label>
+	     		        <div class="input-bar">
 	     		        	<input v-model="form.aliasHeadPic"  name="port" :class="{'form-control':formControlObj.formControl}" />
 	     		        </div>
 	     		      </validate>
-	     		      <div class="form-group">
-	     		      	<label for="" class="col-sm-2 control-label">生成SQL语句</label>
-	     		      	<div class="col-sm-10">
+	     		      <div class="form-group flex-container">
+	     		      	<label for="" class="control-label">生成SQL语句</label>
+	     		      	<div class="input-bar">
 	     		      		<textarea  :class="{'form-control':formControlObj.formControl}" v-model="form.sqlLang"></textarea>
 	     		      	</div>
 	     		      </div>
-	     		      <button type="submit" class="center-block btn btn btn-primary">{{formControlObj.form2BtnVal}}</button>
+	     		      <button type="submit" class="center-block test-btn">{{formControlObj.form2BtnVal}}</button>
 	     		</vue-form>
-	     		<h4>账号信息</h4>
+	     		<h3>账号信息</h3>
 	     		<form novalidate class="form-horizontal">
-	     		     <div class="form-group">
-	     		     	<label for="" class="col-sm-2 control-label">账号：</label>
-	     		     	<div class="col-sm-10">
+	     		     <div class="form-group flex-container">
+	     		     	<label for="" class="control-label">账号：</label>
+	     		     	<div class="input-bar">
 	     		     		<input type="radio" class="" checked> &nbsp; 同医生编号
 	     		     	</div>
 	     		     </div>
-	     		     <div class="form-group">
-	     		     	<label for="" class="col-sm-2 control-label">密码：</label>
-	     		     	<div class="col-sm-10">
+	     		     <div class="form-group flex-container">
+	     		     	<label for="" class="control-label">密码：</label>
+	     		     	<div class="input-bar">
 	     		     		<input type="radio" class="" checked> &nbsp; 123456(默认密码)
 	     		     	</div>
 	     		     </div>
@@ -177,7 +183,7 @@
 		},
 		computed: {
 			stationID() {
-				return this.$route.query.stationID;
+				return Number(this.$route.query.stationID);
 			},
 			workerUrl() {
 				return this.$store.getters.postUrl('manager', 'worker')
@@ -338,34 +344,6 @@
 </script>
 
 <style scoped>
-h2 {
-	padding-bottom:24px;
-	border-bottom: 1px solid #f1f1f1;
-}
-input {
-	border-top:0px;
-	border-left:0px;
-	border-right:0px;
-	box-shadow: 0 0 ;
-	/*border-bottom: 1px solid #f1f1f1;*/
-}
-.settings {
-	text-align: center;
-	height:140px;
-	position: static;
-	line-height: 140px
-}
- .settings > div {
- 	position: absolute;
- 	color:#fff;
- 	display: inline-block;
- 	margin-left:20px;
- 	margin-right:20px;
- 	position: relative;
- 	height:58px;
- 	width:112px;
-    line-height: 58px;
-    padding:0;
- }
+
 
 </style>
