@@ -478,7 +478,7 @@ a, button, input
 	left: 0
 	height: auto
 	width: 100%
-	background-color: transparent
+	background-color: #fff
 	z-index: 666
 
 .btn-bar
