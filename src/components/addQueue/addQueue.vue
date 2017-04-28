@@ -222,9 +222,6 @@ a, button, input, select, select:active, select:visited
 .btn-select
 	width: 10em
 	margin-left: 15px
-
-.input-btn
-	margin: 1em
 	
 .input-bar
 	line-height: 60px
