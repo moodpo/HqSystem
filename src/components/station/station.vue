@@ -14,7 +14,6 @@
     text-align: center;
  }
  .station-content .nav-bar .station-name {
-    font-family: PingFangSC-Semibold;
     font-size: 24px;
     color: #FFFFFF;
     border-bottom: 1px solid rgba(241,241,241,.5);
@@ -58,9 +57,29 @@
  	padding-left: 0
  }
 
+ .station-name, .tab-title,.table thead {
+ 	font-family: PingFangSC-Light;
+ 	font-weight: 100;
+ }
+
+ .tab-title {
+ 	font-size: 20px;
+ }
+
+ .station-name {
+ 	font-size: 24px;
+ }
+
+.table thead, .table td, .table th {
+	font-size: 20px;
+	font-weight: 100;
+}
+
+.table th {
+	color: #A5A5A5;
+}
 
 
- 
 </style>
 <template lang="html">
     <div>
