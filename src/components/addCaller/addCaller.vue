@@ -1,73 +1,99 @@
+<style scoped>
+/*	h2 {
+		padding-bottom:24px;
+		border-bottom: 1px solid #f1f1f1;
+	}
+	input {
+		border:0px;
+		box-shadow: 0 0 ;
+		border-bottom: 1px solid #f1f1f1;
+	}*/
+</style>
+
+
 <template lang="html">
 	<div class="addCaller">
-	     <div class="container">
-	     	<div class="row settings">
+			<div class="top-bar">
+				<div class="container settings">
+					<div class="capital">
+						<span>分诊台</span>/新建叫号器
+					</div>
+					<div class="btn-bar">
+						<div class="item btn btn-success" @click="addCaller">提交</div>
+				     	<div class="item btn btn-warning" @click="cancel">取消</div>
+					</div>
+				</div>
+				<middleLine height='13.4'></middleLine>
+			</div>
+
+	     	<!-- <div class="row settings">
 	     		<div class="btn btn-success" @click="addCaller">保存</div>
 	     		<div class="btn btn-warning" @click="cancel">取消</div>
-	     	</div>
-	     	<middleLine height='20'></middleLine>
-	     	<div class="row baseinfo">
-	     	    <h2>新建叫号器</h2>
-	     		<h4>基础信息</h4>
-	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">名称</label>
-	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.name" required name="name" class="form-control"/>
-	     		      </div>
-	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">类型</label>
-	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.type" required value="soft" name="type" type="radio"/> 虚拟叫号器
-	     		      	&nbsp;&nbsp;
-	     		      	<input v-model="form.type" required value="physic" name="type" type="radio"/> 物理叫号器
-	     		      </div>
-	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">IP</label>
-	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.ip" required name="ip" class="form-control"/>
-	     		      </div>
-	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">pos</label>
-	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.pos" required name="pos" class="form-control"/>
-	     		      </div>
-	     		    </validate>
-         		    <h4>可登录医生</h4>
-         		    <div class="form-group">
-	         		    <div  class="col-sm-11 col-sm-offset-1" >
-		         		    <div class="row">
-		         		        <div class="" v-for="worker in form.workerList">
-        		         		    <div class="col-sm-1 ">
-        		         		    	<input class="pull-right" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
-        		         		    </div>
-        	         		        <div  class="col-sm-3 ">{{worker.name}}</div>
-		         		        </div>
+	     	</div> -->
+	     	<div class="container info">
+		     	<div class="row baseinfo">
+		     	    <h2>新建叫号器</h2>
+		     		<h3>基础信息</h3>
+		     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
+		     		    <validate  class="form-group flex-container">
+		     		      <label  class="control-label">名称</label>
+		     		      <div class="input-bar">
+		     		      	<input v-model="form.name" required name="name" class="form-control"/>
+		     		      </div>
+		     		    </validate>
+		     		    <validate  class="form-group flex-container">
+		     		      <label  class="control-label">类型</label>
+		     		      <div class="input-bar caller-type">
+		     		      	<input v-model="form.type" required value="soft" name="type" type="radio"/> 虚拟叫号器
+		     		      	&nbsp;&nbsp;
+		     		      	<input v-model="form.type" required value="physic" name="type" type="radio"/> 物理叫号器
+		     		      </div>
+		     		    </validate>
+		     		    <validate  class="form-group flex-container">
+		     		      <label  class="control-label">IP</label>
+		     		      <div class="input-bar">
+		     		      	<input v-model="form.ip" required name="ip" class="form-control"/>
+		     		      </div>
+		     		    </validate>
+		     		    <validate  class="form-group flex-container">
+		     		      <label  class="control-label">pos</label>
+		     		      <div class="input-bar">
+		     		      	<input v-model="form.pos" required name="pos" class="form-control"/>
+		     		      </div>
+		     		    </validate>
+	         		    <h3>可登录医生</h3>
+	         		    <div class="form-group flex-container">
+		         		    <div  class="col-sm-11 col-sm-offset-1" >
+			         		    <div class="row">
+			         		        <div class="" v-for="worker in form.workerList">
+	        		         		    <div class="col-sm-1 ">
+	        		         		    	<input class="pull-right" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
+	        		         		    </div>
+	        	         		        <div  class="col-sm-3 ">{{worker.name}}</div>
+			         		        </div>
+			         		    </div>
 		         		    </div>
 	         		    </div>
-         		    </div>
-         		    <h4>优先队列</h4>
-         		    <div class="form-group">
-	         		    <div  class="col-sm-11 col-sm-offset-1" >
-		         		    <div class="row">
-		         		        <div  v-for="queue in form.queueList">
- 		    	         		    <div class="col-sm-1 ">
- 		    	         		    	<input class="pull-right" type="radio"  v-model="form.priorQueue"  :value="queue.id" >
- 		    	         		    </div>
- 		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
-		         		        </div>
+	         		    <h4>优先队列</h4>
+	         		    <div class="form-group flex-container">
+		         		    <div  class="col-sm-11 col-sm-offset-1" >
+			         		    <div class="row">
+			         		        <div  v-for="queue in form.queueList">
+	 		    	         		    <div class="col-sm-1 ">
+	 		    	         		    	<input class="pull-right" type="radio"  v-model="form.priorQueue"  :value="queue.id" >
+	 		    	         		    </div>
+	 		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
+			         		        </div>
+			         		    </div>
 		         		    </div>
 	         		    </div>
-         		    </div>
-	     		  </vue-form>
+		     		  </vue-form>
+		     	</div>
+		     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
+		     		<p slot='body'>{{modal.modalContent}}</p>
+		     	</modal>
 	     	</div>
-	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
-	     		<p slot='body'>{{modal.modalContent}}</p>
-	     	</modal>
-	     </div>
+
 	</div>
 </template>
 <script >
@@ -184,32 +210,3 @@
 	}
 </script>
 
-<style scoped>
-	h2 {
-		padding-bottom:24px;
-		border-bottom: 1px solid #f1f1f1;
-	}
-	input {
-		border:0px;
-		box-shadow: 0 0 ;
-		border-bottom: 1px solid #f1f1f1;
-	}
-	.settings {
-		text-align: center;
-		height:140px;
-		position: static;
-		line-height: 140px
-	}
-	.settings > div {
-		position: absolute;
-		color:#fff;
-		display: inline-block;
-		margin-left:20px;
-		margin-right:20px;
-		position: relative;
-		height:58px;
-		width:112px;
-	    line-height: 58px;
-	    padding:0;
-	}
-</style>
