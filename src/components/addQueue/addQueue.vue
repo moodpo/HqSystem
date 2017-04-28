@@ -1,64 +1,71 @@
 <template lang="html">
 	<div class="addQueue">
-	     <div class="container">
-	     	<div class="row settings">
-	     		<div class="btn btn-success" @click="addQueue">保存</div>
-	     		<div class="btn btn-warning" @click="cancel">取消</div>
-	     	</div>
-	     	<middleLine height='20'></middleLine>
-	     	<div class="row baseinfo">
-	     	    <h2>新建队列</h2>
-	     		<h4>基础信息</h4>
+		<div class="top-bar">
+			<div class="container settings">
+				<div class="capital">
+					<span>分诊台</span>/新建列队
+				</div>
+				<div class="btn-bar">
+					<div class="item btn btn-success" @click="addQueue">保存</div>
+	     			<div class="item btn btn-warning" @click="cancel">取消</div>
+				</div>
+			</div>
+			<middleLine height='13.4'></middleLine>
+		</div>
+		<div class="container info">
+	     	<div class="baseinfo">
+	     		<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal">
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">队列名字</label>
-	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.name" required name="name" class="form-control"/>
-	     		      </div>
+	     			<validate class="form-group flex-container">
+	     		      	<label class="control-label">队列名字</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.name" required name="name" class="form-control"/>
+	     		      	</div>
 	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">队列描述</label>
-	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.descText" required name="descText" class="form-control"/>
-	     		      </div>
+	     		    <validate  class="form-group flex-container">
+	     		      	<label  class="control-label">队列描述</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.descText" required name="descText" class="form-control"/>
+	     		      	</div>
 	     		    </validate>
-	     		    <div  class="form-group">
-	     		      <label  class="col-sm-2 control-label">过滤条件</label>
-	     		      <div class="col-sm-10">
-	     		      	<select v-model="form.filter">
-	     		      	  <option v-for="sourceQueue in form.sourceQueueList">{{sourceQueue}}</option>
-	     		      	</select>
-	     		      </div>
+	     		    <div class="form-group flex-container">
+	     		      	<label class="control-label">过滤条件</label>
+	     		      	<div class="input-bar">
+	     		      		<select class="btn-select btn btn-default dropdown-toggle" v-model="form.filter">
+	     		      			<option v-for="sourceQueue in form.sourceQueueList">{{sourceQueue}}
+	     		      			</option>
+	     		      		</select>
+	     		      	</div>
 	     		    </div>
-         		    <h4>策略配置</h4>
-         		    <div class="form-group">
-	         		    <div  class="form-group" v-for="(sceneSupport, index) in form.sceneSupportList">
-		         		    <div class="col-sm-2 ">
+	     		    <middleLine height='6.6'></middleLine>
+         		    <h3>策略配置</h3>
+         		    <div class="form-group flex-container form-flex-container">
+	         		    <div class="form-group input-bar form-item" v-for="(sceneSupport, index) in form.sceneSupportList">
+		         			<div class="">
 		         		    	<input class="pull-right" type="radio" :id="sceneSupport"  v-model="form.sceneSupportRadio"  :value="sceneSupport" >
 		         		    </div>
-	         		        <div  class="col-sm-10 ">{{sceneSupport}}</div>
+	         		        <div  class="input-bar">{{sceneSupport}}</div>
 	         		    </div>
          		    </div>
          		    <h4>所属医生</h4>
-         		    <div class="form-group">
-	         		    <div  class="form-group" v-for="worker in form.workerList">
-		         		    <div class="col-sm-2 ">
+         		    <div class="form-group flex-container">
+	         		    <div  class="form-group flex-container" v-for="worker in form.workerList">
+		         		    <div class="input-bar">
 		         		    	<input class="pull-right" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
 		         		    </div>
-	         		        <div  class="col-sm-10 ">{{worker.name}}</div>
-
+	         		        <div  class="input-bar">{{worker.name}}</div>
 	         		    </div>
          		    </div>
 <!-- 	     		    <h4>账号信息</h4>
 	     		    <div class="form-group">
-	     		    	<label  class="col-sm-2 control-label">账号</label>
-	     		    	<div class="col-sm-10">
+	     		    	<label  class="control-label">账号</label>
+	     		    	<div class="">
 		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />（和基础信息账号名一样）
 	     		    	</div>
 	     		    </div>
 	     		    <div class="form-group">
-	     		    	<label  class="col-sm-2 control-label">密码</label>
-	     		    	<div class="col-sm-10">
+	     		    	<label  class="control-label">密码</label>
+	     		    	<div class="">
 	     		    		<input v-model="form.password"   required name="password" class="form-control" />
 	     		    	</div>
 	     		    </div> -->
@@ -194,33 +201,31 @@
 	}
 </script>
 
-<style scoped>
-h2 {
-	padding-bottom:24px;
-	border-bottom: 1px solid #f1f1f1;
-}
-input {
-	border:0px;
-	box-shadow: 0 0 ;
-	border-bottom: 1px solid #f1f1f1;
-}
-.settings {
-	text-align: center;
-	height:140px;
-	position: static;
-	line-height: 140px
-}
- .settings>div {
- 	position: absolute;
- 	color:#fff;
- 	display: inline-block;
- 	margin-left:20px;
- 	margin-right:20px;
- 	position: relative;
- 	height:58px;
- 	width:112px;
-    line-height: 58px;
-    padding:0;
- }
+<style lang="stylus" scoped>
+h2
+	padding-bottom: 24px
+	border-bottom: 1px solid #f1f1f1
 
+h3
+	font-size: 20px
+	line-height: 60px
+	border-bottom: 1px solid #f1f1f1
+	margin-bottom: 15px
+
+// 去掉button等默认点击效果
+a, button, input, select, select:active, select:visited
+	webkit-tap-highlight-color: rgba(0,0,0,0)
+	webkit-user-modify: read-write-plaintext-only
+	outline: none
+
+.form-group
+	margin: 0 
+
+.btn-select
+	width: 10em
+	margin-left: 15px
+	
+	
+
+	
 </style>
