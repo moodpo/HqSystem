@@ -1,17 +1,17 @@
 <template lang="html">
 	<div class="addStation">
 		<div class="top-bar">
-			<div class="row settings">
-				<div class="item btn btn-success" @click="addStation">提交</div>
-		     	<div class="item btn btn-warning" @click="cancel">取消</div>
-		     	<div class="item btn btn-danger" >删除</div>
+			<div class="container settings">
+				<div class="capital">
+					<span>分诊台</span>/新建分诊台
+				</div>
+				<div class="btn-bar">
+					<div class="item btn btn-success"@click="addStation">提交</div>
+			     	<div class="item btn btn-warning"@click="cancel">取消</div>
+			     	<div class="item btn btn-danger">删除</div>
+				</div>
 			</div>
 			<middleLine height='13.4'></middleLine>
-		</div>
-		<div class="tab-guide">
-			<div class="container capital">
-				<span>分诊台</span>/新建分诊台
-			</div>
 		</div>
 	    <div class="container info">
 	     	<div class="baseinfo">
@@ -478,23 +478,20 @@ a, button, input
 	left: 0
 	height: auto
 	width: 100%
-	background-color: #fff
+	background-color: transparent
 	z-index: 666
-	
-.tab-guide
-	position: fixed
-	top: 80px
-	width: 100%
-	z-index: 666
+
+.btn-bar
+	align-self: center
 	
 .capital
 	font-family: PingFangSC-Light
 	font-weight: 100
 	color: black
 	font-size: 20px
-	height: 93.3px
-	display: flex
-	align-items: center
+	position: absolute
+	top: 0
+	line-height: 93.3px
 	span
 		color: #AFAFAF
 		
@@ -503,15 +500,12 @@ a, button, input
 	z-index: -1
 	
 .settings
-	width: 100%
-	margin: 0
 	display: flex
-	flex-direction: row
+	flex-direction: column
 	justify-content: center
-	align-items: center
+	align-items: flex-start
 	height: 93.3px
-	background-color: #fff
-
+	
 .item
 	margin-left:20px
 	margin-right:20px
@@ -519,8 +513,9 @@ a, button, input
 	width:112px
 	line-height: 38.7px
 	padding:0
-
-
+	
+.item:hover
+	cursor: pointer
 	
 .flex-container
 	width: 100%

@@ -95,6 +95,12 @@ label,ul
 
 button
 	border: none
+
+// 去掉button等默认点击效果 
+a, button, input
+	webkit-tap-highlight-color: rgba(0,0,0,0)
+	webkit-user-modify: read-write-plaintext-only
+	outline: none
 	
 .card-container
 	margin: 50px auto
