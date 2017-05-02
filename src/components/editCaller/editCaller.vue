@@ -66,14 +66,18 @@
 			         		    </div>
 		         		    </div>
 	         		    </div> -->
-             		    <div class="form-group flex-container">
-
+             		   <!--  <div class="form-group flex-container">
     		         		        <div class="form-group form-item flex-container" v-for="worker in form.workerList">
             		         		    	<input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
             	         		        <div  class="col-sm-3 ">{{worker.name}}</div>
     		         		        </div>
-
-             		    </div>
+             		    </div> -->
+	         		    <div class="form-group form-flex-container">
+	         		        <div class="form-group form-item flex-container" v-for="worker in form.workerList">
+    		         		    	<input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
+    	         		        <div  class="col-sm-3 ">{{worker.name}}</div>
+	         		        </div>
+	         		    </div>
 	         		    <h4>优先队列</h4>
 	         		    <!-- <div class="form-group flex-container">
 		         		    <div  class="col-sm-11 col-sm-offset-1" >
@@ -90,9 +94,7 @@
 
              		    <div class="orm-group form-flex-container">
 	         		        <div  v-for="queue in form.queueList" class="form-group form-item flex-container">
-		    	         		    <div class="col-sm-1 ">
 		    	         		    	<input class="control-label input-btn" type="radio"  v-model="form.priorQueue"  :value="queue.id" >
-		    	         		    </div>
 		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
 	         		        </div>
 
@@ -239,14 +241,14 @@
 				this.getQueueList()
 			},
 			setParas() {
-				this.form.id = this.queryParas.id
-				this.form.name = this.queryParas.name
-				this.form.type = this.queryParas.type
-				this.form.ip = this.queryParas.ip
-				this.form.pos = this.queryParas.pos
-				this.form.descText = this.queryParas.descText
-				this.form.priorQueue = this.queryParas.priorQueue
-				this.form.workerLimit = this.queryParas.workerLimit
+				this.form.id = this.queryParas.info.id
+				this.form.name = this.queryParas.info.name
+				this.form.type = this.queryParas.info.type
+				this.form.ip = this.queryParas.info.ip
+				this.form.pos = this.queryParas.info.pos
+				this.form.descText = this.queryParas.info.descText
+				this.form.priorQueue = this.queryParas.info.priorQueue
+				this.form.workerLimit = this.queryParas.info.workerLimit
 			},
 			editCaller() {
 				if (this.formstate.$invalid) {
@@ -265,9 +267,10 @@
 						workerLimit: this.form.workerLimit,
 						priorQueue: this.form.priorQueue
 					}).then((res) => {
-                       console.log(res)
-                       this.modal.modalShow = true;
-                       this.modal.modalContent = '保存成功';
+                       // this.modal.modalShow = true;
+                       // this.modal.modalContent = '保存成功';
+                       alert('保存成功')
+                       this.cancel()
 					}, (res) => {
                         this.modal.modalShow = true;
                         this.modal.modalContent = '保存失败';

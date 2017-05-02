@@ -29,7 +29,7 @@
 	     		      	</div>
 	     		    </validate>
 	     		    <div class="form-group flex-container">
-	     		      	<label class="control-label">过滤条件</label>
+	     		      	<label class="control-label">系统拼接队列关键字</label>
 	     		      	<div class="input-bar">
 	     		      		<select class="btn-select btn btn-default dropdown-toggle" v-model="form.filter">
 	     		      			<option v-for="sourceQueue in form.sourceQueueList">{{sourceQueue}}
@@ -41,8 +41,8 @@
          		    <h3>策略配置</h3>
          		    <div class="form-group form-flex-container">
 	         		    <div class="form-group form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
-		         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.sceneSupportRadio"  :value="sceneSupport" >
-	         		        <div class="input-bar">{{sceneSupport}}</div>
+		         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.sceneSupportRadio"  :value="sceneSupport.name" >
+	         		        <div class="input-bar">&nbsp;{{sceneSupport.name}}</div>
 	         		    </div>
          		    </div>
          		    <middleLine height='6.6'></middleLine>
@@ -138,9 +138,8 @@
 						filter: `queue='${this.form.filter}'`,
 						workerLimit: this.form.workerListCheckbox
 					}).then((res) => {
-                       console.log(res)
-                       this.modal.modalShow = true;
-                       this.modal.modalContent = '保存成功';
+                       alert('保存成功')
+                       this.cancel()
 					}, (res) => {
                         this.modal.modalShow = true;
                         this.modal.modalContent = '保存失败';
@@ -164,6 +163,8 @@
 					stationID: this.stationID
 				}).then((res) => {
 					this.form.sceneSupportList = res.list;
+					// 默认选择第一个
+					this.form.sceneSupportRadio = this.form.sceneSupportList[0].name
 				}, (res) => {
 					console.log('failed')
 				})

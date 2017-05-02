@@ -167,9 +167,11 @@
 	                    // headPic: this.form.headPic
 	                    headPic: 'www.baidu.com'
 					}).then((res) => {
-                       console.log(res)
-                       this.modal.modalShow = true;
-                       this.modal.modalContent = '保存成功';
+                       // this.modal.modalShow = true;
+                       // this.modal.modalContent = '保存成功';
+                       alert('保存成功')
+                       // 返回上一步
+                       this.cancel()
 					}, (res) => {
                         this.modal.modalShow = true;
                         this.modal.modalContent = '保存失败';
