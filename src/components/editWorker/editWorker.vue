@@ -22,7 +22,7 @@
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
 	     		    <validate  class="form-group flex-container">
-	     		      <label  class="control-label">账号</label>
+	     		      <label  class="control-label">编号</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.id" required name="id" class="form-control" @blur="verifyID"/>
 	     		      </div>
@@ -55,15 +55,15 @@
 	     		      <label  class="control-label">头像</label>
 	     		      <div class="input-bar">
 	     		      <!-- todo 上传 功能 -->
-	     		      	<input type="file" id="uploadImg">
-	     		      	上传
+	     		      	<input type="url" id="" class="form-control" v-model="form.headPic">
 	     		      </div>
 	     		    </validate>
 	     		    <h3>账号信息</h3>
 	     		    <div class="form-group flex-container">
 	     		    	<label  class="control-label">账号</label>
 	     		    	<div class="input-bar">
-		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />（和基础信息账号名一样）
+	     		    	&nbsp;&nbsp;
+		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />&nbsp;&nbsp;（和基础信息编号一样）
 	     		    	</div>
 	     		    </div>
 	     		    <div class="form-group flex-container">
