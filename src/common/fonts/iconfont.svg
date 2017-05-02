@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Fri Apr 28 00:47:37 2017
+Created by FontForge 20120731 at Tue May  2 09:08:41 2017
  By admin
 </metadata>
 <defs>
@@ -16,10 +16,10 @@ Created by FontForge 20120731 at Fri Apr 28 00:47:37 2017
     ascent="896"
     descent="-128"
     x-height="792"
-    bbox="0 -128 1035 896"
+    bbox="0 -128 1203 896"
     underline-thickness="0"
     underline-position="0"
-    unicode-range="U+0078-E62A"
+    unicode-range="U+0078-E62B"
   />
 <missing-glyph 
  />
@@ -74,5 +74,8 @@ t-9.5 21.5t9.5 21.5t20.5 9.5q17 0 28 -9.5t11 -21.5t-11 -21.5t-28 -9.5zM858 322q-
     <glyph glyph-name="lock" unicode="&#xe62a;" 
 d="M502 310h19q12 0 20 -8.5t8 -19.5v-130q0 -12 -8 -20t-20 -8h-19q-11 0 -19.5 8t-8.5 20v130q1 11 9 19.5t19 8.5zM502 310zM810 403v-336q0 -15 -11 -25.5t-27 -10.5h-521q-15 0 -26 10.5t-11 25.5v336h596zM865 459h-707v-392q0 -38 27.5 -65t65.5 -27h521q39 0 66 27
 t27 65v392zM865 459zM791 459h-56v56q0 93 -66.5 158t-156.5 65q-91 0 -157.5 -66t-66.5 -157v-56h-56v56q0 114 83 196.5t197 82.5t196.5 -81t82.5 -198v-56zM791 459z" />
+    <glyph glyph-name="fenzhentai2" unicode="&#xe62b;" horiz-adv-x="1203" 
+d="M1169 74h-484v-134h117q7 0 12 -5t5 -12v-33q0 -7 -5 -12t-12 -5h-434q-7 0 -12 5t-5 12v33q0 7 5 12t12 5h117v134h-451q-14 0 -24 10t-10 24v754q0 14 10 24t24 10h1135q14 0 24 -10t10 -24v-754q0 -14 -10 -24t-24 -10v0zM1153 829q0 7 -5 11.5t-12 5.5h-1069
+q-7 -1 -11.5 -5.5t-4.5 -11.5v-688q0 -6 5 -11t11 -5h1069q7 0 12 4.5t5 11.5v688v0zM1102 158h-1002q-6 0 -11 5t-5 12v620q0 7 5 12t11 5h1002q7 0 12 -5t5 -12v-620q0 -8 -4.5 -12.5t-12.5 -4.5v0z" />
   </font>
 </defs></svg>

@@ -476,12 +476,18 @@ h2 {
 	padding-bottom:24px;
 	border-bottom: 1px solid #f1f1f1;
 }
+
+h3 {
+	font-weight: 300;
+}
+
 input {
 	border:0px;
 	box-shadow: 0 0 ;
 	border-bottom: 1px solid #f1f1f1;
 	font-size: 20px;
 	padding-bottom: 0;
+
 }
 
 .footer-space {
@@ -496,11 +502,21 @@ input {
 	line-height: 60px
 }
 
+
+
+
 /* 去掉button等默认点击效果  */
 a, button, input {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-user-modify: read-write-plaintext-only;
 	outline: none;
+
+}
+
+.control-label {
+	font-family: PingFangSC;
+	font-weight: 200;
+
 }
 
 </style>
