@@ -417,11 +417,9 @@
 							// 标记工作站数据源连接不成功
 							this.formstate.form2.linkTest = false;
 							this.modal.modalContent = '连接失败，请重试';
-							this.modal.modalShow = true;
-							this.formControlObj.form2BtnVal = this.formBtnVal[0]
 						} else {
-							this.modal.modalContent = '保存成功';
-							this.modal.modalShow = true;
+							this.$router.push({name: 'stationList'})
+							alert('保存成功')
 							this.formstate.form2.linkTest = true;
 							this.formControlObj.form2BtnVal = this.formBtnVal[2]
 						}

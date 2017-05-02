@@ -509,7 +509,7 @@
 					stationID: this.stationID
 				}).then((res) => {
                    alert('删除成功')
-                   this.cancel()
+                   this.$router.push({name: 'stationList'})
 				}, (res) => {
 				})
 			},

@@ -48,9 +48,13 @@
          		    <middleLine height='6.6'></middleLine>
          		    <h3>所属医生</h3>
          		    <div class="form-group form-flex-container footer-space">
+         		        <div class="form-group form-item flex-container">
+		         		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
+	         		        &nbsp;<div  class="input-bar">全部</div>
+         		        </div><br>
 	         		    <div class="form-group form-item flex-container" v-for="worker in form.workerList">
 		         		    <input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
-	         		        <div  class="input-bar">{{worker.name}}</div>
+	         		        &nbsp;<div  class="input-bar">{{worker.name}}</div>
 	         		    </div>
          		    </div>
 	     		</vue-form>
@@ -79,6 +83,7 @@
 					descText: '',
 					workerList: '',
 					workerListCheckbox: [],
+					workerListCheckboxAll: false, // 是否全部医生
 					sceneSupportList: '',
 					sceneSupportRadio: '',
 					sourceQueueList: '',
@@ -127,6 +132,11 @@
 					this.modal.modalShow = true;
 					this.modal.modalContent = '请填写完整数据';
 				} else {
+					if (this.form.workerListCheckboxAll) {
+						this.form.workerListCheckbox = this.form.workerList.map(function(ele, index, array) {
+                             return ele.user
+						})
+					}
 					this.form.user = this.form.name;
 					this.axios.post(this.queueInfoUrl, {
 						action: 'add',

@@ -47,7 +47,7 @@
 		     		      </div>
 		     		    </validate>
 		     		    <validate  class="form-group flex-container">
-		     		      <label  class="control-label">pos</label>
+		     		      <label  class="control-label">位置</label>
 		     		      <div class="input-bar">
 		     		      	<input v-model="form.pos" required name="pos" class="form-control"/>
 		     		      </div>
@@ -311,7 +311,7 @@
 				this.axios.post(this.callerUrl, {
 					action: 'delete',
 					stationID: this.stationID,
-                    id: this.queryParas.id
+                    id: this.queryParas.info.id
 				}).then((res) => {
                    alert('删除成功')
                    this.cancel()

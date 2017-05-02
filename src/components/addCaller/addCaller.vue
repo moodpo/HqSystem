@@ -53,7 +53,7 @@
 		     		      </div>
 		     		    </validate>
 		     		    <validate  class="form-group flex-container">
-		     		      <label  class="control-label">pos</label>
+		     		      <label  class="control-label">位置</label>
 		     		      <div class="input-bar">
 		     		      	<input v-model="form.pos" required name="pos" class="form-control"/>
 		     		      </div>
@@ -200,6 +200,8 @@
 				}).then((res) => {
 					console.log(res)
 					this.form.queueList = res.list;
+					// 默认选择第一个
+					this.form.priorQueue = this.form.queueList[0].id
 				}, (res) => {
 					console.log('failed ')
 				})
