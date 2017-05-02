@@ -3,20 +3,20 @@
 		<div class="header-box">
 			<div class="container manage-header">
 	            <ul class="row clearfix">
-		            <li @click="goToState('stationList')" id="fenzhentai" class="manage-tab">
+		            <li @click="goToState('stationList')" id="fenzhentai" class="manage-tab  custom-cursor-pointer">
 			            <input id="tag1" type="radio" name="tags"/><label for="tag1"><i class="iconfont icon-fenzhentai"></i><h2>分诊台</h2></label>
 					</li>
-					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab">
+					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
 						<input id="tag2" type="radio" name="tags"/><label for="tag2"><i class="iconfont icon-shujufenxi"></i><h2>数据分析</h2></label>
 					</li>
-					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab">
+					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
 						<input id="tag3" type="radio" name="tags"/><label for="tag3"><i class="iconfont icon-paibanguanli"></i><h2>排班管理</h2></label>
 					</li>
-					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab">
+					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
 						<input id="tag4" type="radio" name="tags"/><label for="tag4"><i class="iconfont icon-weixinguanli"></i><h2>微信管理</h2></label>
 					</li> 
 	            </ul>
-	            <div class="logout pull-right" @click="logout">退出</div>
+	            <div class="logout pull-right cursor-pointer" @click="logout">退出</div>
 		    </div>
 		</div>
 	    <keep-alive>
@@ -116,6 +116,5 @@ h2
 input[type=radio]:checked + label {
     opacity: 1
 }
-
 	
 </style>
