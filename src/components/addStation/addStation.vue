@@ -120,13 +120,13 @@
 	     		      	</div>
 	     		    </validate>
 	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(OrderDate)</label>
+	     		      	<label  class="control-label">字段别名(OrderTime)</label>
 	     		      	<div class="input-bar">
 	     		      		<input v-model="form.aliasOrderTime" required name="aliasOrderTime"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>
 	     		    </validate>
 	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(OrderDate)</label>
+	     		      	<label  class="control-label">字段别名(RegistDate)</label>
 	     		      	<div class="input-bar">
 	     		      		<input v-model="form.aliasRegistDate" required name="aliasRegistDate"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>

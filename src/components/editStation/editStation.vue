@@ -20,13 +20,13 @@
 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">分诊台名称</label>
 	     		      <div class="input-bar">
-	     		      	<input v-model="form.host" required name="host"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	<input v-model="form.name" required name="name"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">分诊台描述</label>
 	     		      <div class="input-bar">
-	     		      	<input v-model="form.user" required name="user"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	<input v-model="form.descText" required name="descText"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      </div>
 	     		    </validate>
 	     		  </vue-form>
@@ -35,7 +35,7 @@
 	     	<div class="">
 	     		<h3>数据库信息</h3>
 	     		<vue-form :state="formstate.form1"  class="form-horizontal form-flex-container " @submit.prevent="testDB">
-	     		    <validate  class="form-group flex-container">
+<!-- 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">数据库地址</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.host" required name="host"  :class="{'form-control':formControlObj.formControl}"/>
@@ -82,6 +82,54 @@
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.tableName" required name="table"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      </div>
+	     		    </validate> -->
+	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">数据库地址</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.host" required name="host"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">用户名</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.user" required name="user"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">密码</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.passwd" required name="passwd"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">端口</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.port" required name="port"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">字符集</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.charset" required name="charset"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">数据库名</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.DBName" required name="DBName"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">数据库类型</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.DBType" required name="DBType"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">数据库表名</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.tableName" required name="table"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
 	     		    </validate>
 	     		    <button type="submit" class="center-block test-btn">连接测试</button>
 	     		  </vue-form>
@@ -121,13 +169,13 @@
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
-	     		      <label  class="control-label">字段别名(OrderDate)</label>
+	     		      <label  class="control-label">字段别名(OrderTime)</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.aliasOrderTime" required name="aliasOrderTime"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
-	     		      <label  class="control-label">字段别名(OrderDate)</label>
+	     		      <label  class="control-label">字段别名(RegistDate)</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.aliasRegistDate" required name="aliasRegistDate"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      </div>
