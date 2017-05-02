@@ -83,7 +83,7 @@
 	     		      	<input v-model="form.tableName" required name="table"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      </div>
 	     		    </validate>
-	     		    <button type="submit" class="center-block test-btn">{{formControlObj.form1BtnVal}}</button>
+	     		    <button type="submit" class="center-block test-btn">连接测试</button>
 	     		  </vue-form>
 	     	</div>
 	     	<middleLine height='6.6'></middleLine>
@@ -192,7 +192,7 @@
 	     		      	<input v-model="form.renewPeriod" required name="renewPeriod"  :class="{'form-control':formControlObj.form1BtnVal}"/>
 	     		      </div>
 	     		    </validate>
-	     		    <button type="submit" class="center-block test-btn">{{formControlObj.form2BtnVal}}</button>
+	     		    <button type="submit" class="center-block test-btn">连接测试</button>
 	     		  </vue-form>
 	     	</div>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">

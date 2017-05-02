@@ -64,7 +64,7 @@
 	     		      	<input v-model="form.table" required name="table" :class="[fieldClassName(formstate.form1.table),'form-control']" />
 	     		      </div>
 	     		    </validate>
-	     		    <button type="submit" class="center-block test-btn">{{formControlObj.form1BtnVal}}</button>
+	     		    <button type="submit" class="center-block test-btn">连接测试</button>
 	     		</vue-form>
 	     		<h3>SQL信息</h3>
 	     		<vue-form :state="formstate.form2"  class="form-horizontal" @submit.prevent="testSQL">
@@ -110,7 +110,7 @@
 	     		      		<textarea  :class="{'form-control':formControlObj.formControl}" v-model="form.sqlLang"></textarea>
 	     		      	</div>
 	     		      </div>
-	     		      <button type="submit" class="center-block test-btn">{{formControlObj.form2BtnVal}}</button>
+	     		      <button type="submit" class="center-block test-btn">连接测试</button>
 	     		</vue-form>
 	     		<h3>账号信息</h3>
 	     		<form novalidate class="form-horizontal">
