@@ -41,14 +41,13 @@ h2,h3,ul,label
 	padding: 0
 	
 h2, h3
-	font-family: PingFangSC
 	font-weight: 200
 
 h2
 	font-size: 24px
 
-h3
-	font-size: 20px
+// h3
+// 	font-size: 20px
 
 .header-box
 	width: 100%

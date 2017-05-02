@@ -472,14 +472,6 @@
 </script>
 
 <style scoped>
-h2 {
-	padding-bottom:24px;
-	border-bottom: 1px solid #f1f1f1;
-}
-
-h3 {
-	font-weight: 300;
-}
 
 input {
 	border:0px;
@@ -502,20 +494,11 @@ input {
 	line-height: 60px
 }
 
-
-
-
 /* 去掉button等默认点击效果  */
 a, button, input {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-user-modify: read-write-plaintext-only;
 	outline: none;
-
-}
-
-.control-label {
-	font-family: PingFangSC;
-	font-weight: 200;
 
 }
 

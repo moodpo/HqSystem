@@ -81,8 +81,6 @@
 
 <style lang="stylus" scoped>
 h2,h3
-	font-family: PingFangSC
-	font-weight: 300
 	margin: 0
 	padding: 0
 
@@ -90,10 +88,8 @@ h2
 	font-size: 24px
 
 h3
-	font-size: 20px
 	line-height: 39px
-	border-bottom: none 
-
+	
 label,ul
 	margin: 0
 
@@ -178,7 +174,7 @@ a, button, input
 	
 .card
 	h3
-		font-family: PingFangSC
+		// font-family: PingFangSC
 		text-align: center
 		margin-top: 0.67em
 		margin-bottom: 1.33em

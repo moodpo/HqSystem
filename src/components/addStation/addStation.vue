@@ -444,17 +444,9 @@
 h2,h3,ul,label
 	margin: 0
 	padding: 0
-	font-family: PingFangSC
-	font-weight: 300
 
 h2
 	font-size: 24px
-	
-h3
-	font-size: 20px
-	line-height: 60px
-	border-bottom: 1px solid #f1f1f1
-	margin-bottom: 15px
 
 input
 	border:0px
@@ -469,108 +461,8 @@ a, button, input
 	webkit-user-modify: read-write-plaintext-only
 	outline: none
 
-
-.top-bar
-	position: fixed
-	top: 80px
-	left: 0
-	height: auto
-	width: 100%
-	background-color: #fff
-	z-index: 666
-
-.btn-bar
-	align-self: center
-	
-.capital
-	font-family: PingFangSC
-	font-weight: 300
-	color: black
-	font-size: 20px
-	position: absolute
-	top: 0
-	line-height: 93.3px
-	span
-		color: #AFAFAF
-		
-.info
-	margin-top: 193.3px
-	z-index: -1
-	
-.settings
-	display: flex
-	flex-direction: column
-	justify-content: center
-	align-items: flex-start
-	height: 93.3px
-	
-.item
-	margin-left:20px
-	margin-right:20px
-	height:38.7px
-	width:112px
-	line-height: 38.7px
-	padding:0
-	
-.item:hover
-	cursor: pointer
-	
-.flex-container
-	width: 100%
-	margin: 0
-	height: 60px
-	padding-left: 13.3px
-	display: flex
-	flex-wrap: nowrap
-	align-items: baseline
-	
-.control-label
-	width: auto
-	flex-grow: none
-	font-family: PingFangSC
-	font-size: 20px
-	color: #AFAFAF
-	font-weight: 300
-	
-.input-bar
-	flex-grow: 1
-
-.form-flex-container
-	display: flex
-	flex-direction: row
-	flex-wrap: wrap
-	
-.form-item
-	width: 50%
-	
-.form-item:nth-of-type(odd) 
-	.input-bar
-		padding-right: 52.3px
-	
-.baseinfo
-	height: 194px
-
 .datainfo, connectinfo
 	height: auto
-
-.test-btn
-	width: 100%
-	border: none
-	background-color: transparent
-	color: #109EFC
-	font-size: 20px
-	line-height: 68px
-	border-bottom: 1px solid #f1f1f1
-
-
-	
-	
-
-
-
-
-
-
 
 
 </style>

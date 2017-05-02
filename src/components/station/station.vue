@@ -57,11 +57,6 @@
  	padding-left: 0
  }
 
- .station-name, .tab-title,.table thead {
- 	font-family: PingFangSC;
- 	font-weight: 300;
- }
-
  .tab-title {
  	font-size: 20px;
  }
