@@ -72,7 +72,7 @@
 
 .table thead, .table td, .table th {
 	font-size: 20px;
-	font-weight: 100;
+	font-weight: 300;
 }
 
 .table th {

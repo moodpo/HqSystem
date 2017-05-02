@@ -9,7 +9,9 @@
 		   	<div class="card-container">
    				<div v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
    					<div class="card">
-   						<div class="card-bg" :style="{'backgroundImage':'url('+stationLogo+')'}"></div>
+   						<div class="card-bg">
+   							<i class="iconfont icon-fenzhentai2"></i>
+   						</div>
    						<h3>{{station.name}}</h3>
    					</div>
    				</div>
@@ -183,8 +185,16 @@ a, button, input
 
 .card-bg
 	height: 173.3px
-	background:no-repeat center center
+	// background:no-repeat center center
 	border:1px solid #d7d7d7
+	display: flex
+	justify-content: center
+	align-items: center
+	.icon-fenzhentai2
+		font-size: 60px
+		color: #009CFF
+	.icon-fenzhentai2:active,.icon-fenzhentai2:hover
+		color: #00C7FF
 
 .addstation-container
 	display: flex
