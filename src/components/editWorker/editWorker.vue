@@ -15,8 +15,9 @@
 			     	<div class="item btn btn-danger" @click="del">删除</div>
 				</div>
 			</div>
-			<middleLine height='13.4'></middleLine>
+			
 		</div>
+		<middleLine height='13.4' class="middleline-topbar"></middleLine>
 	     <div class="container info">
 	     	<div class="row baseinfo">
      			<h3>基础信息</h3>
