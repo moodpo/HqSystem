@@ -3,7 +3,7 @@
 		<div class="top-bar">
 			<div class="container settings">
 				<div class="capital">
-					<span>分诊台</span>/新建列队
+					<span>{{stationName}}</span>/新建列队
 				</div>
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="addQueue">保存</div>
@@ -98,6 +98,9 @@
 			},
 			workerUrl() {
 				return this.$store.getters.postUrl('manager', 'worker')
+			},
+			stationName() {
+				return this.$route.query.stationName;
 			},
 			queueInfoUrl() {
 				return this.$store.getters.postUrl('manager', 'queueInfo')

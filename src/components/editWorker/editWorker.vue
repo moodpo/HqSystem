@@ -7,10 +7,10 @@
 		<div class="top-bar">
 		    <div class="container settings">
 				<div class="capital">
-					<span>分诊台</span>/新建分诊台
+					<span>{{stationName}}</span>/编辑医生
 				</div>
 				<div class="btn-bar">
-					<div class="item btn btn-success" @click="addStation">提交</div>
+					<div class="item btn btn-success" @click="editWorker">提交</div>
 			     	<div class="item btn btn-warning" @click="cancel">取消</div>
 			     	<div class="item btn btn-danger" @click="del">删除</div>
 				</div>
@@ -22,7 +22,7 @@
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
 	     		    <validate  class="form-group flex-container">
-	     		      <label  class="control-label">账号</label>
+	     		      <label  class="control-label">编号</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.id" required name="id" class="form-control" @blur="verifyID"/>
 	     		      </div>
@@ -55,15 +55,15 @@
 	     		      <label  class="control-label">头像</label>
 	     		      <div class="input-bar">
 	     		      <!-- todo 上传 功能 -->
-	     		      	<input type="file" id="uploadImg">
-	     		      	上传
+	     		      	<input type="url" id="" class="form-control" v-model="form.headPic">
 	     		      </div>
 	     		    </validate>
 	     		    <h3>账号信息</h3>
 	     		    <div class="form-group flex-container">
 	     		    	<label  class="control-label">账号</label>
 	     		    	<div class="input-bar">
-		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />（和基础信息账号名一样）
+	     		    	&nbsp;&nbsp;
+		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />&nbsp;&nbsp;（和基础信息编号一样）
 	     		    	</div>
 	     		    </div>
 	     		    <div class="form-group flex-container">
@@ -94,6 +94,7 @@
 				formstate: {
 				},
 				form: {},
+				formIdValid: '',
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
 					modalShow: false,
@@ -108,6 +109,9 @@
 			serverUrl() {
 				return this.$store.getters.postUrl('manager', 'worker')
 			},
+			stationName() {
+				return this.$route.query.stationName;
+			},
 			queryParas() {
 				return this.$route.query
 			}
@@ -117,6 +121,7 @@
 			modal
 		},
 		created() {
+			console.log(this.stationName)
 			this._init()
 		},
 		mounted() {
@@ -129,16 +134,19 @@
 		},
 		methods: {
 			_init() {
-				this.form = this.queryParas
+				this.form = this.queryParas.info
+				this.validateId(this.form.id)
 			},
 			editWorker() {
-				console.log(this.formstate.$invalid, this.form)
+				if (!this.formIdValid) {
+					alert('编号只能是数字和字母')
+					return
+				}
 				if (this.formstate.$invalid) {
 					this.modal.modalShow = true;
 					this.modal.modalContent = '请填写完整数据';
 					return;
 				} else {
-					console.log('valid')
 					this.form.user = this.form.name;
 					this.axios.post(this.serverUrl, {
 						action: 'edit',
@@ -189,6 +197,11 @@
 			// 	request.send(formData);
 			// },
 			verifyID() {
+				this.validateId(this.form.id)
+				if (!this.formIdValid) {
+					alert('编号只能是数字和字母')
+					return
+				}
 				if (!this.form.verifyIDFlag) {
 					return;
 				}
@@ -208,6 +221,15 @@
 				}, (res) => {
 				})
 			},
+			// 验证id是否合法
+			validateId(id) {
+				let reg = /^[A-Za-z0-9]+$/g
+				if (!reg.test(id)) {
+                   this.formIdValid = false
+				} else {
+					this.formIdValid = true
+				}
+			},
 			del() {
 				console.log('del')
 				var flag = confirm('确定删除？')
@@ -217,7 +239,7 @@
 				this.axios.post(this.serverUrl, {
 					action: 'del',
 					stationID: this.stationID,
-                    id: this.queryParas.id
+                    id: this.queryParas.info.id
 				}).then((res) => {
                    alert('删除成功')
                    this.cancel()

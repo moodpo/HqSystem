@@ -9,7 +9,7 @@
 		<div class="top-bar">
 			<div class="container settings">
 				<div class="capital">
-					<span>分诊台</span>/新建医生
+					<span>{{stationName}}</span>/新建医生
 				</div>
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="addWorker">保存</div>
@@ -24,7 +24,7 @@
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
 	     		    <validate  class="form-group flex-container">
-	     		      <label  class="control-label">账号</label>
+	     		      <label  class="control-label">编号</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.id" required name="id" class="form-control" v-on:blur="verifyID"/>
 	     		      </div>
@@ -57,16 +57,15 @@
 	     		      <label  class="control-label">头像</label>
 	     		      <div class="input-bar">
 	     		      <!-- todo 上传 功能 -->
-	     		      	<input type="file" id="uploadImg">
-	     		      	上传
+	     		      	<input type="url" id="" class="form-control" v-model="form.headPic">
 	     		      </div>
 	     		    </validate>
 	     		    <h3>账号信息</h3>
-
 	     		    <div class="form-group flex-container">
 	     		    	<label  class="control-label">账号</label>
 	     		    	<div class="input-bar">
-		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />（和基础信息账号名一样）
+	     		    	&nbsp;&nbsp;
+		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />&nbsp;&nbsp;{{form.id}}（和基础信息编号一样）
 	     		    	</div>
 	     		    </div>
 	     		    <div class="form-group flex-container">
@@ -104,7 +103,8 @@
 					user: '',
                     password: '123456',
                     headPic: '',
-                    verifyIDFlag: false
+                    verifyIDFlag: false,
+                    idValid: false
 				},
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
@@ -116,6 +116,9 @@
 		computed: {
 			stationID() {
 				return this.$route.query.stationID;
+			},
+			stationName() {
+				return this.$route.query.stationName;
 			},
 			serverUrl() {
 				return this.$store.getters.postUrl('manager', 'worker')
@@ -140,6 +143,10 @@
 			_init() {
 			},
 			addWorker() {
+				if (this.form.idValid) {
+					alert('编号只能是数字和字母')
+					return;
+				}
 				if (this.formstate.$invalid) {
 					this.modal.modalShow = true;
 					this.modal.modalContent = '请填写完整数据';
@@ -193,6 +200,14 @@
 			// 	request.send(formData);
 			// },
 			verifyID() {
+				let reg = /^[A-Za-z0-9]+$/g
+				if (!reg.test(this.form.id)) {
+                   alert('编号只能是数字和字母')
+                   this.form.idValid = false
+                   return
+				} else {
+					this.form.idValid = true
+				}
 				if (!this.form.verifyIDFlag) {
 					return;
 				}

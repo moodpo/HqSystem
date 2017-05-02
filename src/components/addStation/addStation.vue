@@ -82,7 +82,7 @@
 	     		      		<input v-model="form.tableName" required name="table"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>
 	     		    </validate>
-	     		    <button type="submit" class="center-block test-btn">{{formControlObj.form1BtnVal}}</button>
+	     		    <button type="submit" class="center-block test-btn">连接测试</button>
 	     		  </vue-form>
 	     	</div>
 	     	<middleLine height='6.6'></middleLine>
@@ -120,13 +120,13 @@
 	     		      	</div>
 	     		    </validate>
 	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(OrderDate)</label>
+	     		      	<label  class="control-label">字段别名(OrderTime)</label>
 	     		      	<div class="input-bar">
 	     		      		<input v-model="form.aliasOrderTime" required name="aliasOrderTime"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>
 	     		    </validate>
 	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(OrderDate)</label>
+	     		      	<label  class="control-label">字段别名(RegistDate)</label>
 	     		      	<div class="input-bar">
 	     		      		<input v-model="form.aliasRegistDate" required name="aliasRegistDate"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>
@@ -191,7 +191,7 @@
 	     		      		<input v-model="form.renewPeriod" required name="renewPeriod"  :class="{'form-control':formControlObj.form1BtnVal}"/>
 	     		      	</div>
 	     		    </validate>
-	     		    <button type="submit" class="center-block test-btn">{{formControlObj.form2BtnVal}}</button>
+	     		    <button type="submit" class="center-block test-btn">连接测试</button>
 	     		  </vue-form>
 	     	</div>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
