@@ -120,23 +120,25 @@
 	               	   	   <table class="table">
 	               	   	        <thead>
 	               	   	           <tr>
-	               	   	        	    <th>序号</th>
-	               	   	        	    <th>名称</th>
-	               	   	        	    <th>IP</th>
-	               	   	        	    <th>类型</th>
-	               	   	        		<th>所属医生</th>
+	               	   	        	    <th>编号</th>
+	               	   	        	    <th>姓名</th>
+	               	   	        	    <th>职称</th>
+	               	   	        	    <th>科室</th>
+	               	   	        		<th>头像</th>
 	               	   	        		<th>操作</th>
 	               	   	           </tr>
 	               	   	        </thead>
 	               	   	   	    <tbody>
 	               	   	   	        <div class="noData" v-if="workerList.length == 0">没有医生</div>
 	               	   	   	        <tr v-for="worker in workerList">
+	               	   	   	            <td>{{worker.id}}</td>
 	               	   	   	            <td>{{worker.name}}</td>
-	               	   	   	            <td>{{worker.name}}</td>
-	               	   	   	        	<td>{{worker.ip}}</td>
-	               	   	   	        	<td>{{worker.type}}</td>
 	               	   	   	        	<td>{{worker.title}}</td>
-	               	   	   	        	<td class="custom-cursor-pointer edit" @click="edit('editWorker', worker, stationName)">编辑</td>
+
+	               	   	   	        	<td>{{worker.department}}</td>
+	               	   	   	        	<td>暂时空白{{worker.headPic}}</td>
+	               	   	   	        	<td @click="edit('editWorker', worker, stationName)">编辑</td>
+
 	               	   	   	        </tr>	
 	               	   	   	    </tbody>
 	               	   	   </table>
@@ -145,13 +147,15 @@
 		               	   <table class="table">
 		               	        <tr>
 		               	        	<th>队列名字</th>
-		               	        	<th>队列id</th>
+		               	        	<th>策略配置</th>
+		               	        	<th>ID</th>
 		               	        	<th>操作</th>
 		               	        </tr>
 		               	   	    <tbody>
 		               	   	        <div class="noData" v-if="queueList.length == 0">没有队列</div>
 		               	   	        <tr v-for="queue in queueList">
 		               	   	        	<td>{{queue.name}}</td>
+		               	   	        	<td>{{queue.scene}}</td>
 		               	   	        	<td>{{queue.id}}</td>
 		               	   	        	<td @click="edit('editQueue', queue, stationName)">编辑</td>
 		               	   	        </tr>	
@@ -162,15 +166,21 @@
 	               	   <div class="queueList nav-info-content" v-if="showInfoNumber == 2">
 		               	   <table class="table">
 		               	        <tr>
-		               	        	<th>叫号器name</th>
-		               	        	<th>叫号器pos</th>
+		               	        	<th>名称</th>
+		               	        	<th>类型</th>
+		               	        	<th>IP</th>
+		               	        	<th>位置</th>
+		               	        	<th>优先队列</th>
 		               	        	<th>操作</th>
 		               	        </tr>
 		               	   	    <tbody>
 		               	   	         <div class="noData" v-if="callerList.length == 0">没有叫号器</div>
 		               	   	        <tr v-for="caller in callerList">
 		               	   	        	<td>{{caller.name}}</td>
+		               	   	        	<td>{{caller.type}}</td>
+		               	   	        	<td>{{caller.ip}}</td>
 		               	   	        	<td>{{caller.pos}}</td>
+		               	   	        	<td>{{caller.priorQueue}}</td>
 		               	   	        	<td @click="edit('editCaller', caller, stationName)">编辑</td>
 		               	   	        </tr>	
 		               	   	    </tbody>
