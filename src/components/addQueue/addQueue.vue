@@ -53,21 +53,7 @@
 	         		        <div  class="input-bar">{{worker.name}}</div>
 	         		    </div>
          		    </div>
-
-<!-- 	     		    <h4>账号信息</h4>
-	     		    <div class="form-group">
-	     		    	<label  class="control-label">账号</label>
-	     		    	<div class="">
-		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />（和基础信息账号名一样）
-	     		    	</div>
-	     		    </div>
-	     		    <div class="form-group">
-	     		    	<label  class="control-label">密码</label>
-	     		    	<div class="">
-	     		    		<input v-model="form.password"   required name="password" class="form-control" />
-	     		    	</div>
-	     		    </div> -->
-	     		  </vue-form>
+	     		</vue-form>
 	     	</div>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false" >
 	     		<p slot='body'>{{modal.modalContent}}</p>

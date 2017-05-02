@@ -30,7 +30,6 @@
 			</div>
 	     	<div class="container info">
 		     	<div class="row baseinfo">
-		     	    <h2>新建叫号器</h2>
 		     		<h3>基础信息</h3>
 		     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
 		     		    <validate  class="form-group flex-container">
@@ -60,30 +59,24 @@
 		     		      </div>
 		     		    </validate>
 	         		    <h3>可登录医生</h3>
-	         		    <div class="form-group flex-container">
-		         		    <div  class="col-sm-11 col-sm-offset-1" >
-			         		    <div class="row">
-			         		        <div class="" v-for="worker in form.workerList">
-	        		         		    <div class="col-sm-1 ">
-	        		         		    	<input class="pull-right" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
-	        		         		    </div>
-	        	         		        <div  class="col-sm-3 ">{{worker.name}}</div>
-			         		        </div>
-			         		    </div>
-		         		    </div>
+             		    <!-- <div class="form-group form-flex-container">
+    	         		    <div class="form-group form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
+    		         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.sceneSupportRadio"  :value="sceneSupport" >
+    	         		        <div class="input-bar">{{sceneSupport}}</div>
+    	         		    </div>
+             		    </div> -->
+	         		    <div class="form-group form-flex-container">
+	         		        <div class="form-group form-item flex-container" v-for="worker in form.workerList">
+    		         		    	<input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
+    	         		        <div  class="col-sm-3 ">{{worker.name}}</div>
+	         		        </div>
 	         		    </div>
-	         		    <h4>优先队列</h4>
-	         		    <div class="form-group flex-container">
-		         		    <div  class="col-sm-11 col-sm-offset-1" >
-			         		    <div class="row">
-			         		        <div  v-for="queue in form.queueList">
-	 		    	         		    <div class="col-sm-1 ">
-	 		    	         		    	<input class="pull-right" type="radio"  v-model="form.priorQueue"  :value="queue.id" >
-	 		    	         		    </div>
-	 		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
-			         		        </div>
-			         		    </div>
-		         		    </div>
+	         		    <h3>优先队列</h3>
+	         		    <div class="form-group form-flex-container">
+	         		        <div  v-for="queue in form.queueList" class="form-group form-item flex-container">
+		    	         		    	<input class="control-label input-btn" type="radio"  v-model="form.priorQueue"  :value="queue.id" >
+		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
+	         		        </div>
 	         		    </div>
 		     		  </vue-form>
 		     	</div>
@@ -184,6 +177,7 @@
 				}
 			},
 			getWorkerList() {
+				console.log('getWorkerList')
 				this.axios.post(this.workerUrl, {
 					action: 'getList',
 					stationID: this.stationID
@@ -194,6 +188,7 @@
 				})
 			},
 			getQueueList() {
+				console.log('getQueueList')
 				this.axios.post(this.queueInfoUrl, {
 					action: 'getList',
 					stationID: this.stationID

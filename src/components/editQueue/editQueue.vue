@@ -1,16 +1,42 @@
+<style scoped lang="stylus">
+.form-group
+	margin: 0 
+
+.btn-select
+	width: 10em
+	margin-left: 15px
+
+.input-btn
+	margin: 1em
+	
+.input-bar
+	line-height: 60px
+
+.footer-space
+	margin-bottom: 40.6px
+
+
+</style>
+
 <template lang="html">
 	<div class="editQueue">
-	     <div class="container">
-	     	<div class="row settings">
-	     		<div class="btn btn-success" @click="editQueue">保存</div>
-	     		<div class="btn btn-warning" @click="cancel">取消</div>
-	     		<div class="btn btn-danger" @click="del">删除</div>
-	     	</div>
-	     	<middleLine height='20'></middleLine>
+		<div class="top-bar">
+			<div class="container settings">
+				<div class="capital">
+					<span>分诊台</span>/编辑队列
+				</div>
+				<div class="btn-bar">
+					<div class="item btn btn-success" @click="editQueue">保存</div>
+	     			<div class="item btn btn-warning" @click="cancel">取消</div>
+	     			<div class="item btn btn-warning" @click="del">删除</div>
+				</div>
+			</div>
+			<middleLine height='13.4'></middleLine>
+		</div>
+	     <div class="container info">
 	     	<div class="row baseinfo">
-	     	    <h2>编辑队列</h2>
-	     		<h4>基础信息</h4>
-	     		<vue-form :state="formstate"  class="form-horizontal">
+	     		<h3>基础信息</h3>
+	     		<!-- <vue-form :state="formstate"  class="form-horizontal">
 	     		    <validate  class="form-group">
 	     		      <label  class="col-sm-2 control-label">队列名字</label>
 	     		      <div class="col-sm-10">
@@ -31,7 +57,7 @@
 	     		      	</select>
 	     		      </div>
 	     		    </div>
-         		    <h4>策略配置</h4>
+         		    <h3>策略配置</h3>
          		    <div class="form-group">
 	         		    <div  class="form-group" v-for="(sceneSupport, index) in form.sceneSupportList">
 		         		    <div class="col-sm-2 ">
@@ -40,7 +66,7 @@
 	         		        <div  class="col-sm-10 ">{{sceneSupport}}</div>
 	         		    </div>
          		    </div>
-         		    <h4>所属医生</h4>
+         		    <h3>所属医生</h3>
          		    <div class="form-group">
 	         		    <div  class="form-group" v-for="worker in form.workerList">
 		         		    <div class="col-sm-2 ">
@@ -50,21 +76,50 @@
 
 	         		    </div>
          		    </div>
-<!-- 	     		    <h4>账号信息</h4>
-	     		    <div class="form-group">
-	     		    	<label  class="col-sm-2 control-label">账号</label>
-	     		    	<div class="col-sm-10">
-		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />（和基础信息账号名一样）
-	     		    	</div>
+	     		</vue-form> -->
+	     		<vue-form :state="formstate"  class="form-horizontal">
+	     			<validate class="form-group flex-container">
+	     		      	<label class="control-label">队列名字</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.name" required name="name" class="form-control"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-group flex-container">
+	     		      	<label  class="control-label">队列描述</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.descText" required name="descText" class="form-control"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <div class="form-group flex-container">
+	     		      	<label class="control-label">过滤条件</label>
+	     		      	<div class="input-bar">
+	     		      		<select class="btn-select btn btn-default dropdown-toggle" v-model="form.filter">
+	     		      			<option v-for="sourceQueue in form.sourceQueueList">{{sourceQueue}}
+	     		      			</option>
+	     		      		</select>
+	     		      	</div>
 	     		    </div>
-	     		    <div class="form-group">
-	     		    	<label  class="col-sm-2 control-label">密码</label>
-	     		    	<div class="col-sm-10">
-	     		    		<input v-model="form.password"   required name="password" class="form-control" />
-	     		    	</div>
-	     		    </div> -->
-	     		  </vue-form>
+	     		    <middleLine height='6.6'></middleLine>
+         		    <h3>策略配置</h3>
+         		    <div class="form-group form-flex-container">
+	         		    <div class="form-group form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
+		         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.scene"  :value="sceneSupport" >
+	         		        <div class="input-bar">{{sceneSupport}}</div>
+	         		    </div>
+         		    </div>
+         		    <middleLine height='6.6'></middleLine>
+         		    <h3>所属医生</h3>
+         		    <div class="form-group form-flex-container footer-space">
+	         		    <div class="form-group form-item flex-container" v-for="worker in form.workerList">
+		         		    <input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
+	         		        <div  class="input-bar">{{worker.name}}</div>
+	         		    </div>
+         		    </div>
+	     		</vue-form>
 	     	</div>
+	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
+	     		<p slot='body'>{{modal.modalContent}}</p>
+	     	</modal>
 	     </div>
 	</div>
 </template>
@@ -83,6 +138,7 @@
 				form: {
 					name: '',
 					scene: '',
+					id: '',
 					descText: '',
 					workerList: '',
 					workerListCheckbox: [],
@@ -90,7 +146,8 @@
 					sceneSupportRadio: '',
 					sourceQueueList: '',
 					filter: '',
-					password: '123456'
+					password: '',
+					workerLimit: ''
 				},
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
@@ -119,9 +176,7 @@
 		},
 		created() {
 			this._init()
-			// this.form = this.queryParas
-			console.log('created ')
-			console.log(this.queryParas)
+			this.setParas()
 		},
 		mounted() {
 			console.log('mounted')
@@ -140,13 +195,14 @@
 				} else {
 					this.form.user = this.form.name;
 					this.axios.post(this.queueInfoUrl, {
-						action: 'add',
+						action: 'edit',
 						stationID: this.stationID,
+						id: this.form.id,
 						name: this.form.name,
-						scene: this.sceneSupportRadio,
+						scene: this.form.scene,
 						descText: this.form.descText,
-						// filter:
-						workerLimit: this.workerListCheckbox
+						filter: `queue='${this.form.filter}'`,
+						workerLimit: this.form.workerLimit
 					}).then((res) => {
                        console.log(res)
                        this.modal.modalShow = true;
@@ -187,6 +243,14 @@
 				}, (res) => {
 					console.log('failed')
 				})
+			},
+			setParas() {
+				this.form.name = this.queryParas.name
+				this.form.scene = this.queryParas.scene
+				this.form.descText = this.queryParas.descText
+				this.form.filter = this.queryParas.filter.slice(7, -1)
+				this.form.workerLimit = this.queryParas.workerLimit
+				this.form.id = this.queryParas.id
 			},
 			cancel() {
 				// todo
@@ -239,33 +303,3 @@
 	}
 </script>
 
-<style scoped>
-h2 {
-	padding-bottom:24px;
-	border-bottom: 1px solid #f1f1f1;
-}
-input {
-	border:0px;
-	box-shadow: 0 0 ;
-	border-bottom: 1px solid #f1f1f1;
-}
-.settings {
-	text-align: center;
-	height:140px;
-	position: static;
-	line-height: 140px
-}
- .settings>div {
- 	position: absolute;
- 	color:#fff;
- 	display: inline-block;
- 	margin-left:20px;
- 	margin-right:20px;
- 	position: relative;
- 	height:58px;
- 	width:112px;
-    line-height: 58px;
-    padding:0;
- }
-
-</style>
