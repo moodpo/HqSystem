@@ -28,7 +28,7 @@
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="editQueue">保存</div>
 	     			<div class="item btn btn-warning" @click="cancel">取消</div>
-	     			<div class="item btn btn-warning" @click="del">删除</div>
+	     			<div class="item btn btn-danger" @click="del">删除</div>
 				</div>
 			</div>
 			<middleLine height='13.4'></middleLine>
@@ -91,7 +91,7 @@
 	     		      	</div>
 	     		    </validate>
 	     		    <div class="form-group flex-container">
-	     		      	<label class="control-label">过滤条件</label>
+	     		      	<label class="control-label">系统拼接队列关键字</label>
 	     		      	<div class="input-bar">
 	     		      		<select class="btn-select btn btn-default dropdown-toggle" v-model="form.filter">
 	     		      			<option v-for="sourceQueue in form.sourceQueueList">{{sourceQueue}}
@@ -103,8 +103,8 @@
          		    <h3>策略配置</h3>
          		    <div class="form-group form-flex-container">
 	         		    <div class="form-group form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
-		         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.scene"  :value="sceneSupport" >
-	         		        <div class="input-bar">{{sceneSupport}}</div>
+		         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.scene"  :value="sceneSupport.name" >
+	         		        <div class="input-bar">&nbsp;{{sceneSupport.name}}</div>
 	         		    </div>
          		    </div>
          		    <middleLine height='6.6'></middleLine>
@@ -205,9 +205,8 @@
 						filter: `queue='${this.form.filter}'`,
 						workerLimit: this.form.workerLimit
 					}).then((res) => {
-                       console.log(res)
-                       this.modal.modalShow = true;
-                       this.modal.modalContent = '保存成功';
+                       alert('保存成功')
+                       this.cancel()
 					}, (res) => {
                         this.modal.modalShow = true;
                         this.modal.modalContent = '保存失败';
@@ -270,7 +269,7 @@
 				this.axios.post(this.queueInfoUrl, {
 					action: 'delete',
 					stationID: this.stationID,
-                    id: this.queryParas.id
+                    id: this.queryParas.info.id
 				}).then((res) => {
                    alert('删除成功')
                    this.cancel()

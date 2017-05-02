@@ -20,7 +20,6 @@
 		</div>
 
 	     <div class="container info">
-
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
 	     		    <validate  class="form-group flex-container">
@@ -143,7 +142,7 @@
 			_init() {
 			},
 			addWorker() {
-				if (this.form.idValid) {
+				if (!this.form.idValid) {
 					alert('编号只能是数字和字母')
 					return;
 				}
@@ -165,9 +164,9 @@
 	                    // headPic: this.form.headPic
 	                    headPic: 'www.baidu.com'
 					}).then((res) => {
-                       console.log(res)
-                       this.modal.modalShow = true;
-                       this.modal.modalContent = '保存成功';
+                       alert('保存成功')
+                       // 返回上一步
+                       this.cancel()
 					}, (res) => {
                         this.modal.modalShow = true;
                         this.modal.modalContent = '保存失败';
