@@ -103,7 +103,8 @@
 					user: '',
                     password: '123456',
                     headPic: '',
-                    verifyIDFlag: false
+                    verifyIDFlag: false,
+                    idValid: false
 				},
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
@@ -139,6 +140,10 @@
 			_init() {
 			},
 			addWorker() {
+				if (this.form.idValid) {
+					alert('编号只能是数字和字母')
+					return;
+				}
 				if (this.formstate.$invalid) {
 					this.modal.modalShow = true;
 					this.modal.modalContent = '请填写完整数据';
@@ -192,6 +197,15 @@
 			// 	request.send(formData);
 			// },
 			verifyID() {
+				let reg = /^[A-Za-z0-9]+$/g
+				console.log(reg.test(this.form.id))
+				if (!reg.test(this.form.id)) {
+                   alert('编号只能是数字和字母')
+                   this.form.idValid = false
+                   return
+				} else {
+					this.form.idValid = true
+				}
 				if (!this.form.verifyIDFlag) {
 					return;
 				}

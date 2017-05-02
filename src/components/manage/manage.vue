@@ -16,7 +16,7 @@
 						<input id="tag4" type="radio" name="tags"/><label for="tag4"><i class="iconfont icon-weixinguanli"></i><h2>微信管理</h2></label>
 					</li> 
 	            </ul>
-	            <div class="logout pull-right cursor-pointer" @click="logout">退出</div>
+	            <div class="logout pull-right custom-cursor-pointer" @click="logout">退出</div>
 		    </div>
 		</div>
 	    <keep-alive>

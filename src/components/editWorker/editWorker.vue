@@ -10,7 +10,7 @@
 					<span>分诊台</span>/新建分诊台
 				</div>
 				<div class="btn-bar">
-					<div class="item btn btn-success" @click="addStation">提交</div>
+					<div class="item btn btn-success" @click="editWorker">提交</div>
 			     	<div class="item btn btn-warning" @click="cancel">取消</div>
 			     	<div class="item btn btn-danger" @click="del">删除</div>
 				</div>
@@ -94,6 +94,7 @@
 				formstate: {
 				},
 				form: {},
+				formIdValid: '',
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
 					modalShow: false,
@@ -130,15 +131,18 @@
 		methods: {
 			_init() {
 				this.form = this.queryParas
+				this.validateId(this.form.id)
 			},
 			editWorker() {
-				console.log(this.formstate.$invalid, this.form)
+				if (!this.formIdValid) {
+					alert('编号只能是数字和字母')
+					return
+				}
 				if (this.formstate.$invalid) {
 					this.modal.modalShow = true;
 					this.modal.modalContent = '请填写完整数据';
 					return;
 				} else {
-					console.log('valid')
 					this.form.user = this.form.name;
 					this.axios.post(this.serverUrl, {
 						action: 'edit',
@@ -189,6 +193,11 @@
 			// 	request.send(formData);
 			// },
 			verifyID() {
+				this.validateId(this.form.id)
+				if (!this.formIdValid) {
+					alert('编号只能是数字和字母')
+					return
+				}
 				if (!this.form.verifyIDFlag) {
 					return;
 				}
@@ -207,6 +216,15 @@
 					}
 				}, (res) => {
 				})
+			},
+			// 验证id是否合法
+			validateId(id) {
+				let reg = /^[A-Za-z0-9]+$/g
+				if (!reg.test(id)) {
+                   this.formIdValid = false
+				} else {
+					this.formIdValid = true
+				}
 			},
 			del() {
 				console.log('del')
