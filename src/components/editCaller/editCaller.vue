@@ -16,7 +16,7 @@
 					<div class="btn-bar">
 						<div class="item btn btn-success" @click="editCaller">提交</div>
 				     	<div class="item btn btn-warning" @click="cancel">取消</div>
-				     	<div class="item btn btn-danger" @click="del">取消</div>
+				     	<div class="item btn btn-danger" @click="del">删除</div>
 					</div>
 				</div>
 				<middleLine height='13.4'></middleLine>
