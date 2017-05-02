@@ -55,14 +55,11 @@
 				if (this.formstate.$invalid) {
 					return;
 				}
-				console.log(this.serverUrl)
 				this.axios.post(this.serverUrl, {
 					action: 'GetToken',
 					user: this.form.user,
 					passwd: this.form.passwd
 				}).then((res) => {
-					console.log(res)
-					console.log(res.stationID)
 					if (res.hasOwnProperty('token')) {
 						this.$store.commit('login', res.token);
 						// 路由跳转

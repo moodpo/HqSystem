@@ -6,7 +6,12 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     token: null,
-    serverUrl: 'http://192.168.17.187/hqueue/'
+    serverUrl: 'http://192.168.17.187/hqueue/',
+    // 记录各个tab的当前Number
+    tab: {
+         // station页面点击的是那个tab
+        tabShowInfoNumber: 0
+    }
   },
   mutations: {
     login: (state, data) => {
@@ -16,6 +21,10 @@ const store = new Vuex.Store({
     logout: (state) => {
       localStorage.removeItem('token');
       state.token = null;
+    },
+    changeTab: (state, data) => {
+      console.log(data)
+      state.tab[data.whichTab] = data.num
     }
   },
   getters: {

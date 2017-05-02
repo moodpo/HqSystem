@@ -25,6 +25,9 @@
   	font-size: 20px;
   	position:relative;
   }
+  .station-content .nav-bar>.tab-title.isChoose {
+   background: #4DB8FF; 
+  }
  .station-content .nav-bar>.tab-title:hover {
     background: #4DB8FF; 
  }
@@ -104,9 +107,12 @@
  			<middleLine height='13.4' class="middleline-topbar"></middleLine>
             <div class="station-content  container info no-left-padding">
 	               <div class="nav-bar">
-	               	     <div class="tab-title  text-center custom-cursor-pointer" @click="showInfo(0)">医生信息</div>
-	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(1)">队列</div>
-	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(2)">叫号器</div>
+
+	               	     <div class="station-name ">{{stationName}}</div>
+	               	     <div class="tab-title  text-center custom-cursor-pointer" @click="showInfo(0)" :class="{'isChoose':showInfoNumber == 0}">医生信息</div>
+	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(1)" :class="{'isChoose':showInfoNumber == 1}">队列</div>
+	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(2)" :class="{'isChoose':showInfoNumber == 2}">叫号器</div>
+
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="edit('editStation', {'stationID':stationID}, stationName )">配置分诊台</div>
 	               </div>
 	               <div class="nav-info">
@@ -182,7 +188,6 @@
 		name: 'station',
 		data() {
 			return {
-				showInfoNumber: 0,
 				stationInfo: '',
 				workerList: '',
 				queueList: '',
@@ -207,6 +212,9 @@
 			},
 			stationName() {
 				return decodeURIComponent(this.$route.query.name);
+			},
+			showInfoNumber() {
+				return Number(this.$store.state.tab.tabShowInfoNumber)
 			}
 		},
 		components: {
@@ -256,7 +264,11 @@
 			},
 			// 显示右侧内容
 			showInfo(num) {
-				this.showInfoNumber = num;
+				console.log(num)
+				this.$store.commit('changeTab', {
+					whichTab: 'tabShowInfoNumber',
+					num: num
+				});
 			},
 			add(stateName, stationName) {
 				this.$router.push({
