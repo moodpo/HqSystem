@@ -16,6 +16,7 @@
 						<input id="tag4" type="radio" name="tags"/><label for="tag4"><i class="iconfont icon-weixinguanli"></i><h2>微信管理</h2></label>
 					</li> 
 	            </ul>
+	            <div class="logout pull-right" @click="logout">退出</div>
 		    </div>
 		</div>
 	    <keep-alive>
@@ -27,9 +28,19 @@
 <script>
 	export default {
 		name: 'manage',
+		created() {
+            this._init()
+		},
 		methods: {
+			_init() {
+                this.goToState('stationList')
+			},
 			goToState(state) {
                 this.$router.push({name: state})
+			},
+			logout() {
+				this.$store.commit('logout');
+				this.goToState('login')
 			}
 		}
 	}
@@ -62,6 +73,7 @@ h2
 	align-items: center
 	
 .clearfix
+	display: flex
 	width: 768px
 	@media screen and (max-width: 850px)
 		margin: 0 auto
