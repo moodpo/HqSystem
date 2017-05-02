@@ -74,6 +74,10 @@
 	color: #A5A5A5;
 }
 
+.edit {
+	color: #0097FB;
+}
+
 </style>
 <template lang="html">
     <div>
@@ -126,7 +130,7 @@
 	               	   	   	        	<td>{{worker.ip}}</td>
 	               	   	   	        	<td>{{worker.type}}</td>
 	               	   	   	        	<td>{{worker.title}}</td>
-	               	   	   	        	<td @click="edit('editWorker', worker, stationName)">编辑</td>
+	               	   	   	        	<td class="custom-cursor-pointer edit" @click="edit('editWorker', worker, stationName)">编辑</td>
 	               	   	   	        </tr>	
 	               	   	   	    </tbody>
 	               	   	   </table>
