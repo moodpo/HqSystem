@@ -3,7 +3,7 @@
 		<div class="top-bar">
 			<div class="container settings">
 				<div class="capital">
-					<span>分诊台</span>/配置分诊台
+					<span>{{stationName}}</span>/配置分诊台
 				</div>
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="editStation">提交</div>
@@ -309,6 +309,9 @@
 		computed: {
 			stationID() {
 				return Number(this.$route.query.stationID);
+			},
+			stationName() {
+				return this.$route.query.stationName;
 			},
 			serverUrl() {
 				return this.$store.getters.postUrl('manager', 'station')

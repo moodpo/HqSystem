@@ -9,7 +9,7 @@
 		<div class="top-bar">
 			<div class="container settings">
 				<div class="capital">
-					<span>分诊台</span>/新建医生
+					<span>{{stationName}}</span>/新建医生
 				</div>
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="addWorker">保存</div>
@@ -117,6 +117,9 @@
 			stationID() {
 				return this.$route.query.stationID;
 			},
+			stationName() {
+				return this.$route.query.stationName;
+			},
 			serverUrl() {
 				return this.$store.getters.postUrl('manager', 'worker')
 			}
@@ -198,7 +201,6 @@
 			// },
 			verifyID() {
 				let reg = /^[A-Za-z0-9]+$/g
-				console.log(reg.test(this.form.id))
 				if (!reg.test(this.form.id)) {
                    alert('编号只能是数字和字母')
                    this.form.idValid = false

@@ -3,7 +3,7 @@
 		<div class="top-bar">
 			<div class="container settings">
 				<div class="capital">
-					<span>分诊台</span>/批量添加医生
+					<span>{{stationName}}</span>/批量添加医生
 				</div>
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="batchAddWorker">导入</div>
@@ -184,6 +184,9 @@
 		computed: {
 			stationID() {
 				return Number(this.$route.query.stationID);
+			},
+			stationName() {
+				return this.$route.query.stationName;
 			},
 			workerUrl() {
 				return this.$store.getters.postUrl('manager', 'worker')

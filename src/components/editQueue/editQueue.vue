@@ -23,7 +23,7 @@
 		<div class="top-bar">
 			<div class="container settings">
 				<div class="capital">
-					<span>分诊台</span>/编辑队列
+					<span>{{stationName}}</span>/编辑队列
 				</div>
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="editQueue">保存</div>
@@ -166,6 +166,9 @@
 			queueInfoUrl() {
 				return this.$store.getters.postUrl('manager', 'queueInfo')
 			},
+			stationName() {
+				return this.$route.query.stationName;
+			},
 			queryParas() {
 				return this.$route.query
 			}
@@ -179,8 +182,6 @@
 			this.setParas()
 		},
 		mounted() {
-			console.log('mounted')
-			console.log(this.$route)
 		},
 		methods: {
 			_init() {
@@ -245,12 +246,12 @@
 				})
 			},
 			setParas() {
-				this.form.name = this.queryParas.name
-				this.form.scene = this.queryParas.scene
-				this.form.descText = this.queryParas.descText
-				this.form.filter = this.queryParas.filter.slice(7, -1)
-				this.form.workerLimit = this.queryParas.workerLimit
-				this.form.id = this.queryParas.id
+				this.form.name = this.queryParas.info.name
+				this.form.scene = this.queryParas.info.scene
+				this.form.descText = this.queryParas.info.descText
+				this.form.filter = this.queryParas.info.filter.slice(7, -1)
+				this.form.workerLimit = this.queryParas.info.workerLimit
+				this.form.id = this.queryParas.info.id
 			},
 			cancel() {
 				// todo

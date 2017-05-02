@@ -11,7 +11,7 @@
 			<div class="top-bar">
 				<div class="container settings">
 					<div class="capital">
-						<span>分诊台</span>/编辑叫号器
+						<span>{{stationName}}</span>/编辑叫号器
 					</div>
 					<div class="btn-bar">
 						<div class="item btn btn-success" @click="editCaller">提交</div>
@@ -211,6 +211,9 @@
 			},
 			callerUrl() {
 				return this.$store.getters.postUrl('manager', 'caller')
+			},
+			stationName() {
+				return this.$route.query.stationName;
 			},
 			queryParas() {
 				return this.$route.query

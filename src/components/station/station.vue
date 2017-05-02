@@ -81,17 +81,17 @@
  			<div class="top-bar">
  				<div class="container settings">
  					<div class="capital">
- 						<span>分诊台</span>/分诊台详情
+ 						<span>{{stationName}}</span>/分诊台详情
  					</div>
 	                <div v-if="showInfoNumber == 0" class="btn-bar">
-	 	               	<div class="item btn btn-success" @click="add('addWorker')">添加医生</div>
-	 	               	<div class="item btn btn-warning" @click="add('batchAddWorker')">批量添加医生</div>
+	 	               	<div class="item btn btn-success" @click="add('addWorker', stationName)">添加医生</div>
+	 	               	<div class="item btn btn-warning" @click="add('batchAddWorker', stationName)">批量添加医生</div>
 	                </div>
 	               <div v-if="showInfoNumber == 1" class="btn-bar">
-		               	<div class="item btn btn-success" @click="add('addQueue')">添加队列</div>
+		               	<div class="item btn btn-success" @click="add('addQueue', stationName)">添加队列</div>
 	               </div>
 	               <div v-if="showInfoNumber == 2" class="btn-bar">
-		               	<div class="item btn btn-success" @click="add('addCaller')">添加叫号器</div>
+		               	<div class="item btn btn-success" @click="add('addCaller', stationName)">添加叫号器</div>
 	               </div>
  						<!-- <div class="item btn btn-success" @click="addStation">提交</div>
  				     	<div class="item btn btn-warning" @click="cancel">取消</div> -->
@@ -104,7 +104,7 @@
 	               	     <div class="tab-title  text-center" @click="showInfo(0)">医生信息</div>
 	               	     <div class="tab-title text-center" @click="showInfo(1)">队列</div>
 	               	     <div class="tab-title text-center" @click="showInfo(2)">叫号器</div>
-	               	     <div class="tab-title text-center" @click="edit('editStation', {'stationID':stationID} )">配置分诊台</div>
+	               	     <div class="tab-title text-center" @click="edit('editStation', {'stationID':stationID}, stationName )">配置分诊台</div>
 	               </div>
 	               <div class="nav-info">
 	               	   <div class="workList nav-info-content" v-if="showInfoNumber == 0">
@@ -127,7 +127,7 @@
 	               	   	   	        	<td>{{worker.ip}}</td>
 	               	   	   	        	<td>{{worker.type}}</td>
 	               	   	   	        	<td>{{worker.title}}</td>
-	               	   	   	        	<td @click="edit('editWorker', worker)">编辑</td>
+	               	   	   	        	<td @click="edit('editWorker', worker, stationName)">编辑</td>
 	               	   	   	        </tr>	
 	               	   	   	    </tbody>
 	               	   	   </table>
@@ -144,7 +144,7 @@
 		               	   	        <tr v-for="queue in queueList">
 		               	   	        	<td>{{queue.name}}</td>
 		               	   	        	<td>{{queue.id}}</td>
-		               	   	        	<td @click="edit('editQueue', queue)">编辑</td>
+		               	   	        	<td @click="edit('editQueue', queue, stationName)">编辑</td>
 		               	   	        </tr>	
 		               	   	    	
 		               	   	    </tbody>
@@ -162,7 +162,7 @@
 		               	   	        <tr v-for="caller in callerList">
 		               	   	        	<td>{{caller.name}}</td>
 		               	   	        	<td>{{caller.pos}}</td>
-		               	   	        	<td @click="edit('editCaller', caller)">编辑</td>
+		               	   	        	<td @click="edit('editCaller', caller, stationName)">编辑</td>
 		               	   	        </tr>	
 		               	   	    </tbody>
 		               	   </table>
@@ -255,18 +255,23 @@
 			showInfo(num) {
 				this.showInfoNumber = num;
 			},
-			add(stateName) {
+			add(stateName, stationName) {
 				this.$router.push({
 					name: stateName,
 					query: {
-						stationID: this.stationID
+						stationID: this.stationID,
+						stationName: stationName
 					}
 				})
 			},
-			edit(stateName, info) {
+			edit(stateName, info, stationName) {
                 this.$router.push({
                 	name: stateName,
-                	query: info
+                	query: {
+                		stationID: this.stationID,
+                		info: info,
+                		stationName: stationName
+                	}
                 })
 			}
 		}

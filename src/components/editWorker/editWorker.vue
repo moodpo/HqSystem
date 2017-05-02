@@ -7,7 +7,7 @@
 		<div class="top-bar">
 		    <div class="container settings">
 				<div class="capital">
-					<span>分诊台</span>/新建分诊台
+					<span>{{stationName}}</span>/编辑医生
 				</div>
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="editWorker">提交</div>
@@ -109,6 +109,9 @@
 			serverUrl() {
 				return this.$store.getters.postUrl('manager', 'worker')
 			},
+			stationName() {
+				return this.$route.query.stationName;
+			},
 			queryParas() {
 				return this.$route.query
 			}
@@ -118,6 +121,7 @@
 			modal
 		},
 		created() {
+			console.log(this.stationName)
 			this._init()
 		},
 		mounted() {
@@ -130,7 +134,7 @@
 		},
 		methods: {
 			_init() {
-				this.form = this.queryParas
+				this.form = this.queryParas.info
 				this.validateId(this.form.id)
 			},
 			editWorker() {
@@ -235,7 +239,7 @@
 				this.axios.post(this.serverUrl, {
 					action: 'del',
 					stationID: this.stationID,
-                    id: this.queryParas.id
+                    id: this.queryParas.info.id
 				}).then((res) => {
                    alert('删除成功')
                    this.cancel()
