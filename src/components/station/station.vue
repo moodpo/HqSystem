@@ -77,6 +77,10 @@
 	color: #A5A5A5;
 }
 
+.edit {
+	color: #0097FB;
+}
+
 </style>
 <template lang="html">
     <div>
@@ -84,7 +88,7 @@
  			<div class="top-bar">
  				<div class="container settings">
  					<div class="capital">
- 						<span>{{stationName}}</span>/分诊台详情
+ 						<span>分诊台</span>/{{stationName}}
  					</div>
 	                <div v-if="showInfoNumber == 0" class="btn-bar">
 	 	               	<div class="item btn btn-success" @click="add('addWorker', stationName)">添加医生</div>
@@ -99,14 +103,16 @@
  						<!-- <div class="item btn btn-success" @click="addStation">提交</div>
  				     	<div class="item btn btn-warning" @click="cancel">取消</div> -->
  				</div>
- 				<middleLine height='13.4'></middleLine>
  			</div>
+ 			<middleLine height='13.4' class="middleline-topbar"></middleLine>
             <div class="station-content  container info no-left-padding">
 	               <div class="nav-bar">
+
 	               	     <div class="station-name ">{{stationName}}</div>
 	               	     <div class="tab-title  text-center custom-cursor-pointer" @click="showInfo(0)" :class="{'isChoose':showInfoNumber == 0}">医生信息</div>
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(1)" :class="{'isChoose':showInfoNumber == 1}">队列</div>
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(2)" :class="{'isChoose':showInfoNumber == 2}">叫号器</div>
+
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="edit('editStation', {'stationID':stationID}, stationName )">配置分诊台</div>
 	               </div>
 	               <div class="nav-info">
@@ -128,9 +134,11 @@
 	               	   	   	            <td>{{worker.id}}</td>
 	               	   	   	            <td>{{worker.name}}</td>
 	               	   	   	        	<td>{{worker.title}}</td>
+
 	               	   	   	        	<td>{{worker.department}}</td>
 	               	   	   	        	<td>暂时空白{{worker.headPic}}</td>
 	               	   	   	        	<td @click="edit('editWorker', worker, stationName)">编辑</td>
+
 	               	   	   	        </tr>	
 	               	   	   	    </tbody>
 	               	   	   </table>
