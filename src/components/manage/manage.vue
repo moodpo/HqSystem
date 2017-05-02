@@ -2,18 +2,18 @@
 	<div class="manage">
 		<div class="header-box">
 			<div class="container manage-header">
-	            <ul class="row clearfix">
+	            <ul class="clearfix">
 		            <li @click="goToState('stationList')" id="fenzhentai" class="manage-tab  custom-cursor-pointer">
-			            <input id="tag1" type="radio" name="tags"/><label for="tag1"><i class="iconfont icon-fenzhentai"></i><h2>分诊台</h2></label>
+			            <div class="label"><i class="iconfont icon-fenzhentai"></i><h2>分诊台</h2></div>
 					</li>
 					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
-						<input id="tag2" type="radio" name="tags"/><label for="tag2"><i class="iconfont icon-shujufenxi"></i><h2>数据分析</h2></label>
+						<div class="label"><i class="iconfont icon-shujufenxi"></i><h2>数据分析</h2></div>
 					</li>
 					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
-						<input id="tag3" type="radio" name="tags"/><label for="tag3"><i class="iconfont icon-paibanguanli"></i><h2>排班管理</h2></label>
+						<div class="label"><i class="iconfont icon-paibanguanli"></i><h2>排班管理</h2></div>
 					</li>
 					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
-						<input id="tag4" type="radio" name="tags"/><label for="tag4"><i class="iconfont icon-weixinguanli"></i><h2>微信管理</h2></label>
+						<div class="label"><i class="iconfont icon-weixinguanli"></i><h2>微信管理</h2></div>
 					</li> 
 	            </ul>
 	            <div class="logout pull-right cursor-pointer" @click="logout">退出</div>
@@ -71,6 +71,10 @@ h2
 	height: 80px
 	display: flex
 	align-items: center
+	justify-content: space-between
+
+.container:after, .container:before
+	content: none
 	
 .clearfix
 	display: flex
@@ -84,19 +88,19 @@ h2
 	margin-right: 15px
 	
 .manage-tab
-	float: left
+	// float: left
 	color:#fff
 	padding: 0
 	margin-right: 1em
-	input
-		display: none
-	label
+	// input
+	// 	display: none
+	.label
 		opacity: 0.5
 		display: flex
 		align-items: center
 		font-weight: normal
 		
-	label:hover
+	.label:hover
 		opacity: 1
 		font-weight: medium
 		i
@@ -112,9 +116,12 @@ h2
 @media (min-width: 1078px)	
 	.manage-tab:first-child
 		margin-right: 1.2em
+		
+.logout
+	float: right
 	
-input[type=radio]:checked + label {
-    opacity: 1
-}
+// input[type=radio]:checked + label {
+//     opacity: 1
+// }
 	
 </style>
