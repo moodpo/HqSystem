@@ -47,6 +47,7 @@
          		    </div>
          		    <middleLine height='6.6'></middleLine>
          		    <h3>所属医生</h3>
+         		    form.workerListCheckbox----{{form.workerListCheckbox}}
          		    <div class="form-group form-flex-container footer-space">
          		        <div class="form-group form-item flex-container">
 		         		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
@@ -134,7 +135,7 @@
 				} else {
 					if (this.form.workerListCheckboxAll) {
 						this.form.workerListCheckbox = this.form.workerList.map(function(ele, index, array) {
-                             return ele.user
+                             return ele.id
 						})
 					}
 					this.form.user = this.form.name;
