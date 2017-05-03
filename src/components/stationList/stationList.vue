@@ -1,5 +1,5 @@
 <template lang="html">
-	<div class="">
+	<div class="stationlist-box">
 	       <middleLine height='8' class="middleline-topbar"></middleLine>
 		   	<div class="card-container">
    				<div v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
