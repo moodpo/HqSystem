@@ -99,7 +99,7 @@ const routes = [
                 component: addStation,
                 meta: {
                     requireAuth: true,
-                    keepAlive: true
+                    keepAlive: false
                 }
             },
             {
