@@ -10,7 +10,6 @@
 	     			<div class="item btn btn-warning" @click="cancel">取消</div>
 				</div>
 			</div>
-			
 		</div>
 		<middleLine height='8' class="middleline-topbar"></middleLine>
 	     <div class="container info">
