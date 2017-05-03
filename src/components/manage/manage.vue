@@ -43,7 +43,6 @@
 		},
 		methods: {
 			_init() {
-				console.log('_init')
                 this.goToState('stationList', 0)
 			},
 			goToState(state, num) {
