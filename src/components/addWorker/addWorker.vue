@@ -23,11 +23,11 @@
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="addWorker" >
 
-	     			<div class="form-flex-container">
+	     			<div class="">
 	     				<validate  class="form-item form-group flex-container">
 		     		      <label  class="control-label">编号</label>
 		     		      <div class="input-bar">
-		     		      	<input v-model="form.id" required name="id" class="form-control" :class="[fieldClassName(formstate.id)]" v-on:blur="verifyID"/>
+		     		      	<input v-model="form.id" required name="id" class="form-control" :class="[fieldClassName(formstate.id)]" @change="verifyID"/>
 		     		      </div>
 		     		    </validate>
 		     		    <validate  class="form-item form-group flex-container">
@@ -157,6 +157,10 @@
 					alert('编号只能是数字和字母')
 					return;
 				}
+				if (!this.form.verifyIDFlag) {
+					alert('编号已被占用')
+					return;
+				}
 				if (this.formstate.$invalid) {
 					console.log('invalid')
 					return;
@@ -208,6 +212,8 @@
 				request.send(formData);
 			},
 			verifyID() {
+				console.log('change')
+				console.log(this.form.id.length)
 				if (this.form.id.length === 0) return
 				let reg = /^[A-Za-z0-9]+$/g
 				if (!reg.test(this.form.id)) {
@@ -225,9 +231,8 @@
 					stationID: this.stationID,
 					id: this.form.id
 				}).then((res) => {
-					console.log(res)
 					if (res.conflict === 0) {
-                        this.form.verifyIDFlag = false;
+                        this.form.verifyIDFlag = true;
 					} else if (res.conflict === 1) {
 						this.form.verifyIDFlag = false;
 	                    this.modal.modalShow = true;

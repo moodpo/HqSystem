@@ -16,7 +16,7 @@
 	    <div class="container info">
 	     	<div class="baseinfo">
 	     		<h3>基础信息</h3>
-	     		<vue-form :state="formstate.form3"  class="form-horizontal" @submit.prevent="testDB">
+	     		<vue-form :state="formstate.form3"  class="form-horizontal">
 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">分诊台名称</label>
 	     		      <div class="input-bar">
@@ -33,7 +33,7 @@
 	     	</div>
 	     	<middleLine height='6.6'></middleLine>
 	     	<div class="">
-	     		<h3>数据库信息</h3>
+	     		<h3>数据库信息1</h3>
 	     		<vue-form :state="formstate.form1"   @submit.prevent="testDB" class="form-horizontal form-flex-container">
 	     		    <validate  class="form-item form-group flex-container">
 	     		      	<label  class="control-label">数据库类型</label>
@@ -83,8 +83,8 @@
 	     		      		<input v-model="form.tableName" required name="table"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>
 	     		    </validate>
-	     		    <button type="submit" class="center-block test-btn">连接测试</button>
-	     		  </vue-form>
+	     		    <button type="submit" class="center-block test-btn">连接测试1</button>
+	     		</vue-form>
 	     	</div>
 	     	<middleLine height='6.6'></middleLine>
 	     	<!-- <div class="">
@@ -447,6 +447,7 @@
 			},
 			// SQL 连接测试   测试工作站数据源配置
 			testSQL() {
+				console.log('testSQL')
 				if (!this.formstate.form1.linkTest) {
                    this.modal.modalContent = '请先测试数据库信息';
                    this.modal.modalShow = true;
@@ -515,6 +516,7 @@
 			},
 			// 编辑工作站
 			editStation() {
+				console.log('editStation')
 				if (!this.formstate.form1.linkTest) {
                    this.modal.modalContent = '请先测试数据库信息';
                    this.modal.modalShow = true;
@@ -525,8 +527,10 @@
 					this.modal.modalShow = true;
 					return;
 				} else {
+					console.log(this.stationID)
 					this.axios.post(this.serverUrl, {
-						action: 'add',
+						action: 'edit',
+						stationID: this.stationID,
 						name: this.form.name,
 						descText: this.form.descText,
 						DBType: this.form.DBType,
@@ -572,7 +576,6 @@
 						console.log('failed')
 					})
 				}
-                console.log('testSQL')
 			},
 			// 删除
 			del() {
