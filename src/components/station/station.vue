@@ -141,7 +141,8 @@
 
 	               	   	   	        	<td>{{worker.department}}</td>
 	               	   	   	        	<td>暂时空白{{worker.headPic}}</td>
-	               	   	   	        	<td @click="edit('editWorker', worker, stationName)">编辑</td>
+	               	   	   	        	<td class="custom-cursor-pointer edit" 
+	               	   	   	        	@click="edit('editWorker', worker, stationName)">编辑</td>
 
 	               	   	   	        </tr>	
 	               	   	   	    </tbody>
