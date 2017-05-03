@@ -3,7 +3,7 @@
 		<div class="top-bar">
 			<div class="container settings">
 				<div class="capital">
-					<span>{{stationName}}</span>/批量添加医生
+					<span>分诊台</span>/{{stationName}}/批量添加医生
 				</div>
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="batchAddWorker">导入</div>

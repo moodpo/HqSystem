@@ -9,8 +9,8 @@
     float: left;
     background: #109EFC;
     color:#fff;
-    heigth:100%;
-    min-height:980px;
+    /* heigth:100vh; */
+    /* min-height:980px; */
     text-align: center;
  }
  .station-content .nav-bar .station-name {
@@ -81,6 +81,12 @@
 	color: #0097FB;
 }
 
+.config {
+	position: fixed !important;
+    bottom: 60px;
+    width: 200px;
+}
+
 </style>
 <template lang="html">
     <div>
@@ -106,14 +112,12 @@
  			</div>
  			<middleLine height='13.4' class="middleline-topbar"></middleLine>
             <div class="station-content  container info no-left-padding">
-	               <div class="nav-bar">
-
-	               	     <div class="station-name ">{{stationName}}</div>
+	               <div class="nav-bar" style="height: calc(100vh - 186.7px)">
 	               	     <div class="tab-title  text-center custom-cursor-pointer" @click="showInfo(0)" :class="{'isChoose':showInfoNumber == 0}">医生信息</div>
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(1)" :class="{'isChoose':showInfoNumber == 1}">队列</div>
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(2)" :class="{'isChoose':showInfoNumber == 2}">叫号器</div>
 
-	               	     <div class="tab-title text-center custom-cursor-pointer" @click="edit('editStation', {'stationID':stationID}, stationName )">配置分诊台</div>
+	               	     <div class="tab-title text-center custom-cursor-pointer config" @click="edit('editStation', {'stationID':stationID}, stationName )">配置分诊台</div>
 	               </div>
 	               <div class="nav-info">
 	               	   <div class="workList nav-info-content" v-if="showInfoNumber == 0">
@@ -137,7 +141,8 @@
 
 	               	   	   	        	<td>{{worker.department}}</td>
 	               	   	   	        	<td>暂时空白{{worker.headPic}}</td>
-	               	   	   	        	<td @click="edit('editWorker', worker, stationName)">编辑</td>
+	               	   	   	        	<td class="custom-cursor-pointer edit" 
+	               	   	   	        	@click="edit('editWorker', worker, stationName)">编辑</td>
 
 	               	   	   	        </tr>	
 	               	   	   	    </tbody>
@@ -157,7 +162,7 @@
 		               	   	        	<td>{{queue.name}}</td>
 		               	   	        	<td>{{queue.scene}}</td>
 		               	   	        	<td>{{queue.id}}</td>
-		               	   	        	<td @click="edit('editQueue', queue, stationName)">编辑</td>
+		               	   	        	<td class="custom-cursor-pointer edit" @click="edit('editQueue', queue, stationName)">编辑</td>
 		               	   	        </tr>	
 		               	   	    	
 		               	   	    </tbody>
@@ -177,11 +182,11 @@
 		               	   	         <div class="noData" v-if="callerList.length == 0">没有叫号器</div>
 		               	   	        <tr v-for="caller in callerList">
 		               	   	        	<td>{{caller.name}}</td>
-		               	   	        	<td>{{caller.type}}</td>
+		               	   	        	<td>{{caller.type | getCallerType}}</td>
 		               	   	        	<td>{{caller.ip}}</td>
 		               	   	        	<td>{{caller.pos}}</td>
 		               	   	        	<td>{{caller.priorQueue}}</td>
-		               	   	        	<td @click="edit('editCaller', caller, stationName)">编辑</td>
+		               	   	        	<td class="custom-cursor-pointer edit" @click="edit('editCaller', caller, stationName)">编辑</td>
 		               	   	        </tr>	
 		               	   	    </tbody>
 		               	   </table>
@@ -194,6 +199,7 @@
 </template>
 <script >
     import middleLine from '../../common/middleLine/middleLine'
+    import getCallerType from '../../filter/filter'
 	export default {
 		name: 'station',
 		data() {

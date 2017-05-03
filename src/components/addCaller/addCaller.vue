@@ -19,24 +19,23 @@
 			<div class="top-bar">
 				<div class="container settings">
 					<div class="capital">
-						<span>{{stationName}}</span>/新建叫号器
+						<span>分诊台</span>/{{stationName}}/新建叫号器
 					</div>
 					<div class="btn-bar">
-						<div class="item btn btn-success" @click="addCaller">提交</div>
+						<div class="item btn btn-success" @click="invokeAddCaller">提交</div>
 				     	<div class="item btn btn-warning" @click="cancel">取消</div>
 					</div>
 				</div>
-				
 			</div>
 			<middleLine height='13.4' class="middleline-topbar"></middleLine>
 	     	<div class="container info">
 		     	<div class="row baseinfo">
 		     		<h3>基础信息</h3>
-		     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
+		     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="addCaller">
 		     		    <validate  class="form-group flex-container">
 		     		      <label  class="control-label">名称</label>
 		     		      <div class="input-bar">
-		     		      	<input v-model="form.name" required name="name" class="form-control"/>
+		     		      	<input v-model="form.name" required name="name" class="form-control" :class="[fieldClassName(formstate.name)]"/>
 		     		      </div>
 		     		    </validate>
 		     		    <validate  class="form-group flex-container">
@@ -50,7 +49,7 @@
 		     		    <validate  class="form-group flex-container">
 		     		      <label  class="control-label">IP</label>
 		     		      <div class="input-bar">
-		     		      	<input v-model="form.ip" required name="ip" class="form-control"/>
+		     		      	<input v-model="form.ip" required name="ip" class="form-control" :class="[fieldClassName(formstate.ip)]"/>
 		     		      </div>
 		     		    </validate>
 		     		    <validate  class="form-group flex-container">
@@ -60,12 +59,6 @@
 		     		      </div>
 		     		    </validate>
 	         		    <h3>可登录医生</h3>
-             		    <!-- <div class="form-group form-flex-container">
-    	         		    <div class="form-group form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
-    		         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.sceneSupportRadio"  :value="sceneSupport" >
-    	         		        <div class="input-bar">{{sceneSupport}}</div>
-    	         		    </div>
-             		    </div> -->
 	         		    <div class="form-group form-flex-container">
 	         		        <div class="form-group form-item flex-container" v-for="worker in form.workerList">
     		         		    	<input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
@@ -79,6 +72,7 @@
 		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
 	         		        </div>
 	         		    </div>
+	         		    <button type="submit" style="display:none" id="btn1">提交</button>
 		     		  </vue-form>
 		     	</div>
 		     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
@@ -92,6 +86,7 @@
     import Vue from 'vue'
     import middleLine from '../../common/middleLine/middleLine'
     import VueForm from 'vue-form'
+    import utils from 'common/utils/utils'
     import modal from '../../common/modal/modal'
     Vue.use(VueForm)
 	export default {
@@ -109,7 +104,8 @@
 					pos: '',
 					workerListCheckbox: [],
 					queueList: '',
-					priorQueue: ''
+					priorQueue: '',
+					type: 'soft'
 				},
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
@@ -156,10 +152,14 @@
 			cancel() {
 				this.$router.go(-1)
 			},
+			invokeAddCaller() {
+                document.getElementById('btn1').click()
+			},
 			addCaller() {
 				if (this.formstate.$invalid) {
-					this.modal.modalShow = true;
-					this.modal.modalContent = '请填写完整数据';
+					return;
+					// this.modal.modalShow = true;
+					// this.modal.modalContent = '请填写完整数据';
 				} else {
 					this.axios.post(this.callerUrl, {
 						action: 'add',
@@ -206,6 +206,9 @@
 				}, (res) => {
 					console.log('failed ')
 				})
+			},
+			fieldClassName(field) {
+               return utils.fieldClassName(field)
 			}
 		}
 	}

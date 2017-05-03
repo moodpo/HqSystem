@@ -10,7 +10,7 @@
 					<span>{{stationName}}</span>/编辑医生
 				</div>
 				<div class="btn-bar">
-					<div class="item btn btn-success" @click="editWorker">提交</div>
+					<div class="item btn btn-success" @click="invokeEditWorker">提交</div>
 			     	<div class="item btn btn-warning" @click="cancel">取消</div>
 			     	<div class="item btn btn-danger" @click="del">删除</div>
 				</div>
@@ -25,35 +25,35 @@
 	     <div class="container info">
 	     	<div class="row baseinfo">
      			<h3>基础信息</h3>
-	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
+	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="editWorker">
 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">编号</label>
 	     		      <div class="input-bar">
-	     		      	<input v-model="form.id" required name="id" class="form-control" @blur="verifyID"/>
+	     		      	<input v-model="form.id" required name="id" class="form-control" @blur="verifyID" :class="[fieldClassName(formstate.id)]"/>
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">姓名</label>
 	     		      <div class="input-bar">
-	     		      	<input v-model="form.name" required name="name" class="form-control"/>
+	     		      	<input v-model="form.name" required name="name" class="form-control" :class="[fieldClassName(formstate.name)]"/>
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">职称</label>
 	     		      <div class="input-bar">
-	     		      	<input v-model="form.title" required name="title" class="form-control"/>
+	     		      	<input v-model="form.title" required name="title" class="form-control" :class="[fieldClassName(formstate.title)]"/>
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">科室</label>
 	     		      <div class="input-bar">
-	     		      	<input v-model="form.department" required name="department" class="form-control"/>
+	     		      	<input v-model="form.department" required name="department" class="form-control" :class="[fieldClassName(formstate.department)]"/>
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">简介</label>
 	     		      <div class="input-bar">
-	     		      	<textarea v-model="form.descText" required name="descText" class="form-control"></textarea>
+	     		      	<textarea v-model="form.descText"  name="descText" class="form-control"></textarea>
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-group flex-container">
@@ -68,15 +68,16 @@
 	     		    	<label  class="control-label">账号</label>
 	     		    	<div class="input-bar">
 	     		    	&nbsp;&nbsp;
-		     		    	<input  type="radio" checked  required name="user" class="not-allowed" />&nbsp;&nbsp;（和基础信息编号一样）
+		     		    	<input  type="radio" checked   name="user" class="not-allowed" />&nbsp;&nbsp;（和基础信息编号一样）
 	     		    	</div>
 	     		    </div>
 	     		    <div class="form-group flex-container">
 	     		    	<label  class="control-label">密码</label>
 	     		    	<div class="input-bar">
-	     		    		<input v-model="form.password"   required name="user" class="form-control" />
+	     		    		<input v-model="form.password"   required name="password" class="form-control" :class="[fieldClassName(formstate.password)]"/>
 	     		    	</div>
 	     		    </div>
+	     		    <button type="submit" style="display:none" id="btn1">提交</button>
 	     		  </vue-form>
 	     	</div>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
@@ -89,6 +90,7 @@
     import Vue from 'vue'
     import middleLine from '../../common/middleLine/middleLine'
     import VueForm from 'vue-form'
+    import utils from 'common/utils/utils.js'
     import modal from '../../common/modal/modal'
     Vue.use(VueForm)
 	export default {
@@ -142,14 +144,15 @@
 				this.form = this.queryParas.info
 				this.validateId(this.form.id)
 			},
+			invokeEditWorker() {
+                document.getElementById('btn1').click()
+			},
 			editWorker() {
 				if (!this.formIdValid) {
 					alert('编号只能是数字和字母')
 					return
 				}
 				if (this.formstate.$invalid) {
-					this.modal.modalShow = true;
-					this.modal.modalContent = '请填写完整数据';
 					return;
 				} else {
 					this.form.user = this.form.name;
@@ -256,6 +259,9 @@
 			},
 			cancel() {
 				this.$router.go(-1)
+			},
+			fieldClassName(field) {
+               return utils.fieldClassName(field)
 			}
 		}
 	}

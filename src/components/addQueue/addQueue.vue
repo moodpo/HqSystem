@@ -3,10 +3,10 @@
 		<div class="top-bar">
 			<div class="container settings">
 				<div class="capital">
-					<span>{{stationName}}</span>/新建列队
+					<span>分诊台</span>/{{stationName}}/新建列队
 				</div>
 				<div class="btn-bar">
-					<div class="item btn btn-success" @click="addQueue">保存</div>
+					<div class="item btn btn-success" @click="invokeAddQueue">保存</div>
 	     			<div class="item btn btn-warning" @click="cancel">取消</div>
 				</div>
 			</div>
@@ -15,17 +15,17 @@
 		<div class="container info">
 	     	<div class="baseinfo">
 	     		<h3>基础信息</h3>
-	     		<vue-form :state="formstate"  class="form-horizontal">
+	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="addQueue">
 	     			<validate class="form-group flex-container">
 	     		      	<label class="control-label">队列名字</label>
 	     		      	<div class="input-bar">
-	     		      		<input v-model="form.name" required name="name" class="form-control"/>
+	     		      		<input v-model="form.name" required name="name" class="form-control" :class="[fieldClassName(formstate.name)]"/>
 	     		      	</div>
 	     		    </validate>
 	     		    <validate  class="form-group flex-container">
 	     		      	<label  class="control-label">队列描述</label>
 	     		      	<div class="input-bar">
-	     		      		<input v-model="form.descText" required name="descText" class="form-control"/>
+	     		      		<input v-model="form.descText" required name="descText" class="form-control" :class="[fieldClassName(formstate.user)]"/>
 	     		      	</div>
 	     		    </validate>
 	     		    <div class="form-group flex-container">
@@ -57,6 +57,7 @@
 	         		        &nbsp;<div  class="input-bar">{{worker.name}}</div>
 	         		    </div>
          		    </div>
+         		    <button type="submit" style="display:none" id="btn1">提交</button>
 	     		</vue-form>
 	     	</div>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false" >
@@ -69,6 +70,7 @@
     import Vue from 'vue'
     import middleLine from '../../common/middleLine/middleLine'
     import VueForm from 'vue-form'
+    import utils from 'common/utils/utils.js'
     import modal from '../../common/modal/modal'
     Vue.use(VueForm)
 	export default {
@@ -119,7 +121,6 @@
 			this._init()
 		},
 		mounted() {
-			console.log(this.$route.name)
 		},
 		methods: {
 			_init() {
@@ -127,15 +128,23 @@
 				this.getSceneSupportList()
 				this.getSourceQueueList()
 			},
+			invokeAddQueue() {
+                document.getElementById('btn1').click()
+			},
 			addQueue() {
 				if (this.formstate.$invalid) {
-					this.modal.modalShow = true;
-					this.modal.modalContent = '请填写完整数据';
+					return;
+					// this.modal.modalShow = true;
+					// this.modal.modalContent = '请填写完整数据';
 				} else {
 					if (this.form.workerListCheckboxAll) {
 						this.form.workerListCheckbox = this.form.workerList.map(function(ele, index, array) {
-                             return ele.user
+                             return ele.id
 						})
+					}
+					if (this.form.workerListCheckbox.length === 0) {
+						alert('至少选择一名医生')
+						return;
 					}
 					this.form.user = this.form.name;
 					this.axios.post(this.queueInfoUrl, {
@@ -194,6 +203,9 @@
 				// todo
 				// 切换回去 有缓存
 				this.$router.go(-1)
+			},
+			fieldClassName(field) {
+               return utils.fieldClassName(field)
 			}
 		}
 	}
