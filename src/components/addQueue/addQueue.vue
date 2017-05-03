@@ -13,10 +13,13 @@
 		</div>
 		<middleLine height='8' class="middleline-topbar"></middleLine>
 		<div class="container info">
-	     	<div class="baseinfo">
-	     		<h3>基础信息</h3>
-	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="addQueue">
-	     			<validate class="form-group flex-container">
+			
+	     	
+	     		
+     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="addQueue">
+     			<h3>基础信息</h3>
+     			<div class="form-flex-container">
+     				<validate class="form-group flex-container">
 	     		      	<label class="control-label">队列名字</label>
 	     		      	<div class="input-bar">
 	     		      		<input v-model="form.name" required name="name" class="form-control" :class="[fieldClassName(formstate.name)]"/>
@@ -37,29 +40,30 @@
 	     		      		</select>
 	     		      	</div>
 	     		    </div>
-	     		    <middleLine height='6.6'></middleLine>
-         		    <h3>策略配置</h3>
-         		    <div class="form-group form-flex-container">
-	         		    <div class="form-group form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
-		         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.sceneSupportRadio"  :value="sceneSupport.name" >
-	         		        <div class="input-bar">&nbsp;{{sceneSupport.name}}</div>
-	         		    </div>
+     			</div>
+     		    <middleLine height='6.6'></middleLine>
+     		    <h3>策略配置</h3>
+     		    <div class="form-flex-container">
+         		    <div class="form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
+	         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.sceneSupportRadio"  :value="sceneSupport.name" >
+         		        <div class="input-bar">&nbsp;{{sceneSupport.name}}</div>
          		    </div>
-         		    <middleLine height='6.6'></middleLine>
-         		    <h3>所属医生</h3>
-         		    <div class="form-group form-flex-container footer-space">
-         		        <div class="form-group form-item flex-container">
-		         		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
-	         		        &nbsp;<div  class="input-bar">全部</div>
-         		        </div><br>
-	         		    <div class="form-group form-item flex-container" v-for="worker in form.workerList">
-		         		    <input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
-	         		        &nbsp;<div  class="input-bar">{{worker.name}}</div>
-	         		    </div>
+     		    </div>
+     		    <middleLine height='6.6'></middleLine>
+     		    <h3>所属医生</h3>
+     		    <div class="form-flex-container footer-space">
+     		        <div class="form-group form-item flex-container">
+	         		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
+         		        &nbsp;<div  class="input-bar">全部</div>
+     		        </div><br>
+         		    <div class="form-group form-item flex-container" v-for="worker in form.workerList">
+	         		    <input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
+         		        &nbsp;<div  class="input-bar">{{worker.name}}</div>
          		    </div>
-         		    <button type="submit" style="display:none" id="btn1">提交</button>
-	     		</vue-form>
-	     	</div>
+     		    </div>
+     		    <button type="submit" style="display:none" id="btn1">提交</button>
+     		</vue-form>
+	     	
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false" >
 	     		<p slot='body'>{{modal.modalContent}}</p>
 	     	</modal>
@@ -216,11 +220,11 @@
 // 	padding-bottom: 24px
 // 	border-bottom: 1px solid #f1f1f1
 
-h3
-	font-size: 14px
-	line-height: 60px
-	border-bottom: 1px solid #f1f1f1
-	margin-bottom: 15px
+// h3
+// 	font-size: 14px
+// 	line-height: 60px
+// 	border-bottom: 1px solid #f1f1f1
+// 	margin-bottom: 15px
 
 // 去掉button等默认点击效果
 a, button, input, select, select:active, select:visited
@@ -240,6 +244,9 @@ a, button, input, select, select:active, select:visited
 
 .footer-space
 	margin-bottom: 40.6px
+	
+.form-flex-container
+	margin-bottom: 1em
 
 	
 </style>

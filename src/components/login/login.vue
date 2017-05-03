@@ -170,11 +170,12 @@ button
 	top: 0px
 	right: 18.6px
 	color: #C8C8C8
+	
 .icon-yonghu
-	font-size: 40px
+	font-size: 30px
 
 .icon-lock
-	font-size: 36px
+	font-size: 28px
 		
 	
 

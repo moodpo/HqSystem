@@ -24,7 +24,6 @@
 			<middleLine height='8' class="middleline-topbar"></middleLine>
 	     	<div class="container info">
 		     	<div class="row baseinfo">
-		     	    <h2>编辑叫号器</h2>
 		     		<h3>基础信息</h3>
 		     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="editCaller">
 		     		    <validate  class="form-group flex-container">
@@ -60,7 +59,7 @@
     	         		        <div  class="col-sm-3 ">{{worker.name}}</div>
 	         		        </div>
 	         		    </div>
-	         		    <h4>优先队列</h4>
+	         		    <h3>优先队列</h3>
              		    <div class="orm-group form-flex-container">
 	         		        <div  v-for="queue in form.queueList" class="form-group form-item flex-container">
 		    	         		    	<input class="control-label input-btn" type="radio"  v-model="form.priorQueue"  :value="queue.id" >

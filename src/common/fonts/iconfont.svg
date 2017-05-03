@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Tue May  2 09:08:41 2017
+Created by FontForge 20120731 at Wed May  3 16:03:14 2017
  By admin
 </metadata>
 <defs>
@@ -19,7 +19,7 @@ Created by FontForge 20120731 at Tue May  2 09:08:41 2017
     bbox="0 -128 1203 896"
     underline-thickness="0"
     underline-position="0"
-    unicode-range="U+0078-E62B"
+    unicode-range="U+0078-E62D"
   />
 <missing-glyph 
  />
@@ -77,5 +77,11 @@ t27 65v392zM865 459zM791 459h-56v56q0 93 -66.5 158t-156.5 65q-91 0 -157.5 -66t-6
     <glyph glyph-name="fenzhentai2" unicode="&#xe62b;" horiz-adv-x="1203" 
 d="M1169 74h-484v-134h117q7 0 12 -5t5 -12v-33q0 -7 -5 -12t-12 -5h-434q-7 0 -12 5t-5 12v33q0 7 5 12t12 5h117v134h-451q-14 0 -24 10t-10 24v754q0 14 10 24t24 10h1135q14 0 24 -10t10 -24v-754q0 -14 -10 -24t-24 -10v0zM1153 829q0 7 -5 11.5t-12 5.5h-1069
 q-7 -1 -11.5 -5.5t-4.5 -11.5v-688q0 -6 5 -11t11 -5h1069q7 0 12 4.5t5 11.5v688v0zM1102 158h-1002q-6 0 -11 5t-5 12v620q0 7 5 12t11 5h1002q7 0 12 -5t5 -12v-620q0 -8 -4.5 -12.5t-12.5 -4.5v0z" />
+    <glyph glyph-name="tuichu" unicode="&#xe62c;" 
+d="M942 334h-1l-2 2v60h-286v44h286v61l85 -80v-1zM790 698h-352l135 -66q13 -7 23 -21t10 -28l2 -394q2 1 4 1h178v139h43v-160q0 -9 -6.5 -15t-14.5 -6v0h-200q-2 0 -4 1v-115q0 -4 -3 -5.5t-7 0.5l-238 131q-11 6 -18.5 18t-7.5 23l1 512q-1 3 -1 6t1 7q2 12 13 13
+q3 1 7 1v0h456v0q9 0 15 -6t6 -15v-4v-4v-202h-42v189z" />
+    <glyph glyph-name="yonghuguanli1" unicode="&#xe62d;" 
+d="M540 352q80 0 134.5 55.5t54.5 138t-54.5 138.5t-134.5 56t-134 -56t-54 -138.5t54 -138t134 -55.5zM854 358q28 28 42.5 68.5t14.5 80.5q0 92 -65 159.5t-155 67.5h-6q32 -25 63 -78q43 -15 71.5 -56t28.5 -93q0 -75 -63 -129l-44 -33l44 -26q75 -38 121 -115.5
+t55 -175.5h63q-5 100 -51 187.5t-119 142.5zM546 352q-111 0 -196.5 -93.5t-104.5 -230.5h603q-19 137 -104.5 230.5t-197.5 93.5v0z" />
   </font>
 </defs></svg>

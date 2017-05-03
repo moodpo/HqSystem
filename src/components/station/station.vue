@@ -47,11 +47,9 @@
  }
  
  .nav-info-content {
- 	 padding:37px 35px;
+ 	 padding: 16px;
  }
- .nav-info-content {
-
- }
+ 
  .clearfix {
  /*	display: block
  	margin-left: */
@@ -152,12 +150,14 @@
 	               	   </div>
 	               	   <div class="callerList nav-info-content" v-if="showInfoNumber == 1">
 		               	   <table class="table">
-		               	        <tr>
-		               	        	<th>队列名字</th>
-		               	        	<th>策略配置</th>
-		               	        	<th>ID</th>
-		               	        	<th>操作</th>
-		               	        </tr>
+		               	       	<thead>
+			               	       	<tr>
+			               	        	<th>队列名字</th>
+			               	        	<th>策略配置</th>
+			               	        	<th>ID</th>
+			               	        	<th>操作</th>
+			               	        </tr>
+		               	       	</thead>
 		               	   	    <tbody>
 		               	   	        <div class="noData" v-if="queueList.length == 0">没有队列</div>
 		               	   	        <tr v-for="queue in queueList">
@@ -172,14 +172,16 @@
 	               	   </div>
 	               	   <div class="queueList nav-info-content" v-if="showInfoNumber == 2">
 		               	   <table class="table">
-		               	        <tr>
-		               	        	<th>名称</th>
-		               	        	<th>类型</th>
-		               	        	<th>IP</th>
-		               	        	<th>位置</th>
-		               	        	<th>优先队列</th>
-		               	        	<th>操作</th>
-		               	        </tr>
+		               	   		<thead>
+		               	   			<tr>
+			               	        	<th>名称</th>
+			               	        	<th>类型</th>
+			               	        	<th>IP</th>
+			               	        	<th>位置</th>
+			               	        	<th>优先队列</th>
+			               	        	<th>操作</th>
+		               	        	</tr>
+		               	   		</thead>
 		               	   	    <tbody>
 		               	   	         <div class="noData" v-if="callerList.length == 0">没有叫号器</div>
 		               	   	        <tr v-for="caller in callerList">
