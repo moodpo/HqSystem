@@ -314,7 +314,6 @@
                     			<textarea  :class="{'form-control':formControlObj.formControl}" v-model="form.sqlLang"></textarea>
                     		</div>
                     	</div>
-
                     </div>
 	     		    <button type="submit" class="center-block test-btn">连接测试</button>
 	     		  </vue-form>

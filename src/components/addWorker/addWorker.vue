@@ -22,12 +22,10 @@
 	     <div class="container info">
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="addWorker" >
-
-	     			
      				<validate  class="form-item form-group flex-container">
 	     		      <label  class="control-label">编号</label>
 	     		      <div class="input-bar">
-	     		      	<input v-model="form.id" required name="id" class="form-control" :class="[fieldClassName(formstate.id)]" v-on:blur="verifyID"/>
+	     		      	<input v-model="form.id" required name="id" class="form-control" :class="[fieldClassName(formstate.id)]" @change="verifyID"/>
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
@@ -57,12 +55,9 @@
 	     		    <validate  class="form-item form-group flex-container height-auto">
 	     		      <label  class="control-label">头像</label>
 	     		      <div class="input-bar">
-
-	     		      <!-- todo 上传 功能 -->
-	     		      	<!-- <input type="url" id="" class="form-control" v-model="form.headPic"> -->
-     		      		<input type="file" id="uploadImg">
-     		      		<button @click.prevent.stop="upload">upload</button>
-     		      		</div>
+                         <upLoad @upLoadInfo="showPic($event)" :upLoadUrl="upLoadUrl"></upLoad>	     		      
+                         <img :src="form.headPic" alt="">
+                      </div>
 	     		    </validate>
 	     		    <h3>账号信息</h3>
 	     		    <div class="form-group flex-container">
@@ -92,6 +87,7 @@
     import VueForm from 'vue-form'
     import utils from 'common/utils/utils'
     import modal from '../../common/modal/modal'
+    import upLoad from '../../common/upLoad/upLoad'
     Vue.use(VueForm)
 	export default {
 		name: 'addWorker',
@@ -120,6 +116,9 @@
 			}
 		},
 		computed: {
+			upLoadUrl() {
+                return this.$store.state.upLoadUrl
+			},
 			stationID() {
 				return this.$route.query.stationID;
 			},
@@ -132,7 +131,8 @@
 		},
 		components: {
 			middleLine,
-			modal
+			modal,
+			upLoad
 		},
 		created() {
 			this._init()
@@ -189,29 +189,11 @@
 					})
 				}
 			},
-			// todo 上传做了一半
-			upload() {
-                console.log('upload')
-                let uploadImg = document.getElementById('uploadImg')
-                let formData = new FormData();
-                // 普通上传
-                formData.append('action', 'normal');
-				formData.append('file', uploadImg.files[0])
-				// formData.append('type', 'normal')
-				let request = new XMLHttpRequest();
-				request.open('POST', 'http://192.168.17.187/hqueue/manager/upload', true);
-				request.onreadystatechange = function(response) {
-					if (request.readyState === 4 && request.status === 200 && request.responseText !== '') {
-						console.log(request.responseText)
-						console.log('success')
-					} else {
-						console.log('failed')
-					}
-				};
-				request.send(formData);
+			showPic(para) {
+               let info = JSON.parse(para)
+               this.form.headPic = info.upload_path
 			},
 			verifyID() {
-				console.log('change')
 				console.log(this.form.id.length)
 				if (this.form.id.length === 0) return
 				let reg = /^[A-Za-z0-9]+$/g
@@ -235,7 +217,7 @@
 					} else if (res.conflict === 1) {
 						this.form.verifyIDFlag = false;
 	                    this.modal.modalShow = true;
-	                    this.modal.modalContent = '该账号已被占用';
+	                    this.modal.modalContent = '编号已被占用';
 					}
 				}, (res) => {
 				})
