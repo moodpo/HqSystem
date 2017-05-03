@@ -307,6 +307,14 @@
                     	  		<input v-model="form.renewPeriod" required name="renewPeriod"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
                     	  	</div>
                     	</validate>
+
+                    	<div class="fform-item form-group flex-container">
+                    		<label for="" class="control-label">生成SQL语句</label>
+                    		<div class="input-bar">
+                    			<textarea  :class="{'form-control':formControlObj.formControl}" v-model="form.sqlLang"></textarea>
+                    		</div>
+                    	</div>
+
                     </div>
 	     		    <button type="submit" class="center-block test-btn">连接测试</button>
 	     		  </vue-form>
@@ -489,6 +497,7 @@
 							this.modal.modalShow = true;
 							this.formstate.form2.linkTest = true;
 							this.formControlObj.form2BtnVal = this.formBtnVal[2]
+							this.form.sqlLang = res.testSql
 						}
 					}, (res) => {
 						console.log('failed')

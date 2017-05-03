@@ -16,7 +16,7 @@
 	    <div class="container info">
 	     	<div class="baseinfo">
 	     		<h3>基础信息</h3>
-	     		<vue-form :state="formstate.form3"  class="form-horizontal" @submit.prevent="testDB">
+	     		<vue-form :state="formstate.form3"  class="form-horizontal" @submit.prevent.stop="testDB">
 	     		    <validate  class="form-group flex-container">
 	     		    	<label class="control-label">分诊台名称</label>
 	     		    	<div class="input-bar">
@@ -34,7 +34,7 @@
 	     	<middleLine height='6.6'></middleLine>
 	     	<div class="datainfo">
 	     		<h3>数据库信息</h3>
-	     		<vue-form :state="formstate.form1"  class="form-horizontal form-flex-container" @submit.prevent="testDB">
+	     		<vue-form :state="formstate.form1"  class="form-horizontal form-flex-container" @submit.prevent.stop="testDB">
 	     		    <validate  class="form-item form-group flex-container">
 	     		      	<label  class="control-label">数据库地址</label>
 	     		      	<div class="input-bar">
@@ -199,9 +199,15 @@
                     	  		<input v-model="form.renewPeriod" required name="renewPeriod"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
                     	  	</div>
                     	</validate>
+                    	<div class="fform-item form-group flex-container">
+                    		<label for="" class="control-label">生成SQL语句</label>
+                    		<div class="input-bar">
+                    			<textarea  :class="{'form-control':formControlObj.formControl}" v-model="form.sqlLang"></textarea>
+                    		</div>
+                    	</div>
                     </div>
 	     		    <button type="submit" class="center-block test-btn">连接测试</button>
-	     		  </vue-form>
+	     		 </vue-form>
 	     	</div>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
 	     		<p slot='body'>{{modal.modalContent}}</p>
@@ -252,7 +258,8 @@
 					aliasDepartment: 'department',
 					aliasDescText: 'descText',
 					aliasStatus: 'status',
-					renewPeriod: '10s'
+					renewPeriod: '10',
+					sqlLang: ''
 				},
 				formControlObj: {
 					formControl: true,
@@ -363,7 +370,6 @@
 					    aliasStatus: this.form.aliasStatus,
 					    renewPeriod: this.form.renewPeriod
 					}).then((res) => {
-						console.log(res)
 						if (res.testResult === 'failed') {
 							// 标记工作站数据源连接不成功
 							this.formstate.form2.linkTest = false;
@@ -371,10 +377,9 @@
 							this.modal.modalShow = true;
 							this.formControlObj.form2BtnVal = this.formBtnVal[0]
 						} else {
-							this.formstate.form2.linkTest = true;
-							this.formControlObj.form2BtnVal = this.formBtnVal[2]
 							this.modal.modalContent = '连接成功';
 							this.modal.modalShow = true;
+							this.form.sqlLang = res.testSql
 						}
 					}, (res) => {
 						console.log('failed')
@@ -384,6 +389,7 @@
 			},
 			// 添加工作站
 			addStation() {
+				console.log('addStation')
 				if (!this.formstate.form1.linkTest) {
                    this.modal.modalContent = '请先测试数据库信息';
                    this.modal.modalShow = true;
