@@ -1,9 +1,9 @@
 <template lang="html">
 	<div class="">
 	       <div class="top-bar">
-		       	<button class="addstation"  @click="goToState('addStation')"><h3>新建分诊台</h3></button>
+		       	<button class="addstation"  @click="goToState('addStation')">新建分诊台</button>
 	       </div>
-	       <middleLine height='13.4' class="middleline-topbar"></middleLine>
+	       <middleLine height='8' class="middleline-topbar"></middleLine>
 		   	<div class="card-container">
    				<div v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
    					<div class="card">
@@ -192,8 +192,8 @@ a, button, input
 		color: #00C7FF
 
 .addstation
-	width: 4.73em
-	height: 1.3em
+	width: 8em
+	height: 2.5em
 	box-shadow: 0 5px 10px rgba(8,181,254, 0.2)
 	background: -webkit-gradient(45deg, #109EFC, #00C8FF) //chrome/Safari
 	background: -moz-linear-gradient(45deg, #109EFC, #00C8FF) //Firefox
@@ -201,14 +201,15 @@ a, button, input
 	background: linear-gradient(45deg, #109EFC, #00C8FF)
 	border-radius: 5px
 	color:#fff
-	font-size: 30px
-	border: none
+	font-size: 14px
+	padding: 0 auto
+	
 
 .top-bar
 	display: flex
 	align-items: center
 	justify-content: center
-	height: 93.3px
+	height: 64px
 	
 
 </style>

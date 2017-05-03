@@ -14,7 +14,7 @@
     text-align: center;
  }
  .station-content .nav-bar .station-name {
-    font-size: 24px;
+    font-size: 14px;
     color: #FFFFFF;
     border-bottom: 1px solid rgba(241,241,241,.5);
     padding:10px 0;
@@ -22,7 +22,7 @@
   .station-content .nav-bar>.tab-title {
   	height:50px;
   	line-height: 50px;
-  	font-size: 20px;
+  	font-size: 14px;
   	position:relative;
   }
   .station-content .nav-bar>.tab-title.isChoose {
@@ -61,15 +61,15 @@
  }
 
  .tab-title {
- 	font-size: 20px;
+ 	font-size: 14px;
  }
 
  .station-name {
- 	font-size: 24px;
+ 	font-size: 14px;
  }
 
 .table thead, .table td, .table th {
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: 300;
 }
 
@@ -98,7 +98,7 @@
  					</div>
 	                <div v-if="showInfoNumber == 0" class="btn-bar">
 	 	               	<div class="item btn btn-success" @click="add('addWorker', stationName)">添加医生</div>
-	 	               	<div class="item btn btn-warning" @click="add('batchAddWorker', stationName)">批量添加医生</div>
+	 	               	<div class="item btn btn-warning" @click="add('batchAddWorker', stationName)">导入医生</div>
 	                </div>
 	               <div v-if="showInfoNumber == 1" class="btn-bar">
 		               	<div class="item btn btn-success" @click="add('addQueue', stationName)">添加队列</div>
@@ -110,9 +110,11 @@
  				     	<div class="item btn btn-warning" @click="cancel">取消</div> -->
  				</div>
  			</div>
- 			<middleLine height='13.4' class="middleline-topbar"></middleLine>
+ 			<middleLine height='8' class="middleline-topbar"></middleLine>
             <div class="station-content  container info no-left-padding">
-	               <div class="nav-bar" style="height: calc(100vh - 186.7px)">
+
+	               <div class="nav-bar" style="height: calc(100vh - 136px)">
+
 	               	     <div class="tab-title  text-center custom-cursor-pointer" @click="showInfo(0)" :class="{'isChoose':showInfoNumber == 0}">医生信息</div>
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(1)" :class="{'isChoose':showInfoNumber == 1}">队列</div>
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(2)" :class="{'isChoose':showInfoNumber == 2}">叫号器</div>

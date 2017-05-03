@@ -18,7 +18,7 @@
 			
 		</div>
 
-		<middleLine height='13.4' class="middleline-topbar"></middleLine>
+		<middleLine height='8' class="middleline-topbar"></middleLine>
 
 		
 

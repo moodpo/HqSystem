@@ -14,7 +14,9 @@
     text-align: center;
  }
  .station-content .nav-bar .station-name {
-    font-size: 24px;
+
+    font-size: 14px;
+
     color: #FFFFFF;
     border-bottom: 1px solid rgba(241,241,241,.5);
     padding:10px 0;
@@ -22,7 +24,9 @@
   .station-content .nav-bar>.tab-title {
   	height:50px;
   	line-height: 50px;
-  	font-size: 20px;
+
+  	font-size: 14px;
+
   	position:relative;
   }
   .station-content .nav-bar>.tab-title.isChoose {
@@ -59,15 +63,17 @@
  }
 
  .tab-title {
- 	font-size: 20px;
+
+ 	font-size: 14px;
  }
 
  .station-name {
- 	font-size: 24px;
+ 	font-size: 14px;
  }
 
 .table thead, .table td, .table th {
-	font-size: 20px;
+	font-size: 14px;
+
 	font-weight: 300;
 }
 
@@ -79,7 +85,9 @@
 	color: #0097FB;
 }
 .userManage {
-	margin-top:80px;
+
+	margin-top:64px;
+
 }
 
 </style>
@@ -109,7 +117,9 @@
 
 		               	   	   	        	<td>{{account.type}}</td>
 		               	   	   	        	<td>{{account.id}}</td>
-		               	   	   	        	<td @click="edit('editUser', account)" class="custom-cursor-pointer">编辑</td>
+
+		               	   	   	        	<td @click="edit('editUser', account)" class="custom-cursor-pointer edit">编辑</td>
+
 		               	   	   	        </tr>	
 		               	   	   	    </tbody>
 		               	   	   </table>

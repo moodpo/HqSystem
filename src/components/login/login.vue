@@ -107,13 +107,13 @@ h2
 	font-weight: 300
 	
 h3
-	font-size: 20px
+	font-size: 14px
 
 .form-group
 	position: relative
 	margin-bottom: 42.7px
 	.form-control 
-		font-size: 18px
+		font-size: 14px
 		height: 3em
 
 .form-group:first-child 
