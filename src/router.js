@@ -18,6 +18,8 @@ import editStation from 'components/editStation/editStation'
 import editCaller from 'components/editCaller/editCaller'
 import editQueue from 'components/editQueue/editQueue'
 import editWorker from 'components/editWorker/editWorker'
+import userManage from 'components/userManage/userManage'
+import editUser from 'components/editUser/editUser'
 // 页面 工作页面
 import workStation from 'components/workStation/workStation'
 Vue.use(VueRouter)
@@ -50,10 +52,28 @@ const routes = [
     name: 'manage',
     meta: {
         requireAuth: true,
-        keepAlive: true
+        keepAlive: false
         },
         component: manage,
         children: [
+            {
+                name: 'userManage',
+                path: 'userManage',
+                component: userManage,
+                meta: {
+                    requireAuth: true,
+                    keepAlive: false
+                }
+            },
+            {
+                name: 'editUser',
+                path: 'editUser',
+                component: editUser,
+                meta: {
+                    requireAuth: true,
+                    keepAlive: false
+                }
+            },
             {
                 name: 'stationList',
                 path: 'stationList',
