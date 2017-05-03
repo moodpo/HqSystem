@@ -12,7 +12,7 @@
    				</div>
    				<div class="card-box" @click="goToState('addStation')">
    					<div class="card">
-   						<div class="card-bg">
+   						<div class="card-bg xinjian">
    							<i class="iconfont icon-xinjianfenzhentai"></i>
    						</div>
    						<h3>新建分诊台</h3>
@@ -193,7 +193,9 @@ a, button, input
 	.icon-fenzhentai2
 		font-size: 60px
 		color: #009CFF
-	.icon-fenzhentai2:active,.icon-fenzhentai2:hover
+	.icon-fenzhentai2:active,
+	.icon-fenzhentai2:hover,
+	.icon-xinjianfenzhentai:hover
 		color: #00C7FF
 
 .addstation
@@ -219,8 +221,11 @@ a, button, input
 .middleline-topbar
 	margin-top: 64px
 	
+.xinjian
+	border: none
+	
 .icon-xinjianfenzhentai
 	font-size: 60px
-	color: #009CFF
+	color: #777
 
 </style>
