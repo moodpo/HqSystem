@@ -12,7 +12,7 @@
 	          <i class="iconfont icon-yonghu" style=""></i>
 	        </validate>
 	        <validate  class="form-group">
-	          <input v-model="form.passwd" class="form-control" name="passwd" placeholder="密码" type="password" required :class="[fieldClassName(formstate.passwd)]" />
+	          <input v-model="form.passwd"  name="passwd" placeholder="密码" type="password" required :class="[fieldClassName(formstate.passwd)]" class="form-control"/>
 	          <i class="iconfont icon-lock"></i>
 	        </validate>
 	        <button type="submit" class="btn btn-primary btn-block"><h2>登录</h2></button>

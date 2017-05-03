@@ -162,7 +162,7 @@
 		               	   	        	<td>{{queue.name}}</td>
 		               	   	        	<td>{{queue.scene}}</td>
 		               	   	        	<td>{{queue.id}}</td>
-		               	   	        	<td @click="edit('editQueue', queue, stationName)">编辑</td>
+		               	   	        	<td class="custom-cursor-pointer edit" @click="edit('editQueue', queue, stationName)">编辑</td>
 		               	   	        </tr>	
 		               	   	    	
 		               	   	    </tbody>
@@ -182,11 +182,11 @@
 		               	   	         <div class="noData" v-if="callerList.length == 0">没有叫号器</div>
 		               	   	        <tr v-for="caller in callerList">
 		               	   	        	<td>{{caller.name}}</td>
-		               	   	        	<td>{{caller.type}}</td>
+		               	   	        	<td>{{caller.type | getCallerType}}</td>
 		               	   	        	<td>{{caller.ip}}</td>
 		               	   	        	<td>{{caller.pos}}</td>
 		               	   	        	<td>{{caller.priorQueue}}</td>
-		               	   	        	<td @click="edit('editCaller', caller, stationName)">编辑</td>
+		               	   	        	<td class="custom-cursor-pointer edit" @click="edit('editCaller', caller, stationName)">编辑</td>
 		               	   	        </tr>	
 		               	   	    </tbody>
 		               	   </table>
@@ -199,6 +199,7 @@
 </template>
 <script >
     import middleLine from '../../common/middleLine/middleLine'
+    import getCallerType from '../../filter/filter'
 	export default {
 		name: 'station',
 		data() {
