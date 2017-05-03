@@ -22,6 +22,7 @@
 	     <div class="container info">
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="addWorker" >
+
 	     			
      				<validate  class="form-item form-group flex-container">
 	     		      <label  class="control-label">编号</label>
@@ -56,6 +57,7 @@
 	     		    <validate  class="form-item form-group flex-container height-auto">
 	     		      <label  class="control-label">头像</label>
 	     		      <div class="input-bar">
+
 	     		      <!-- todo 上传 功能 -->
 	     		      	<!-- <input type="url" id="" class="form-control" v-model="form.headPic"> -->
      		      		<input type="file" id="uploadImg">
@@ -154,6 +156,10 @@
 					alert('编号只能是数字和字母')
 					return;
 				}
+				if (!this.form.verifyIDFlag) {
+					alert('编号已被占用')
+					return;
+				}
 				if (this.formstate.$invalid) {
 					console.log('invalid')
 					return;
@@ -205,6 +211,8 @@
 				request.send(formData);
 			},
 			verifyID() {
+				console.log('change')
+				console.log(this.form.id.length)
 				if (this.form.id.length === 0) return
 				let reg = /^[A-Za-z0-9]+$/g
 				if (!reg.test(this.form.id)) {
@@ -222,9 +230,8 @@
 					stationID: this.stationID,
 					id: this.form.id
 				}).then((res) => {
-					console.log(res)
 					if (res.conflict === 0) {
-                        this.form.verifyIDFlag = false;
+                        this.form.verifyIDFlag = true;
 					} else if (res.conflict === 1) {
 						this.form.verifyIDFlag = false;
 	                    this.modal.modalShow = true;
