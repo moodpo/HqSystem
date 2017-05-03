@@ -2,7 +2,6 @@
 	<div class="manage">
 		<div class="header-box">
 			<div class="container manage-header">
-
 	            <ul class="clearfix">
 		            <li @click="goToState('stationList')" id="fenzhentai" class="manage-tab  custom-cursor-pointer">
 			            <div class="label"><i class="iconfont icon-fenzhentai"></i><h2>分诊台</h2></div>
@@ -15,10 +14,14 @@
 					</li>
 					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
 						<div class="label"><i class="iconfont icon-weixinguanli"></i><h2>微信管理</h2></div>
+					</li>
+					<li @click="goToState('userManage')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
+						<div class="label"><i class="iconfont icon-weixinguanli"></i><h2>用户管理</h2></div>
 					</li> 
 	            </ul>
-	            <div class="logout pull-right cursor-pointer" @click="logout">退出</div>
-
+	            <div>
+	            	<div class="logout pull-right custom-cursor-pointer" @click="logout">退出</div>
+	            </div>
 		    </div>
 		</div>
 	    <keep-alive>
@@ -35,6 +38,7 @@
 		},
 		methods: {
 			_init() {
+				console.log('_init')
                 this.goToState('stationList')
 			},
 			goToState(state) {
@@ -121,7 +125,8 @@ h2
 		
 .logout
 	float: right
-	
+.userManage
+	float: right
 
 // input[type=radio]:checked + label {
 //     opacity: 1
