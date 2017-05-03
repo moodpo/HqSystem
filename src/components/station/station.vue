@@ -25,11 +25,10 @@
   	font-size: 14px;
   	position:relative;
   }
-  .station-content .nav-bar>.tab-title.isChoose {
-   background: #4DB8FF; 
-  }
+ .station-content .nav-bar>.tab-title.isChoose,
  .station-content .nav-bar>.tab-title:hover {
     background: #4DB8FF; 
+    opacity: 1
  }
  .station-content .nav-bar>.tab-title::after {
     content:' ';
@@ -60,6 +59,11 @@
 
  .tab-title {
  	font-size: 14px;
+ 	opacity: 0.8
+ }
+
+ .tab-title:hover {
+ 	opacity: 1;
  }
 
  .station-name {
@@ -83,6 +87,7 @@
 	position: fixed !important;
     bottom: 60px;
     width: 200px;
+    background-color: #0091F1;
 }
 
 </style>
