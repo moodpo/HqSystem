@@ -3,7 +3,7 @@
 		<div class="top-bar">
 			<div class="container settings">
 				<div class="capital">
-					<span>{{stationName}}</span>/新建列队
+					<span>分诊台</span>/{{stationName}}/新建列队
 				</div>
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="addQueue">保存</div>
