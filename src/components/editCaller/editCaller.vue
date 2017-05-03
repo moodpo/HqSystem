@@ -21,7 +21,7 @@
 				</div>
 				
 			</div>
-			<middleLine height='13.4' class="middleline-topbar"></middleLine>
+			<middleLine height='8' class="middleline-topbar"></middleLine>
 	     	<div class="container info">
 		     	<div class="row baseinfo">
 		     	    <h2>编辑叫号器</h2>

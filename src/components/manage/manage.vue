@@ -61,7 +61,7 @@ h2, h3
 	font-weight: 200
 
 h2
-	font-size: 24px
+	font-size: 18px
 
 // h3
 // 	font-size: 20px
@@ -74,7 +74,7 @@ h2
 	z-index: 666
 
 .manage-header
-	height: 80px
+	height: 64px
 	display: flex
 	align-items: center
 	justify-content: space-between
@@ -117,7 +117,7 @@ h2
 	@media (max-width: 1078px)
 		margin: 0
 		padding: 0
-		font-size: 20px
+		font-size: 18px
 		
 @media (min-width: 1078px)	
 	.manage-tab:first-child

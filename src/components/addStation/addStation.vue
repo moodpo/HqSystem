@@ -12,7 +12,7 @@
 			</div>
 			
 		</div>
-		<middleLine height='13.4' class="middleline-topbar"></middleLine>
+		<middleLine height='8' class="middleline-topbar"></middleLine>
 	    <div class="container info">
 	     	<div class="baseinfo">
 	     		<h3>基础信息</h3>
@@ -451,7 +451,7 @@ input
 	border:0px
 	box-shadow: 0 0
 	border-bottom: 1px solid #f1f1f1
-	font-size: 20px
+	font-size: 14px
 	padding-bottom: 0
 	
 // 去掉button等默认点击效果 

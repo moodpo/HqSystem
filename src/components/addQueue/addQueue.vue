@@ -11,7 +11,7 @@
 				</div>
 			</div>
 		</div>
-		<middleLine height='13.4' class="middleline-topbar"></middleLine>
+		<middleLine height='8' class="middleline-topbar"></middleLine>
 		<div class="container info">
 	     	<div class="baseinfo">
 	     		<h3>基础信息</h3>
@@ -201,12 +201,12 @@
 </script>
 
 <style lang="stylus" scoped>
-h2
-	padding-bottom: 24px
-	border-bottom: 1px solid #f1f1f1
+// h2
+// 	padding-bottom: 24px
+// 	border-bottom: 1px solid #f1f1f1
 
 h3
-	font-size: 20px
+	font-size: 14px
 	line-height: 60px
 	border-bottom: 1px solid #f1f1f1
 	margin-bottom: 15px

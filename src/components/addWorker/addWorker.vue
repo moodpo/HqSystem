@@ -20,8 +20,7 @@
 			</div>
 			
 		</div>
-		<middleLine height='13.4' class="middleline-topbar"></middleLine>
-
+		<middleLine height='8' class="middleline-topbar"></middleLine>
 	     <div class="container info">
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="testDB">
