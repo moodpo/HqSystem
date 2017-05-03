@@ -1,5 +1,7 @@
 <style scoped>
-
+.input-bar {
+	margin-left: 15px;
+}
 
 </style>
 
@@ -9,7 +11,7 @@
 		<div class="top-bar">
 			<div class="container settings">
 				<div class="capital">
-					<span>{{stationName}}</span>/新建医生
+					<span>分诊台</span>/{{stationName}}/添加医生
 				</div>
 				<div class="btn-bar">
 					<div class="item btn btn-success" @click="addWorker">保存</div>
