@@ -3,20 +3,22 @@
 		<div class="header-box">
 			<div class="container manage-header">
 	            <ul class="clearfix">
-		            <li @click="goToState('stationList')" id="fenzhentai" class="manage-tab  custom-cursor-pointer">
-			            <div class="label"><i class="iconfont icon-fenzhentai"></i><h2>分诊台</h2></div>
+		            <li @click="goToState('stationList', 0)" id="fenzhentai" class="manage-tab  custom-cursor-pointer">
+			            <div class="label" :class="{'isChoose':showInfoNumber == 0}"><i class="iconfont icon-fenzhentai"></i><h2>分诊台</h2></div>
 					</li>
-					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
-						<div class="label"><i class="iconfont icon-shujufenxi"></i><h2>数据分析</h2></div>
+					<li @click="goToState('stationList', 1)" id="fenzhentai" class="manage-tab custom-cursor-pointer">
+						<div class="label" :class="{'isChoose':showInfoNumber == 1}"><i class="iconfont icon-shujufenxi"></i><h2>数据分析</h2></div>
 					</li>
-					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
-						<div class="label"><i class="iconfont icon-paibanguanli"></i><h2>排班管理</h2></div>
+					<li @click="goToState('stationList', 2)" id="fenzhentai" class="manage-tab custom-cursor-pointer">
+						<div class="label" :class="{'isChoose':showInfoNumber == 2}"><i class="iconfont icon-paibanguanli"></i><h2>排班管理</h2></div>
 					</li>
-					<li @click="goToState('stationList')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
-						<div class="label"><i class="iconfont icon-weixinguanli"></i><h2>微信管理</h2></div>
+					<li @click="goToState('stationList', 3)" id="fenzhentai" class="manage-tab custom-cursor-pointer">
+						<div class="label" :class="{'isChoose':showInfoNumber == 3}"><i class="iconfont icon-weixinguanli"></i><h2>微信管理</h2></div>
 					</li>
-					<li @click="goToState('userManage')" id="fenzhentai" class="manage-tab custom-cursor-pointer">
-						<div class="label"><i class="iconfont icon-yonghuguanli1"></i><h2>用户管理</h2></div>
+
+					<li @click="goToState('userManage', 4)" id="fenzhentai" class="manage-tab custom-cursor-pointer">
+						<div class="label" :class="{'isChoose':showInfoNumber == 4}"><i class="iconfont icon-yonghuguanli1"></i><h2>用户管理</h2></div>
+
 					</li> 
 	            </ul>
 	            <div>
@@ -36,12 +38,20 @@
 		created() {
             this._init()
 		},
+		computed: {
+            showInfoNumber() {
+            	return Number(this.$store.state.tab.tabShowMoudleNum)
+            }
+		},
 		methods: {
 			_init() {
-				console.log('_init')
-                this.goToState('stationList')
+                this.goToState('stationList', 0)
 			},
-			goToState(state) {
+			goToState(state, num) {
+				this.$store.commit('changeTab', {
+					whichTab: 'tabShowMoudleNum',
+					num: num
+				});
                 this.$router.push({name: state})
 			},
 			logout() {
@@ -135,7 +145,8 @@ h2
 	
 .userManage
 	float: right
-
+div.label.isChoose 
+	opacity: 1
 // input[type=radio]:checked + label {
 //     opacity: 1
 // }

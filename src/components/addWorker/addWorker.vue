@@ -22,6 +22,7 @@
 	     <div class="container info">
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="addWorker" >
+
 	     			<div class="form-flex-container">
 	     				<validate  class="form-item form-group flex-container">
 		     		      <label  class="control-label">编号</label>
@@ -56,11 +57,14 @@
 		     		    <validate  class="form-item form-group flex-container">
 		     		      <label  class="control-label">头像</label>
 		     		      <div class="input-bar">
-		     		      <!-- todo 上传 功能 -->
-		     		      	<input type="url" id="" class="form-control" v-model="form.headPic">
-		     		      </div>
+	     		      <!-- todo 上传 功能 -->
+	     		      	<!-- <input type="url" id="" class="form-control" v-model="form.headPic"> -->
+	     		      	<input type="file" id="uploadImg">
+	     		      	<button @click.prevent.stop="upload">upload</button>
+	     		      </div>
 		     		    </validate>
 	     			</div>
+
 	     		    <h3>账号信息</h3>
 	     		    <div class="form-group flex-container">
 	     		    	<label  class="control-label">账号</label>
@@ -170,8 +174,8 @@
 						descText: this.form.descText,
 						user: this.form.user,
 	                    password: this.form.password,
-	                    // headPic: this.form.headPic
-	                    headPic: 'www.baidu.com'
+	                    headPic: this.form.headPic
+	                    // headPic: 'www.baidu.com'
 					}).then((res) => {
                        alert('保存成功')
                        // 返回上一步
@@ -183,30 +187,26 @@
 				}
 			},
 			// todo 上传做了一半
-			// upload() {
-   //              console.log('upload')
-   //              let uploadImg = document.getElementById('uploadImg')
-   //              let formData = new FormData();
-			// 	formData.append('file', uploadImg.files[0])
-			// 	// formData.append('type', 'normal')
-			// 	let request = new XMLHttpRequest();
-			// 	request.open('POST', 'http://192.168.17.187/hqueue/manager/upload');
-			// 	request.onreadystatechange = function(response) {
-   //                console.log('request', request)
-   //                console.log('response', response)
-   //                // if (request.readyState === 4 && request.status === 200 && request.responseText !== '') {
-   //                //       console.log(request.responseText);
-   //                //     if (JSON.parse(request.responseText).result !== 0) {
-   //                //       console.log('failed')
-   //                //     } else {
-   //                //       console.log('success')
-   //                //     }
-   //                // } else if (request.status !== 200 && request.responseText) {
-   //                //     console.log('2 failed')
-   //                // }
-			// 	};
-			// 	request.send(formData);
-			// },
+			upload() {
+                console.log('upload')
+                let uploadImg = document.getElementById('uploadImg')
+                let formData = new FormData();
+                // 普通上传
+                formData.append('action', 'normal');
+				formData.append('file', uploadImg.files[0])
+				// formData.append('type', 'normal')
+				let request = new XMLHttpRequest();
+				request.open('POST', 'http://192.168.17.187/hqueue/manager/upload', true);
+				request.onreadystatechange = function(response) {
+					if (request.readyState === 4 && request.status === 200 && request.responseText !== '') {
+						console.log(request.responseText)
+						console.log('success')
+					} else {
+						console.log('failed')
+					}
+				};
+				request.send(formData);
+			},
 			verifyID() {
 				if (this.form.id.length === 0) return
 				let reg = /^[A-Za-z0-9]+$/g

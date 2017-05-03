@@ -10,7 +10,9 @@ const store = new Vuex.Store({
     // 记录各个tab的当前Number
     tab: {
          // station页面点击的是那个tab
-        tabShowInfoNumber: 0
+        tabShowInfoNumber: 0,
+        // manage 页面 第几个项目
+        tabShowMoudleNum: 0
     }
   },
   mutations: {

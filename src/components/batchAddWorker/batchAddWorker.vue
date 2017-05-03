@@ -10,7 +10,6 @@
 	     			<div class="item btn btn-warning" @click="cancel">取消</div>
 				</div>
 			</div>
-			
 		</div>
 		<middleLine height='8' class="middleline-topbar"></middleLine>
 	     <div class="container info">
@@ -350,6 +349,9 @@
 </script>
 
 <style scoped>
-
-
+a, button, input {
+	webkit-tap-highlight-color: rgba(0,0,0,0);
+	webkit-user-modify: read-write-plaintext-only;
+	outline: none;
+}
 </style>

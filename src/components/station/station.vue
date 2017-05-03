@@ -289,7 +289,6 @@
 			},
 			// 显示右侧内容
 			showInfo(num) {
-				console.log(num)
 				this.$store.commit('changeTab', {
 					whichTab: 'tabShowInfoNumber',
 					num: num
