@@ -98,7 +98,7 @@
  					</div>
 	                <div v-if="showInfoNumber == 0" class="btn-bar">
 	 	               	<div class="item btn btn-success" @click="add('addWorker', stationName)">添加医生</div>
-	 	               	<div class="item btn btn-warning" @click="add('batchAddWorker', stationName)">批量添加医生</div>
+	 	               	<div class="item btn btn-warning" @click="add('batchAddWorker', stationName)">导入医生</div>
 	                </div>
 	               <div v-if="showInfoNumber == 1" class="btn-bar">
 		               	<div class="item btn btn-success" @click="add('addQueue', stationName)">添加队列</div>
