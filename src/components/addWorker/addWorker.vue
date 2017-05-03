@@ -168,8 +168,8 @@
 						descText: this.form.descText,
 						user: this.form.user,
 	                    password: this.form.password,
-	                    // headPic: this.form.headPic
-	                    headPic: 'www.baidu.com'
+	                    headPic: this.form.headPic
+	                    // headPic: 'www.baidu.com'
 					}).then((res) => {
                        alert('保存成功')
                        // 返回上一步
