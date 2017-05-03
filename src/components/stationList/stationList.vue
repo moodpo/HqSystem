@@ -1,8 +1,5 @@
 <template lang="html">
-	<div class="">
-	       <div class="top-bar">
-		       	<button class="addstation"  @click="goToState('addStation')">新建分诊台</button>
-	       </div>
+	<div class="stationlist-box">
 	       <middleLine height='8' class="middleline-topbar"></middleLine>
 		   	<div class="card-container">
    				<div v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
@@ -11,6 +8,14 @@
    							<i class="iconfont icon-fenzhentai2"></i>
    						</div>
    						<h3>{{station.name}}</h3>
+   					</div>
+   				</div>
+   				<div class="card-box" @click="goToState('addStation')">
+   					<div class="card">
+   						<div class="card-bg xinjian">
+   							<i class="iconfont icon-xinjianfenzhentai"></i>
+   						</div>
+   						<h3>新建分诊台</h3>
    					</div>
    				</div>
 		   	</div>
@@ -188,7 +193,9 @@ a, button, input
 	.icon-fenzhentai2
 		font-size: 60px
 		color: #009CFF
-	.icon-fenzhentai2:active,.icon-fenzhentai2:hover
+	.icon-fenzhentai2:active,
+	.icon-fenzhentai2:hover,
+	.icon-xinjianfenzhentai:hover
 		color: #00C7FF
 
 .addstation
@@ -210,6 +217,15 @@ a, button, input
 	align-items: center
 	justify-content: center
 	height: 64px
+
+.middleline-topbar
+	margin-top: 64px
 	
+.xinjian
+	border: none
+	
+.icon-xinjianfenzhentai
+	font-size: 60px
+	color: #777
 
 </style>

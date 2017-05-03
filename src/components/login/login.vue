@@ -8,12 +8,12 @@
 	    </div>
 	    <vue-form :state="formstate" @submit.prevent="saveForm" class="saveForm">
 	        <validate  class="form-group">
-	          <input v-model="form.user" required name="user" placeholder="用户名 " class="form-control"  :class="[fieldClassName(formstate.user)]"/>
-	          <i class="iconfont icon-yonghu" style=""></i>
+	          <input v-model="form.user" required name="user" placeholder="用户名 " class="form-control input"  :class="[fieldClassName(formstate.user)]"/>
+	          <i class="iconfont icon-yonghuming" style=""></i>
 	        </validate>
 	        <validate  class="form-group">
-	          <input v-model="form.passwd"  name="passwd" placeholder="密码" type="password" required :class="[fieldClassName(formstate.passwd)]" class="form-control"/>
-	          <i class="iconfont icon-lock"></i>
+	          <input v-model="form.passwd"  name="passwd" placeholder="密码" type="password" required :class="[fieldClassName(formstate.passwd)]" class="form-control input"/>
+	          <i class="iconfont icon-mimasuo"></i>
 	        </validate>
 	        <button type="submit" class="btn btn-primary btn-block"><h2>登录</h2></button>
 	      </vue-form>
@@ -103,7 +103,7 @@ h2,h3,ul,label
 
 h2
 	font-family: PingFangSC-Light
-	font-size: 24px
+	font-size: 18px
 	font-weight: 300
 	
 h3
@@ -111,10 +111,17 @@ h3
 
 .form-group
 	position: relative
+	display:flex
+	align-items: center
 	margin-bottom: 42.7px
+	line-height: 3em
 	.form-control 
 		font-size: 14px
 		height: 3em
+	.input
+		width:100%
+		position: absolute
+		z-index:0
 
 .form-group:first-child 
 	margin-bottom: 16.1px
@@ -166,15 +173,17 @@ button
 	
 .iconfont
 	color: black
-	position: absolute
-	top: 0px
+	// position: absolute
+	// top: 0px
 	right: 18.6px
 	color: #C8C8C8
-.icon-yonghu
-	font-size: 40px
-
-.icon-lock
-	font-size: 36px
+	
+.icon-yonghuming,
+.icon-mimasuo
+	margin-left: auto
+	margin-right: 0.5em
+	font-size: 20px
+	z-index: 666
 		
 	
 

@@ -9,6 +9,10 @@
 		border: 1px solid #ccc !important;
 	}
 
+	.control-label {
+		width: 4em;
+	}
+
 </style>
 
 <template lang="html">

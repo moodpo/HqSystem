@@ -12,6 +12,9 @@
 .input-bar
 	line-height: 60px
 
+.form-flex-container
+	margin-bottom: 1em
+
 .footer-space
 	margin-bottom: 40.6px
 
@@ -35,51 +38,10 @@
 		</div>
 		<middleLine height='8' class="middleline-topbar"></middleLine>
 	     <div class="container info">
-	     	<div class="row baseinfo">
-	     		<h3>基础信息</h3>
-	     		<!-- <vue-form :state="formstate"  class="form-horizontal">
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">队列名字</label>
-	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.name" required name="name" class="form-control"/>
-	     		      </div>
-	     		    </validate>
-	     		    <validate  class="form-group">
-	     		      <label  class="col-sm-2 control-label">队列描述</label>
-	     		      <div class="col-sm-10">
-	     		      	<input v-model="form.descText" required name="descText" class="form-control"/>
-	     		      </div>
-	     		    </validate>
-	     		    <div  class="form-group">
-	     		      <label  class="col-sm-2 control-label">过滤条件</label>
-	     		      <div class="col-sm-10">
-	     		      	<select v-model="form.filter">
-	     		      	  <option v-for="sourceQueue in form.sourceQueueList">{{sourceQueue}}</option>
-	     		      	</select>
-	     		      </div>
-	     		    </div>
-         		    <h3>策略配置</h3>
-         		    <div class="form-group">
-	         		    <div  class="form-group" v-for="(sceneSupport, index) in form.sceneSupportList">
-		         		    <div class="col-sm-2 ">
-		         		    	<input class="pull-right" type="radio" :id="sceneSupport"  v-model="form.sceneSupportRadio"  :value="sceneSupport" >
-		         		    </div>
-	         		        <div  class="col-sm-10 ">{{sceneSupport}}</div>
-	         		    </div>
-         		    </div>
-         		    <h3>所属医生</h3>
-         		    <div class="form-group">
-	         		    <div  class="form-group" v-for="worker in form.workerList">
-		         		    <div class="col-sm-2 ">
-		         		    	<input class="pull-right" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
-		         		    </div>
-	         		        <div  class="col-sm-10 ">{{worker.name}}</div>
-
-	         		    </div>
-         		    </div>
-	     		</vue-form> -->
-	     		<vue-form :state="formstate"  class="form-horizontal">
-	     			<validate class="form-group flex-container">
+     		<vue-form :state="formstate"  class="form-horizontal">
+     			<h3>基础信息</h3>
+     			<div class="form-flex-container">
+     				<validate class="form-group flex-container">
 	     		      	<label class="control-label">队列名字</label>
 	     		      	<div class="input-bar">
 	     		      		<input v-model="form.name" required name="name" class="form-control" :class="[fieldClassName(formstate.name)]"/>
@@ -100,25 +62,25 @@
 	     		      		</select>
 	     		      	</div>
 	     		    </div>
-	     		    <middleLine height='6.6'></middleLine>
-         		    <h3>策略配置</h3>
-         		    <div class="form-group form-flex-container">
-	         		    <div class="form-group form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
-		         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.scene"  :value="sceneSupport.name" >
-	         		        <div class="input-bar">&nbsp;{{sceneSupport.name}}</div>
-	         		    </div>
+     			</div>
+     		    <middleLine height='6.6'></middleLine>
+     		    <h3>策略配置</h3>
+ 		    	<div class="form-flex-container">
+         		    <div class="form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
+	         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.scene"  :value="sceneSupport.name" >
+         		        <div class="input-bar">&nbsp;{{sceneSupport.name}}</div>
          		    </div>
-         		    <middleLine height='6.6'></middleLine>
-         		    <h3>所属医生</h3>
-         		    <div class="form-group form-flex-container footer-space">
-	         		    <div class="form-group form-item flex-container" v-for="worker in form.workerList">
-		         		    <input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
-	         		        <div  class="input-bar">{{worker.name}}</div>
-	         		    </div>
+     		    </div>
+     		    <middleLine height='6.6'></middleLine>
+     		    <h3>所属医生</h3>
+     		    <div class="form-flex-container footer-space">
+         		    <div class="form-group form-item flex-container" v-for="worker in form.workerList">
+	         		    <input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
+         		        <div  class="input-bar">{{worker.name}}</div>
          		    </div>
-         		    <button type="submit" style="display:none" id="btn1">提交</button>
-	     		</vue-form>
-	     	</div>
+     		    </div>
+     		    <button type="submit" style="display:none" id="btn1">提交</button>
+     		</vue-form>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
 	     		<p slot='body'>{{modal.modalContent}}</p>
 	     	</modal>

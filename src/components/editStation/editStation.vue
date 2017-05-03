@@ -36,9 +36,27 @@
 	     		<h3>数据库信息</h3>
 	     		<vue-form :state="formstate.form1"   @submit.prevent="testDB" class="form-horizontal form-flex-container">
 	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">数据库类型</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.DBType" required name="DBType"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">编码</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.charset" required name="charset"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-item form-group flex-container">
 	     		      	<label  class="control-label">数据库地址</label>
 	     		      	<div class="input-bar">
 	     		      		<input v-model="form.host" required name="host"  :class="{'form-control':formControlObj.formControl}"/>
+	     		      	</div>
+	     		    </validate>
+	     		    <validate  class="form-item form-group flex-container">
+	     		      	<label  class="control-label">端口</label>
+	     		      	<div class="input-bar">
+	     		      		<input v-model="form.port" required name="port"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
@@ -54,31 +72,13 @@
 	     		      	</div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
-	     		      	<label  class="control-label">端口</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.port" required name="port"  :class="{'form-control':formControlObj.formControl}"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate  class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字符集</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.charset" required name="charset"  :class="{'form-control':formControlObj.formControl}"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate  class="form-item form-group flex-container">
-	     		      	<label  class="control-label">数据库名</label>
+	     		      	<label  class="control-label">数据库名（DBName）</label>
 	     		      	<div class="input-bar">
 	     		      		<input v-model="form.DBName" required name="DBName"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
-	     		      	<label  class="control-label">数据库类型</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.DBType" required name="DBType"  :class="{'form-control':formControlObj.formControl}"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate  class="form-item form-group flex-container">
-	     		      	<label  class="control-label">数据库表名</label>
+	     		      	<label  class="control-label">数据库表名(Table)</label>
 	     		      	<div class="input-bar">
 	     		      		<input v-model="form.tableName" required name="table"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>

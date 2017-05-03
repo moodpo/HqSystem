@@ -15,12 +15,14 @@
 					<li @click="goToState('stationList', 3)" id="fenzhentai" class="manage-tab custom-cursor-pointer">
 						<div class="label" :class="{'isChoose':showInfoNumber == 3}"><i class="iconfont icon-weixinguanli"></i><h2>微信管理</h2></div>
 					</li>
+
 					<li @click="goToState('userManage', 4)" id="fenzhentai" class="manage-tab custom-cursor-pointer">
-						<div class="label" :class="{'isChoose':showInfoNumber == 4}"><i class="iconfont icon-weixinguanli"></i><h2>用户管理</h2></div>
+						<div class="label" :class="{'isChoose':showInfoNumber == 4}"><i class="iconfont icon-yonghuguanli1"></i><h2>用户管理</h2></div>
+
 					</li> 
 	            </ul>
 	            <div>
-	            	<div class="logout pull-right custom-cursor-pointer" @click="logout">退出</div>
+	            	<div class="logout pull-right custom-cursor-pointer" @click="logout"><i class="iconfont icon-tuichu"></i><h2>退出</h2></div>
 	            </div>
 		    </div>
 		</div>
@@ -132,7 +134,15 @@ h2
 		margin-right: 1.2em
 		
 .logout
-	float: right
+	display:flex
+	justify-content: center
+	align-items: center
+	color: #fff
+	opacity: 0.5
+
+.logout:hover
+	opacity: 1
+	
 .userManage
 	float: right
 div.label.isChoose 
