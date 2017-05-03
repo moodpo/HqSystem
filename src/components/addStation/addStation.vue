@@ -89,109 +89,117 @@
 	     	<middleLine height='6.6'></middleLine>
 	     	<div class="connectinfo">
 	     		<h3>SQL连接信息</h3>
-	     		<vue-form :state="formstate.form2"  class="form-horizontal form-flex-container" @submit.prevent="testSQL">
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(Name)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasName" required name="aliasName"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(Age)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasAge" required name="aliasAge"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(Queue)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasQueue" required name="aliasQueue"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(ID)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasID" required name="aliasID"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(OrderDate)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasOrderDate" required name="aliasOrderDate"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(OrderTime)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasOrderTime" required name="aliasOrderTime"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(RegistDate)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasRegistDate" required name="aliasRegistDate"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(RegistTime)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasRegistTime" required name="aliasRegistTime"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(VIP)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasVIP" required name="aliasVIP"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(Number)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasSnumber" required name="aliasSnumber"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(OrderType)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasOrderType" required name="aliasOrderType"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(WorkerID)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasWorkerID" required name="aliasWorkerID"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(WorkerName)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasWorkerName" required name="aliasWorkerName"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(Department)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasDepartment" required name="aliasDepartment"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(DescText)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasDescText" required name="aliasDescText"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(Status)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.aliasStatus" required name="aliasStatus"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
-	     		    <validate class="form-item form-group flex-container">
-	     		      	<label  class="control-label">字段别名(renewPeriod)</label>
-	     		      	<div class="input-bar">
-	     		      		<input v-model="form.renewPeriod" required name="renewPeriod"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
-	     		      	</div>
-	     		    </validate>
+	     		<vue-form :state="formstate.form2"   @submit.prevent="testSQL">
+		     		<div class="form-horizontal form-flex-container">
+			     		<validate class="form-item form-group flex-container">
+			     		  	<label  class="control-label">病人编号(ID)</label>
+			     		  	<div class="input-bar">
+			     		  		<input v-model="form.aliasID" required name="aliasID"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+			     		  	</div>
+			     		</validate>
+		     		    <validate class="form-item form-group flex-container">
+		     		      	<label  class="control-label">病人姓名(Name)</label>
+		     		      	<div class="input-bar">
+		     		      		<input v-model="form.aliasName" required name="aliasName"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+		     		      	</div>
+		     		    </validate>
+		     		    <validate class="form-item form-group flex-container">
+		     		      	<label  class="control-label">挂号科室或队列(Queue)</label>
+		     		      	<div class="input-bar">
+		     		      		<input v-model="form.aliasQueue" required name="aliasQueue"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+		     		      	</div>
+		     		    </validate>
+		     		    <validate class="form-item form-group flex-container">
+		     		      	<label  class="control-label">挂号类型-预约或门诊(OrderType)</label>
+		     		      	<div class="input-bar">
+		     		      		<input v-model="form.aliasOrderType" required name="aliasOrderType"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+		     		      	</div>
+		     		    </validate>
+		     		    <validate class="form-item form-group flex-container">
+		     		      	<label  class="control-label">挂号日期(RegistDate)</label>
+		     		      	<div class="input-bar">
+		     		      		<input v-model="form.aliasRegistDate" required name="aliasRegistDate"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+		     		      	</div>
+		     		    </validate>
+		     		    <validate class="form-item form-group flex-container">
+		     		      	<label  class="control-label">挂号时间(RegistTime)</label>
+		     		      	<div class="input-bar">
+		     		      		<input v-model="form.aliasRegistTime" required name="aliasRegistTime"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+		     		      	</div>
+		     		    </validate>
+		     		    <validate class="form-item form-group flex-container">
+		     		      	<label  class="control-label">病人描述(DescText)</label>
+		     		      	<div class="input-bar">
+		     		      		<input v-model="form.aliasDescText" required name="aliasDescText"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+		     		      	</div>
+		     		    </validate>
+		     		    <validate class="form-item form-group flex-container">
+		     		      	<label  class="control-label">病人年纪(Age)</label>
+		     		      	<div class="input-bar">
+		     		      		<input v-model="form.aliasAge" required name="aliasAge"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+		     		      	</div>
+		     		    </validate>
+		     		    <validate class="form-item form-group flex-container">
+		     		      	<label  class="control-label">是否VIP用户(VIP)</label>
+		     		      	<div class="input-bar">
+		     		      		<input v-model="form.aliasVIP" required name="aliasVIP"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+		     		      	</div>
+		     		    </validate>
+		     		    <validate class="form-item form-group flex-container">
+		     		      	<label  class="control-label">病人状态(Status)</label>
+		     		      	<div class="input-bar">
+		     		      		<input v-model="form.aliasStatus" required name="aliasStatus"  :class="[fieldClassName(formstate.form2.aliasStatus)]" class="form-control"/>
+		     		      	</div>
+		     		    </validate>
+		     		</div>
+	     		    <div class="splite-line "></div>
+	     		    <div class="form-horizontal form-flex-container">
+	     		    	<validate class="form-item form-group flex-container">
+	     		    	  	<label  class="control-label">病人在队列中的序号(Number)</label>
+	     		    	  	<div class="input-bar">
+	     		    	  		<input v-model="form.aliasSnumber" required name="aliasSnumber"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+	     		    	  	</div>
+	     		    	</validate>
+	     		    	<validate class="form-item form-group flex-container">
+	     		    	  	<label  class="control-label">科室名称(Department)</label>
+	     		    	  	<div class="input-bar">
+	     		    	  		<input v-model="form.aliasDepartment" required name="aliasDepartment"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+	     		    	  	</div>
+	     		    	</validate>
+	     		    	<validate class="form-item form-group flex-container">
+	     		    	  	<label  class="control-label">预约看病日期(OrderDate)</label>
+	     		    	  	<div class="input-bar">
+	     		    	  		<input v-model="form.aliasOrderDate" required name="aliasOrderDate"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+	     		    	  	</div>
+	     		    	</validate>
+	     		    	<validate class="form-item form-group flex-container">
+	     		    	  	<label  class="control-label">预约看病时间(OrderTime)</label>
+	     		    	  	<div class="input-bar">
+	     		    	  		<input v-model="form.aliasOrderTime" required name="aliasOrderTime"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+	     		    	  	</div>
+	     		    	</validate>
+	     		    	<validate class="form-item form-group flex-container">
+	     		    	  	<label  class="control-label">医生编号(WorkerID)</label>
+	     		    	  	<div class="input-bar">
+	     		    	  		<input v-model="form.aliasWorkerID" required name="aliasWorkerID"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+	     		    	  	</div>
+	     		    	</validate>
+	     		    	<validate class="form-item form-group flex-container">
+	     		    	  	<label  class="control-label">医生姓名(WorkerName)</label>
+	     		    	  	<div class="input-bar">
+	     		    	  		<input v-model="form.aliasWorkerName" required name="aliasWorkerName"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+	     		    	  	</div>
+	     		    	</validate>
+	     		    </div>
+                    <div class="splite-line "></div>
+                    <div class="form-horizontal form-flex-container">
+                    	<validate class="form-item form-group flex-container">
+                    	  	<label  class="control-label">刷新时间(ms)</label>
+                    	  	<div class="input-bar">
+                    	  		<input v-model="form.renewPeriod" required name="renewPeriod"  :class="[fieldClassName(formstate.form2.passwd)]" class="form-control"/>
+                    	  	</div>
+                    	</validate>
+                    </div>
 	     		    <button type="submit" class="center-block test-btn">连接测试</button>
 	     		  </vue-form>
 	     	</div>
@@ -471,6 +479,8 @@ a, button, input
 
 .datainfo, connectinfo
 	height: auto
-
-
+.splite-line 
+	border-bottom:1px solid #f1f1f1
+	margin-top:20px
+	
 </style>

@@ -149,9 +149,6 @@
 				this.getWorkerList()
 				this.getQueueList()
 			},
-			cancel() {
-				this.$router.go(-1)
-			},
 			invokeAddCaller() {
                 document.getElementById('btn1').click()
 			},
@@ -209,6 +206,9 @@
 			},
 			fieldClassName(field) {
                return utils.fieldClassName(field)
+			},
+			cancel() {
+				this.$router.go(-1)
 			}
 		}
 	}
