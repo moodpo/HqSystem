@@ -112,7 +112,9 @@
  			</div>
  			<middleLine height='8' class="middleline-topbar"></middleLine>
             <div class="station-content  container info no-left-padding">
+
 	               <div class="nav-bar" style="height: calc(100vh - 136px)">
+
 	               	     <div class="tab-title  text-center custom-cursor-pointer" @click="showInfo(0)" :class="{'isChoose':showInfoNumber == 0}">医生信息</div>
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(1)" :class="{'isChoose':showInfoNumber == 1}">队列</div>
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(2)" :class="{'isChoose':showInfoNumber == 2}">叫号器</div>
@@ -162,7 +164,7 @@
 		               	   	        	<td>{{queue.name}}</td>
 		               	   	        	<td>{{queue.scene}}</td>
 		               	   	        	<td>{{queue.id}}</td>
-		               	   	        	<td @click="edit('editQueue', queue, stationName)">编辑</td>
+		               	   	        	<td class="custom-cursor-pointer edit" @click="edit('editQueue', queue, stationName)">编辑</td>
 		               	   	        </tr>	
 		               	   	    	
 		               	   	    </tbody>
@@ -182,11 +184,11 @@
 		               	   	         <div class="noData" v-if="callerList.length == 0">没有叫号器</div>
 		               	   	        <tr v-for="caller in callerList">
 		               	   	        	<td>{{caller.name}}</td>
-		               	   	        	<td>{{caller.type}}</td>
+		               	   	        	<td>{{caller.type | getCallerType}}</td>
 		               	   	        	<td>{{caller.ip}}</td>
 		               	   	        	<td>{{caller.pos}}</td>
 		               	   	        	<td>{{caller.priorQueue}}</td>
-		               	   	        	<td @click="edit('editCaller', caller, stationName)">编辑</td>
+		               	   	        	<td class="custom-cursor-pointer edit" @click="edit('editCaller', caller, stationName)">编辑</td>
 		               	   	        </tr>	
 		               	   	    </tbody>
 		               	   </table>
@@ -199,6 +201,7 @@
 </template>
 <script >
     import middleLine from '../../common/middleLine/middleLine'
+    import getCallerType from '../../filter/filter'
 	export default {
 		name: 'station',
 		data() {

@@ -35,7 +35,7 @@ const routes = [
     name: 'login',
     meta: {
         requireAuth: true,
-        keepAlive: true
+        keepAlive: false
         }
     },
     {
@@ -44,7 +44,7 @@ const routes = [
     name: 'workStation',
     meta: {
         requireAuth: true,
-        keepAlive: true
+        keepAlive: false
         }
     },
     {

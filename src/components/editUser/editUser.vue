@@ -1,4 +1,5 @@
 <style scoped>
+
 	.input-bar {
 		margin-left: 15px;
 	}
@@ -7,6 +8,7 @@
 		resize: none;
 		border: 1px solid #ccc !important;
 	}
+
 </style>
 
 <template lang="html">
@@ -22,7 +24,9 @@
 				</div>
 			</div>
 		</div>
+
 		<middleLine height='8' class="middleline-topbar"></middleLine>
+
 	     <div class="container info">
 	     	<div class="row baseinfo">
      			<h3>基础信息</h3>
@@ -60,8 +64,9 @@
 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">描述</label>
 	     		      <div class="input-bar">
-	     		      	<!-- <input v-model="form.id" required disabled name="id" class="form-control"/> -->
-	     		      	<textarea v-model="form.descText" required name="descText" class="form-control" ></textarea>
+
+	     		      	<textarea v-model="form.descText" required name="descText" class="form-control"></textarea>
+
 	     		      </div>
 	     		    </validate>
 	     		  </vue-form>

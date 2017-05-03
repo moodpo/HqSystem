@@ -26,7 +26,7 @@
 					<span>{{stationName}}</span>/编辑队列
 				</div>
 				<div class="btn-bar">
-					<div class="item btn btn-success" @click="editQueue">保存</div>
+					<div class="item btn btn-success" @click="invokeEditQueue">保存</div>
 	     			<div class="item btn btn-warning" @click="cancel">取消</div>
 	     			<div class="item btn btn-danger" @click="del">删除</div>
 				</div>
@@ -82,13 +82,13 @@
 	     			<validate class="form-group flex-container">
 	     		      	<label class="control-label">队列名字</label>
 	     		      	<div class="input-bar">
-	     		      		<input v-model="form.name" required name="name" class="form-control"/>
+	     		      		<input v-model="form.name" required name="name" class="form-control" :class="[fieldClassName(formstate.name)]"/>
 	     		      	</div>
 	     		    </validate>
 	     		    <validate  class="form-group flex-container">
 	     		      	<label  class="control-label">队列描述</label>
 	     		      	<div class="input-bar">
-	     		      		<input v-model="form.descText" required name="descText" class="form-control"/>
+	     		      		<input v-model="form.descText"  name="descText" class="form-control" />
 	     		      	</div>
 	     		    </validate>
 	     		    <div class="form-group flex-container">
@@ -116,6 +116,7 @@
 	         		        <div  class="input-bar">{{worker.name}}</div>
 	         		    </div>
          		    </div>
+         		    <button type="submit" style="display:none" id="btn1">提交</button>
 	     		</vue-form>
 	     	</div>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
@@ -128,6 +129,7 @@
     import Vue from 'vue'
     import middleLine from '../../common/middleLine/middleLine'
     import VueForm from 'vue-form'
+    import utils from 'common/utils/utils.js'
     import modal from '../../common/modal/modal'
     Vue.use(VueForm)
 	export default {
@@ -189,6 +191,9 @@
 				this.getWorkerList()
 				this.getSceneSupportList()
 				this.getSourceQueueList()
+			},
+			invokeEditQueue() {
+                document.getElementById('btn1').click()
 			},
 			editQueue() {
 				if (this.formstate.$invalid) {
@@ -276,6 +281,9 @@
                    this.cancel()
 				}, (res) => {
 				})
+			},
+			fieldClassName(field) {
+               return utils.fieldClassName(field)
 			}
 			// delCancel() {
 			// 	console.log('delCancel')
