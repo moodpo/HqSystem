@@ -49,10 +49,14 @@
 		     		    <validate  class="form-group flex-container">
 		     		      <label  class="control-label">位置</label>
 		     		      <div class="input-bar">
-		     		      	<input v-model="form.pos" required name="pos" class="form-control"/>
+		     		      	<input v-model="form.pos"  name="pos" class="form-control"/>
 		     		      </div>
 		     		    </validate>
 	         		    <h3>可登录医生</h3>
+	    		        <div class="form-group form-item flex-container">
+	            		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
+	        		        &nbsp;<div  class="input-bar">全部</div>
+	    		        </div>
 	         		    <div class="form-group form-flex-container">
 	         		        <div class="form-group form-item flex-container" v-for="worker in form.workerList">
     		         		    	<input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
@@ -66,7 +70,7 @@
 		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
 	         		        </div>
              		    </div>
-             		    <button type="submit" style="display:none" id="btn1">提交</button>
+             		    <button type="submit" style="display:none" ref="editCallerSubmit">提交</button>
 		     		  </vue-form>
 		     	</div>
 		     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
@@ -98,7 +102,8 @@
 					pos: '',
 					workerListCheckbox: [],
 					queueList: '',
-					priorQueue: ''
+					priorQueue: '',
+					workerListCheckboxAll: false
 				},
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
@@ -136,6 +141,18 @@
 		},
 		mounted() {
 		},
+		watch: {
+            'form.workerListCheckboxAll': function() {
+            	console.log('form.workerListCheckboxAll')
+            	if (this.form.workerListCheckboxAll) {
+					this.form.workerLimit = this.form.workerList.map(function(ele, index, array) {
+                         return ele.id
+					})
+            	} else {
+            		this.form.workerLimit = []
+            	}
+            }
+		},
 		methods: {
 			_init() {
 				this.setParas()
@@ -153,7 +170,7 @@
 				this.form.workerLimit = this.queryParas.info.workerLimit
 			},
 			invokeEditCaller() {
-                document.getElementById('btn1').click()
+                this.$refs.editCallerSubmit.click()
 			},
 			editCaller() {
 				if (this.formstate.$invalid) {
