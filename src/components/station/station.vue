@@ -153,7 +153,7 @@
 	               	   	   	        	<td>{{worker.department}}</td>
 	               	   	   	        	<td class="head_pic_td"><img :src="worker.headPic" alt="" class="head_pic"></td>
 	               	   	   	        	<!-- <td class="head_pic_td">头像</td> -->
-	               	   	   	        	<td class="custom-cursor-pointer edit" @click="edit('editWorker', worker, stationName)">编辑</td>
+	               	   	   	        	<td><span class="custom-cursor-pointer edit" @click="edit('editWorker', worker, stationName)">编辑</span></td>
 	               	   	   	        </tr>	
 	               	   	   	    </tbody>
 	               	   	   </table>
@@ -176,7 +176,7 @@
 		               	   	        	<td>{{queue.scene}}</td>
 		               	   	        	<td>{{queue.id}}</td>
 		               	   	        	<td>{{queue.filter | stringSlice(7, -1)}}</td>
-		               	   	        	<td class="custom-cursor-pointer edit" @click="edit('editQueue', queue, stationName)">编辑</td>
+		               	   	        	<td><span class="custom-cursor-pointer edit" @click="edit('editQueue', queue, stationName)">编辑</span></td>
 		               	   	        </tr>	
 		               	   	    </tbody>
 		               	   </table>
@@ -201,7 +201,7 @@
 		               	   	        	<td>{{caller.ip}}</td>
 		               	   	        	<td>{{caller.pos}}</td>
 		               	   	        	<td>{{caller.priorQueue}}</td>
-		               	   	        	<td class="custom-cursor-pointer edit" @click="edit('editCaller', caller, stationName)">编辑</td>
+		               	   	        	<td><span class="custom-cursor-pointer edit" @click="edit('editCaller', caller, stationName)">编辑</span></td>
 		               	   	        </tr>	
 		               	   	    </tbody>
 		               	   </table>
@@ -215,8 +215,6 @@
     import middleLine from '../../common/middleLine/middleLine'
     import getCallerType from '../../filter/getCallerType'
     import stringSlice from '../../filter/stringSlice'
-    console.log(getCallerType, 'getCallerType')
-    console.log(stringSlice, 'stringSlice')
 	export default {
 		name: 'station',
 		data() {

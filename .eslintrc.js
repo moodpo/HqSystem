@@ -31,6 +31,7 @@ module.exports = {
     // 自定义部分
     'no-tabs':0,
     'indent':0,
-    'no-mixed-spaces-and-tabs':0
+    'no-mixed-spaces-and-tabs':0,
+    'space-infix-ops':0
   }
 }
