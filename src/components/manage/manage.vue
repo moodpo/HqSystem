@@ -50,8 +50,13 @@
                 this.$router.push({name: state})
 			},
 			logout() {
-				this.$store.commit('logout');
-				this.goToState('login')
+				var flag = confirm('确定退出？')
+				if (!flag) {
+					return;
+				} else {
+					this.$store.commit('logout');
+					this.goToState('login');
+				}
 			}
 		}
 	}
