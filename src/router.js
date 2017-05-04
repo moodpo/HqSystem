@@ -50,6 +50,7 @@ const routes = [
     {
     path: '/manage',
     name: 'manage',
+    redirect: { name: 'stationList' },
     meta: {
         requireAuth: true,
         keepAlive: false

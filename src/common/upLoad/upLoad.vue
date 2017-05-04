@@ -1,4 +1,7 @@
 <style scoped>
+.upload {
+	display: inline-block;
+}
 .chooseBtn {
 	display: none;
 }
@@ -19,6 +22,9 @@ a:hover {
 		// 上传组件
 		name: 'upload',
 		data() {
+			return {
+				test: ''
+			}
 		},
 		props: ['upLoadUrl'],
 		methods: {
@@ -42,9 +48,10 @@ a:hover {
 				request.onreadystatechange = function(response) {
 					if (request.readyState === 4 && request.status === 200 && request.responseText !== '') {
 						// emit 文件上传成功
+						console.log('upload success')
 						self.$emit('upLoadInfo', request.responseText)
 					} else {
-						console.log('failed')
+						console.log('upload failed')
 					}
 				};
 				request.send(formData);

@@ -1,5 +1,7 @@
 <style scoped>
-
+.head_pic {
+	width:100px;
+}
 </style>
 
 <template lang="html">
@@ -56,8 +58,10 @@
 	     		    <validate  class="form-group flex-container">
 	     		      <label  class="control-label">头像</label>
 	     		      <div class="input-bar">
-	     		      <!-- todo 上传 功能 -->
-	     		      	<input type="url" id="" class="form-control" v-model="form.headPic">
+      	     		      <div class="input-bar">
+                               <upLoad @upLoadInfo="showPic($event)" :upLoadUrl="upLoadUrl"></upLoad>	     		      
+                               <img :src="form.headPic" alt="" class="head_pic">
+                            </div>
 	     		      </div>
 	     		    </validate>
 	     		    <h3>账号信息</h3>
@@ -89,6 +93,7 @@
     import VueForm from 'vue-form'
     import utils from 'common/utils/utils.js'
     import modal from '../../common/modal/modal'
+    import upLoad from '../../common/upLoad/upLoad'
     Vue.use(VueForm)
 	export default {
 		name: 'editWorker',
@@ -108,6 +113,9 @@
 			}
 		},
 		computed: {
+			upLoadUrl() {
+                return this.$store.state.upLoadUrl
+			},
 			stationID() {
 				return Number(this.$route.query.stationID);
 			},
@@ -123,7 +131,8 @@
 		},
 		components: {
 			middleLine,
-			modal
+			modal,
+			upLoad
 		},
 		created() {
 			this._init()
@@ -163,9 +172,7 @@
 						descText: this.form.descText,
 						user: this.form.user,
 	                    password: this.form.password,
-	                    // todo 假数据
-	                    // headPic: this.form.headPic
-	                    headPic: 'www.baidu.com'
+	                    headPic: this.form.headPic
 					}).then((res) => {
                        // this.modal.modalShow = true;
                        // this.modal.modalContent = '保存成功';
@@ -177,6 +184,10 @@
                         this.modal.modalContent = '保存失败';
 					})
 				}
+			},
+			showPic(para) {
+               let info = JSON.parse(para)
+               this.form.headPic = info.upload_path
 			},
 			verifyID() {
 				if (this.form.id === this.formId) return

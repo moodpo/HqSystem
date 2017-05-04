@@ -89,6 +89,9 @@
     width: 200px;
     background-color: #0091F1;
 }
+.head_pic {
+	width:100px;
+}
 
 </style>
 <template lang="html">
@@ -145,7 +148,7 @@
 	               	   	   	        	<td>{{worker.title}}</td>
 
 	               	   	   	        	<td>{{worker.department}}</td>
-	               	   	   	        	<td>暂时空白{{worker.headPic}}</td>
+	               	   	   	        	<td><img :src="worker.headPic" alt="" class="head_pic"></td>
 	               	   	   	        	<td class="custom-cursor-pointer edit" 
 	               	   	   	        	@click="edit('editWorker', worker, stationName)">编辑</td>
 

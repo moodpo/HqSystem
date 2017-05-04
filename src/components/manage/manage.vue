@@ -15,10 +15,8 @@
 					<li @click="goToState('stationList', 3)" id="fenzhentai" class="manage-tab custom-cursor-pointer">
 						<div class="label" :class="{'isChoose':showInfoNumber == 3}"><i class="iconfont icon-weixinguanli"></i><h2>微信管理</h2></div>
 					</li>
-
 					<li @click="goToState('userManage', 4)" id="fenzhentai" class="manage-tab custom-cursor-pointer">
 						<div class="label" :class="{'isChoose':showInfoNumber == 4}"><i class="iconfont icon-yonghuguanli1"></i><h2>用户管理</h2></div>
-
 					</li> 
 	            </ul>
 	            <div>
@@ -36,7 +34,7 @@
 	export default {
 		name: 'manage',
 		created() {
-            this._init()
+			console.log('created')
 		},
 		computed: {
             showInfoNumber() {
@@ -44,9 +42,6 @@
             }
 		},
 		methods: {
-			_init() {
-                this.goToState('stationList', 0)
-			},
 			goToState(state, num) {
 				this.$store.commit('changeTab', {
 					whichTab: 'tabShowMoudleNum',

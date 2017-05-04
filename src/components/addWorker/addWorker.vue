@@ -2,7 +2,10 @@
 .input-bar {
 	margin-left: 15px;
 }
-
+.head_pic {
+	width:100px;
+	margin-left: 50px;
+}
 </style>
 <template lang="html">
 	<div class="addWorker">
@@ -56,7 +59,7 @@
 	     		      <label  class="control-label">头像</label>
 	     		      <div class="input-bar">
                          <upLoad @upLoadInfo="showPic($event)" :upLoadUrl="upLoadUrl"></upLoad>	     		      
-                         <img :src="form.headPic" alt="">
+                         <img :src="form.headPic" alt="" class="head_pic">
                       </div>
 	     		    </validate>
 	     		    <h3>账号信息</h3>
