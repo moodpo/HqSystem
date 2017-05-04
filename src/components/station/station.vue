@@ -89,11 +89,12 @@
     width: 200px;
     background-color: #0091F1;
 }
-td {
+.station .station-content .nav-info tr td {
 	vertical-align: middle;
 }
 .head_pic {
-	width:50px;
+	max-width:50px;
+	max-height:40px;
 }
 
 </style>
@@ -149,12 +150,10 @@ td {
 	               	   	   	            <td>{{worker.id}}</td>
 	               	   	   	            <td>{{worker.name}}</td>
 	               	   	   	        	<td>{{worker.title}}</td>
-
 	               	   	   	        	<td>{{worker.department}}</td>
 	               	   	   	        	<td class="head_pic_td"><img :src="worker.headPic" alt="" class="head_pic"></td>
-	               	   	   	        	<td class="custom-cursor-pointer edit" 
-	               	   	   	        	@click="edit('editWorker', worker, stationName)">编辑</td>
-
+	               	   	   	        	<!-- <td class="head_pic_td">头像</td> -->
+	               	   	   	        	<td class="custom-cursor-pointer edit" @click="edit('editWorker', worker, stationName)">编辑</td>
 	               	   	   	        </tr>	
 	               	   	   	    </tbody>
 	               	   	   </table>
