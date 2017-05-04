@@ -151,7 +151,11 @@ td {
 	               	   	   	        	<td>{{worker.title}}</td>
 
 	               	   	   	        	<td>{{worker.department}}</td>
+<<<<<<< HEAD
 	               	   	   	        	<td class="head_pic_td"><img :src="worker.headPic" alt="" class="head_pic"></td>
+=======
+	               	   	   	        	<td><img :src="worker.headPic" alt="" class="head_pic"></td>
+>>>>>>> a79be25123e4c5afc7d0147b9376ce9b28f6757d
 	               	   	   	        	<td class="custom-cursor-pointer edit" 
 	               	   	   	        	@click="edit('editWorker', worker, stationName)">编辑</td>
 
