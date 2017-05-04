@@ -1,13 +1,4 @@
 <style scoped>
-/*	h2 {
-		padding-bottom:24px;
-		border-bottom: 1px solid #f1f1f1;
-	}
-	input {
-		border:0px;
-		box-shadow: 0 0 ;
-		border-bottom: 1px solid #f1f1f1;
-	}*/
 	.caller-type {
 		margin-left: 20px;
 	}
@@ -55,10 +46,14 @@
 		     		    <validate  class="form-group flex-container">
 		     		      <label  class="control-label">位置</label>
 		     		      <div class="input-bar">
-		     		      	<input v-model="form.pos" required name="pos" class="form-control"/>
+		     		      	<input v-model="form.pos"  name="pos" class="form-control"/>
 		     		      </div>
 		     		    </validate>
 	         		    <h3>可登录医生</h3>
+	    		        <div class="form-group form-item flex-container">
+	            		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
+	        		        &nbsp;<div  class="input-bar">全部</div>
+	    		        </div>
 	         		    <div class="form-group form-flex-container">
 	         		        <div class="form-group form-item flex-container" v-for="worker in form.workerList">
     		         		    	<input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
@@ -72,7 +67,7 @@
 		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
 	         		        </div>
 	         		    </div>
-	         		    <button type="submit" style="display:none" id="btn1">提交</button>
+	         		    <button type="submit" style="display:none" ref="addCallerSubmit">提交</button>
 		     		  </vue-form>
 		     	</div>
 		     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
@@ -105,7 +100,8 @@
 					workerListCheckbox: [],
 					queueList: '',
 					priorQueue: '',
-					type: 'soft'
+					type: 'soft',
+					workerListCheckboxAll: false // 是否全部医生
 				},
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
@@ -113,6 +109,18 @@
 					modalContent: ''
 				}
 			}
+		},
+		watch: {
+            'form.workerListCheckboxAll': function() {
+            	console.log('form.workerListCheckboxAll')
+            	if (this.form.workerListCheckboxAll) {
+					this.form.workerListCheckbox = this.form.workerList.map(function(ele, index, array) {
+                         return ele.id
+					})
+            	} else {
+            		this.form.workerListCheckbox = []
+            	}
+            }
 		},
 		computed: {
 			stationID() {
@@ -150,13 +158,12 @@
 				this.getQueueList()
 			},
 			invokeAddCaller() {
-                document.getElementById('btn1').click()
+				this.$refs.addCallerSubmit.click()
 			},
 			addCaller() {
 				if (this.formstate.$invalid) {
+					console.log('editCaller failed')
 					return;
-					// this.modal.modalShow = true;
-					// this.modal.modalContent = '请填写完整数据';
 				} else {
 					this.axios.post(this.callerUrl, {
 						action: 'add',
@@ -168,9 +175,6 @@
 						workerLimit: this.form.workerListCheckbox,
 						priorQueue: this.form.priorQueue
 					}).then((res) => {
-                       console.log(res)
-                       // this.modal.modalShow = true;
-                       // this.modal.modalContent = '保存成功';
                        alert('保存成功')
                        this.cancel()
 					}, (res) => {
