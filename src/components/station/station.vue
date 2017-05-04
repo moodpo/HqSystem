@@ -89,8 +89,11 @@
     width: 200px;
     background-color: #0091F1;
 }
+td {
+	vertical-align: middle;
+}
 .head_pic {
-	width:100px;
+	width:50px;
 }
 
 </style>
@@ -148,7 +151,7 @@
 	               	   	   	        	<td>{{worker.title}}</td>
 
 	               	   	   	        	<td>{{worker.department}}</td>
-	               	   	   	        	<td><img :src="worker.headPic" alt="" class="head_pic"></td>
+	               	   	   	        	<td class="head_pic_td"><img :src="worker.headPic" alt="" class="head_pic"></td>
 	               	   	   	        	<td class="custom-cursor-pointer edit" 
 	               	   	   	        	@click="edit('editWorker', worker, stationName)">编辑</td>
 
@@ -163,6 +166,7 @@
 			               	        	<th>队列名字</th>
 			               	        	<th>策略配置</th>
 			               	        	<th>ID</th>
+			               	        	<th>系统拼接队列关键字</th>
 			               	        	<th>操作</th>
 			               	        </tr>
 		               	       	</thead>
@@ -172,9 +176,9 @@
 		               	   	        	<td>{{queue.name}}</td>
 		               	   	        	<td>{{queue.scene}}</td>
 		               	   	        	<td>{{queue.id}}</td>
+		               	   	        	<td>{{queue.filter | stringSlice(7, -1)}}</td>
 		               	   	        	<td class="custom-cursor-pointer edit" @click="edit('editQueue', queue, stationName)">编辑</td>
 		               	   	        </tr>	
-		               	   	    	
 		               	   	    </tbody>
 		               	   </table>
 	               	   </div>
@@ -207,11 +211,13 @@
             </div>
  	</div>   	
     </div>
-
 </template>
 <script >
     import middleLine from '../../common/middleLine/middleLine'
-    import getCallerType from '../../filter/filter'
+    import getCallerType from '../../filter/getCallerType'
+    import stringSlice from '../../filter/stringSlice'
+    console.log(getCallerType, 'getCallerType')
+    console.log(stringSlice, 'stringSlice')
 	export default {
 		name: 'station',
 		data() {

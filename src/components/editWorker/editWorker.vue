@@ -1,6 +1,7 @@
 <style scoped>
 .head_pic {
 	width:100px;
+	margin-left: 50px;
 }
 </style>
 
