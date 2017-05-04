@@ -46,7 +46,7 @@
 		     		    <validate  class="form-group flex-container">
 		     		      <label  class="control-label">位置</label>
 		     		      <div class="input-bar">
-		     		      	<input v-model="form.pos"  name="pos" class="form-control"/>
+		     		      	<input v-model="form.pos"  name="pos" class="form-control" required :class="[fieldClassName(formstate.pos)]"/>
 		     		      </div>
 		     		    </validate>
 	         		    <h3>可登录医生</h3>
