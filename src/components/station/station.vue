@@ -162,20 +162,20 @@
 		               	   <table class="table">
 		               	       	<thead>
 			               	       	<tr>
+			               	       		<th>ID</th>
 			               	        	<th>队列名字</th>
-			               	        	<th>策略配置</th>
-			               	        	<th>ID</th>
 			               	        	<th>系统拼接队列关键字</th>
+			               	        	<th>策略</th>
 			               	        	<th>操作</th>
 			               	        </tr>
 		               	       	</thead>
 		               	   	    <tbody>
 		               	   	        <div class="noData" v-if="queueList.length == 0">没有队列</div>
 		               	   	        <tr v-for="queue in queueList">
-		               	   	        	<td>{{queue.name}}</td>
-		               	   	        	<td>{{queue.scene}}</td>
 		               	   	        	<td>{{queue.id}}</td>
+		               	   	        	<td>{{queue.name}}</td>
 		               	   	        	<td>{{queue.filter | stringSlice(7, -1)}}</td>
+		               	   	        	<td>{{queue.scene}}</td>
 		               	   	        	<td class="custom-cursor-pointer edit" @click="edit('editQueue', queue, stationName)">编辑</td>
 		               	   	        </tr>	
 		               	   	    </tbody>
