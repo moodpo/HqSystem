@@ -13,54 +13,53 @@
 		</div>
 		<middleLine height='8' class="middleline-topbar"></middleLine>
 	     <div class="container info">
-	     	
      		<h3>数据库信息</h3>
      		<vue-form :state="formstate.form1"  class="form-horizontal" @submit.prevent="testDB">
      			<div class="form-flex-container">
      				<validate  class="form-item form-group flex-container">
-	     		      <label  class="control-label">数据库类型</label>
+	     		      <label  class="control-label cutom-require-item">数据库类型</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.DBType" required name="DBType" :class="[fieldClassName(formstate.form1.DBType),'form-control']" />
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
-	     		      <label  class="control-label">编码</label>
+	     		      <label  class="control-label cutom-require-item">编码</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.charset" required name="charset" :class="[fieldClassName(formstate.form1.charset),'form-control']" />
 	     		      </div>
 	     		    </validate>
      				<validate  class="form-item form-group flex-container">
-	     		      <label  class="control-label">数据库地址</label>
+	     		      <label  class="control-label cutom-require-item">数据库地址</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.host" required name="host" :class="[fieldClassName(formstate.form1.host),'form-control']"/>
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
-	     		      <label  class="control-label">端口</label>
+	     		      <label  class="control-label cutom-require-item">端口</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.port" required name="port" :class="[fieldClassName(formstate.form1.port),'form-control']" />
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
-	     		      <label  class="control-label">用户名</label>
+	     		      <label  class="control-label cutom-require-item">用户名</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.user" required name="user" :class="[fieldClassName(formstate.form1.user),'form-control']" />
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
-	     		      <label  class="control-label">密码</label>
+	     		      <label  class="control-label cutom-require-item">密码</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.passwd" required name="passwd" :class="[fieldClassName(formstate.form1.passwd),'form-control']" />
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
-	     		      <label  class="control-label">数据库名（DBName）</label>
+	     		      <label  class="control-label cutom-require-item">数据库名（DBName）</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.DBName" required name="DBName" :class="[fieldClassName(formstate.form1.DBName),'form-control']" />
 	     		      </div>
 	     		    </validate>
 	     		    <validate  class="form-item form-group flex-container">
-	     		      <label  class="control-label">数据库表名(Table)</label>
+	     		      <label  class="control-label cutom-require-item">数据库表名(Table)</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.table" required name="table" :class="[fieldClassName(formstate.form1.table),'form-control']" />
 	     		      </div>
@@ -72,39 +71,39 @@
      		<vue-form :state="formstate.form2"  class="form-horizontal" @submit.prevent="testSQL">
      			<div class="form-flex-container">
      				<validate  class="form-item form-group flex-container">
-	     		        <label  class="control-label">医生编号(ID)</label>
+	     		        <label  class="control-label cutom-require-item">医生编号(ID)</label>
 	     		        <div class="input-bar">
-	     		        	<input v-model="form.aliasID" required name="host" :class="{'form-control':formControlObj.formControl}" />
+	     		        	<input v-model="form.aliasID" required name="aliasID":class="[fieldClassName(formstate.form2.aliasID),'form-control']" />
 	     		        </div>
 	     		      </validate>
 	     		      <validate  class="form-item form-group flex-container">
-	     		        <label  class="control-label">医生姓名(Name)</label>
+	     		        <label  class="control-label cutom-require-item">医生姓名(Name)</label>
 	     		        <div class="input-bar">
-	     		        	<input v-model="form.aliasName" required name="user" :class="{'form-control':formControlObj.formControl}" />
+	     		        	<input v-model="form.aliasName" required name="aliasName" :class="[fieldClassName(formstate.form2.aliasName),'form-control']" />
 	     		        </div>
 	     		      </validate>
 	     		      <validate  class="form-item form-group flex-container">
-	     		        <label  class="control-label">所属科室(Department)</label>
+	     		        <label  class="control-label cutom-require-item">所属科室(Department)</label>
 	     		        <div class="input-bar">
-	     		        	<input v-model="form.aliasDepartment"  name="charset" :class="{'form-control':formControlObj.formControl}" />
+	     		        	<input v-model="form.aliasDepartment" required name="aliasDepartment" :class="[fieldClassName(formstate.form2.aliasDepartment),'form-control']" />
 	     		        </div>
 	     		      </validate>
 	     		      <validate  class="form-item form-group flex-container">
-	     		        <label  class="control-label">医生职称(title)</label>
+	     		        <label  class="control-label cutom-require-item">医生职称(title)</label>
 	     		        <div class="input-bar">
-	     		        	<input v-model="form.aliasTitle"  name="passwd" :class="{'form-control':formControlObj.formControl}" />
+	     		        	<input v-model="form.aliasTitle" required  name="aliasTitle" :class="[fieldClassName(formstate.form2.aliasTitle),'form-control']" />
 	     		        </div>
 	     		      </validate>
 	     		      <validate  class="form-item form-group flex-container">
 	     		        <label  class="control-label">医生描述(DescText)</label>
 	     		        <div class="input-bar">
-	     		        	<input v-model="form.aliasDescText"  name="DBName" :class="{'form-control':formControlObj.formControl}" />
+	     		        	<input v-model="form.aliasDescText"  name="aliasDescText" :class="[fieldClassName(formstate.form2.aliasDescText),'form-control']" />
 	     		        </div>
 	     		      </validate>
 	     		      <validate  class="form-item form-group flex-container">
 	     		        <label  class="control-label">医生照片(HeadPic)</label>
 	     		        <div class="input-bar">
-	     		        	<input v-model="form.aliasHeadPic"  name="port" :class="{'form-control':formControlObj.formControl}" />
+	     		        	<input v-model="form.aliasHeadPic"  name="aliasHeadPic" :class="[fieldClassName(formstate.form2.aliasHeadPic),'form-control']" />
 	     		        </div>
 	     		      </validate>
      			</div>
@@ -215,9 +214,7 @@
 			// 测试数据库连接  测试工作站数据源，测试数据库
 			testDB() {
 				if (this.formstate.form1.$invalid) {
-					// todo 表单需要优化
-					this.modal.modalContent = '请填写完整数据';
-					this.modal.modalShow = true;
+					return
 				} else {
 					this.axios.post(this.workerUrl, {
 						action: 'testSource',
@@ -257,9 +254,7 @@
                    return;
 				}
 				if (this.formstate.form2.$invalid) {
-					// todo 表单需要优化
-					this.modal.modalContent = '请填写完整数据';
-					this.modal.modalShow = true;
+					return
 				} else {
 					if (this.form.aliasHeadPic.length === 0) {
 						this.form.aliasHeadPic = '';

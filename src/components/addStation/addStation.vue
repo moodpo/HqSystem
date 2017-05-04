@@ -33,7 +33,6 @@
 	     	<middleLine height='6.6'></middleLine>
 	     	<div class="datainfo">
 	     		<h3>数据库信息</h3>
-
 	     		<vue-form :state="formstate.form1"  class="form-horizontal form-flex-container" @submit.prevent.stop="testDB">
 	     			<validate  class="form-item form-group flex-container ">
 	     		      	<label  class="control-label cutom-require-item">数据库类型</label>
