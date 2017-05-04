@@ -8,11 +8,11 @@
 	    </div>
 	    <vue-form :state="formstate" @submit.prevent="saveForm" class="saveForm">
 	        <validate  class="form-group">
-	          <input v-model="form.user" required name="user" placeholder="用户名 " class="form-control input"  :class="[fieldClassName(formstate.user)]"/>
+	          <input v-model="form.user" required name="user" placeholder="用户名 " class="form-control input"  :class="[fieldClassName(formstate.user)]" />
 	          <i class="iconfont icon-yonghuming" style=""></i>
 	        </validate>
 	        <validate  class="form-group">
-	          <input v-model="form.passwd"  name="passwd" placeholder="密码" type="password" required :class="[fieldClassName(formstate.passwd)]" class="form-control input"/>
+	          <input v-model="form.passwd"  name="passwd" placeholder="密码" type="password" required :class="[fieldClassName(formstate.passwd)]" class="form-control input" />
 	          <i class="iconfont icon-mimasuo"></i>
 	        </validate>
 	        <button type="submit" class="btn btn-primary btn-block"><h2>登录</h2></button>

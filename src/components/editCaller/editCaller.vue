@@ -43,7 +43,7 @@
 		     		    <validate  class="form-group flex-container">
 		     		      <label  class="control-label">IP</label>
 		     		      <div class="input-bar">
-		     		      	<input v-model="form.ip" required name="ip" class="form-control" :class="[fieldClassName(formstate.ip)]"/>
+		     		      	<input v-model="form.ip" required name="ip" class="form-control" :class="[fieldClassName(formstate.ip)]" @change="verifyIP"/>
 		     		      </div>
 		     		    </validate>
 		     		    <validate  class="form-group flex-container">
@@ -103,7 +103,8 @@
 					workerListCheckbox: [],
 					queueList: '',
 					priorQueue: '',
-					workerListCheckboxAll: false
+					workerListCheckboxAll: false,
+					isIpValid: true
 				},
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
@@ -169,10 +170,23 @@
 				this.form.priorQueue = this.queryParas.info.priorQueue
 				this.form.workerLimit = this.queryParas.info.workerLimit
 			},
+			verifyIP() {
+               let reg =/^(\d+\.){3}\d+$/g
+               if (!reg.test(this.form.ip)) {
+               	  alert('IP不合法')
+               	  this.form.isIpValid = false
+               } else {
+               	  this.form.isIpValid = true
+               }
+			},
 			invokeEditCaller() {
                 this.$refs.editCallerSubmit.click()
 			},
 			editCaller() {
+				if (!this.form.isIpValid) {
+					alert('IP不合法')
+					return
+				}
 				if (this.formstate.$invalid) {
 					return
 					// this.modal.modalShow = true;

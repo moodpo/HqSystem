@@ -40,7 +40,7 @@
 		     		    <validate  class="form-group flex-container">
 		     		      <label  class="control-label">IP</label>
 		     		      <div class="input-bar">
-		     		      	<input v-model="form.ip" required name="ip" class="form-control" :class="[fieldClassName(formstate.ip)]"/>
+		     		      	<input v-model="form.ip" required name="ip" class="form-control" :class="[fieldClassName(formstate.ip)]" @change="verifyIP"/>
 		     		      </div>
 		     		    </validate>
 		     		    <validate  class="form-group flex-container">
@@ -101,7 +101,8 @@
 					queueList: '',
 					priorQueue: '',
 					type: 'soft',
-					workerListCheckboxAll: false // 是否全部医生
+					workerListCheckboxAll: false, // 是否全部医生
+					isIpValid: true   // ip是否有效
 				},
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
@@ -161,6 +162,10 @@
 				this.$refs.addCallerSubmit.click()
 			},
 			addCaller() {
+				if (!this.form.isIpValid) {
+					alert('IP不合法')
+					return
+				}
 				if (this.formstate.$invalid) {
 					console.log('editCaller failed')
 					return;
@@ -182,6 +187,15 @@
                         this.modal.modalContent = '保存失败';
 					})
 				}
+			},
+			verifyIP() {
+               let reg =/^(\d+\.){3}\d+$/g
+               if (!reg.test(this.form.ip)) {
+               	  alert('IP不合法')
+               	  this.form.isIpValid = false
+               } else {
+               	  this.form.isIpValid = true
+               }
 			},
 			getWorkerList() {
 				console.log('getWorkerList')
