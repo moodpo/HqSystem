@@ -175,9 +175,8 @@
 		               	   	        	<td>{{queue.id}}</td>
 		               	   	        	<td>{{queue.name}}</td>
 		               	   	        	<td>{{queue.filter | stringSlice(7, -1)}}</td>
-
+                                        <td>{{queue.scene}}</td>
 		               	   	        	<td><span class="custom-cursor-pointer edit" @click="edit('editQueue', queue, stationName)">编辑</span></td>
-
 		               	   	        </tr>	
 		               	   	    </tbody>
 		               	   </table>
