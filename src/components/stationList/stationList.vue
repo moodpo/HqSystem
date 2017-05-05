@@ -2,22 +2,18 @@
 	<div class="stationlist-box">
 	       <middleLine height='8' class="middleline-topbar"></middleLine>
 		   	<div class="card-container">
-   				<div v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
+   				<a v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
    					<div class="card">
-   						<div class="card-bg">
-   							<i class="iconfont icon-fenzhentai2"></i>
-   						</div>
+   						<i class="iconfont icon-fenzhentai2 card-bg"></i>
    						<h3>{{station.name}}</h3>
    					</div>
-   				</div>
-   				<div class="card-box" @click="goToState('addStation')">
+   				</a>
+   				<a class="card-box" @click="goToState('addStation')">
    					<div class="card">
-   						<div class="card-bg xinjian">
-   							<i class="iconfont icon-xinjianfenzhentai"></i>
-   						</div>
+   						<i class="iconfont icon-xinjianfenzhentai card-bg"></i>
    						<h3>新建分诊台</h3>
    					</div>
-   				</div>
+   				</a>
 		   	</div>
         <keep-alive>
           <router-view></router-view>
@@ -168,6 +164,21 @@ a, button, input
 		width: 1133.4px
 		six2(6)
 		
+
+.iconfont
+	color: #009CFF
+	font-size: 60px	
+
+a
+	color: #000
+	
+a:hover
+	color: #00C7FF
+	text-decoration: none
+	.iconfont
+		color: #00C7FF
+	.card-bg
+		border: 1px solid #00C7FF
 	
 .card-box
 	width: 133.3px
@@ -177,7 +188,6 @@ a, button, input
 	
 .card
 	h3
-		// font-family: PingFangSC
 		text-align: center
 		margin-top: 0.67em
 		margin-bottom: 1.33em
@@ -185,18 +195,10 @@ a, button, input
 
 .card-bg
 	height: 173.3px
-	// background:no-repeat center center
 	border:1px solid #d7d7d7
 	display: flex
 	justify-content: center
 	align-items: center
-	.icon-fenzhentai2
-		font-size: 60px
-		color: #009CFF
-	.icon-fenzhentai2:active,
-	.icon-fenzhentai2:hover,
-	.icon-xinjianfenzhentai:hover
-		color: #00C7FF
 
 .addstation
 	width: 8em
@@ -210,7 +212,6 @@ a, button, input
 	color:#fff
 	font-size: 14px
 	padding: 0 auto
-	
 
 .top-bar
 	display: flex
@@ -221,11 +222,9 @@ a, button, input
 .middleline-topbar
 	margin-top: 64px
 	
-.xinjian
-	border: none
-	
 .icon-xinjianfenzhentai
 	font-size: 60px
 	color: #777
+
 
 </style>
