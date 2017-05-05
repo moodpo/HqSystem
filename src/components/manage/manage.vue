@@ -56,12 +56,14 @@
 			logout() {
 				var flag = confirm('确定退出？')
 				if (!flag) {
+
 				 	return;
 				}
 				this.$store.commit('logout');
 				this.goToState('login')
 				// 退出时 清除实例
 				this.$destroy()
+
 			}
 		}
 	}
