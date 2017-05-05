@@ -33,7 +33,12 @@
 	     	</div>
 	     	<middleLine height='6.6'></middleLine>
 	     	<div class="">
-	     		<h3>数据库信息1</h3>
+	     		<h3>数据库信息</h3>
+	     		<span class="custom-form-info">
+	     			<span class="untest-info" v-if="showInfo.DBtestInfoNum == 0"><img :src="resourceImg.untestImg" alt="" >未测试连接</span>
+	     			<span class="failed-info" v-if="showInfo.DBtestInfoNum == 1"><img :src="resourceImg.failedImg" alt="" >连接失败</span>
+	     			<span class="success-info" v-if="showInfo.DBtestInfoNum == 2"><img :src="resourceImg.successImg" alt="" >连接成功</span>
+	     		</span> 
 	     		<vue-form :state="formstate.form1"   @submit.prevent="testDB" class="form-horizontal form-flex-container">
 	     		    <validate  class="form-item form-group flex-container">
 	     		      	<label  class="control-label cutom-require-item">数据库类型</label>
@@ -83,12 +88,17 @@
 	     		      		<input v-model="form.tableName" required name="table"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>
 	     		    </validate>
-	     		    <button type="submit" class="center-block test-btn">连接测试1</button>
+	     		    <button type="submit" class="center-block test-btn">连接测试</button>
 	     		</vue-form>
 	     	</div>
 	     	<middleLine height='6.6'></middleLine>
 	     	<div class="connectinfo">
 	     		<h3>SQL连接信息</h3>
+	     		<span class="custom-form-info">
+	     			<span class="untest-info" v-if="showInfo.SQLtestInfoNum == 0"><img :src="resourceImg.untestImg" alt="" >未测试连接</span>
+	     			<span class="failed-info" v-if="showInfo.SQLtestInfoNum == 1"><img :src="resourceImg.failedImg" alt="" >连接失败</span>
+	     			<span class="success-info" v-if="showInfo.SQLtestInfoNum == 2"><img :src="resourceImg.successImg" alt="" >连接成功</span>
+	     		</span> 
 	     		<vue-form :state="formstate.form2"   @submit.prevent="testSQL">
 		     		<div class="form-horizontal form-flex-container">
 			     		<validate class="form-item form-group flex-container">
@@ -222,6 +232,7 @@
     import VueForm from 'vue-form'
     import utils from 'common/utils/utils'
     import modal from '../../common/modal/modal'
+    import resourceImg from 'img'
     Vue.use(VueForm)
 	export default {
 		name: 'addStation',
@@ -271,6 +282,11 @@
 				modal: {
 					modalShow: false,
 					modalContent: ''
+				},
+				resourceImg: resourceImg,
+				showInfo: {
+					DBtestInfoNum: 0,  // 数据库连接提示信息
+					SQLtestInfoNum: 0  // SQL连接提示信息
 				}
 			}
 		},
@@ -324,12 +340,14 @@
 							this.formstate.form1.linkTest = false;
 							this.modal.modalContent = '连接失败，请重试';
 							this.modal.modalShow = true;
-							this.formControlObj.form1BtnVal = this.formBtnVal[0]
+							this.formControlObj.form1BtnVal = this.formBtnVal[0];
+							this.showInfo.DBtestInfoNum = 1;
 						} else {
 							this.formstate.form1.linkTest = true;
 							this.formControlObj.form1BtnVal = this.formBtnVal[2];
 							this.modal.modalContent = '连接成功';
 							this.modal.modalShow = true;
+							this.showInfo.DBtestInfoNum = 2;
 						}
 					}, (res) => {
 						console.log('failed')
@@ -383,13 +401,15 @@
 							this.formstate.form2.linkTest = false;
 							this.modal.modalContent = '连接失败，请重试';
 							this.modal.modalShow = true;
-							this.formControlObj.form2BtnVal = this.formBtnVal[0]
+							this.formControlObj.form2BtnVal = this.formBtnVal[0];
+							this.showInfo.SQLtestInfoNum = 1;
 						} else {
 							this.modal.modalContent = '连接成功';
 							this.modal.modalShow = true;
 							this.formstate.form2.linkTest = true;
 							this.formControlObj.form2BtnVal = this.formBtnVal[2]
-							this.form.sqlLang = res.testSql
+							this.form.sqlLang = res.testSql;
+							this.showInfo.SQLtestInfoNum = 2;
 						}
 					}, (res) => {
 						console.log('failed')

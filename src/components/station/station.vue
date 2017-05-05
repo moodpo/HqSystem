@@ -123,7 +123,7 @@
  			<middleLine height='8' class="middleline-topbar"></middleLine>
             <div class="station-content  container info no-left-padding">
 
-	               <div class="nav-bar" style="height: calc(100vh - 136px)">
+	               <div class="nav-bar" style="height: calc(100vh - 136px);position:fixed;">
 
 	               	     <div class="tab-title  text-center custom-cursor-pointer" @click="showInfo(0)" :class="{'isChoose':showInfoNumber == 0}">医生信息</div>
 	               	     <div class="tab-title text-center custom-cursor-pointer" @click="showInfo(1)" :class="{'isChoose':showInfoNumber == 1}">队列</div>
@@ -132,7 +132,7 @@
 	               	     <div class="tab-title text-center custom-cursor-pointer config" @click="edit('editStation', {'stationID':stationID}, stationName )">配置分诊台</div>
 	               </div>
 	               <div class="nav-info">
-	               	   <div class="workList nav-info-content" v-if="showInfoNumber == 0">
+	               	   <div class="workList nav-info-content" style="overflow:auto" v-if="showInfoNumber == 0">
 	               	   	   <table class="table">
 	               	   	        <thead>
 	               	   	           <tr>

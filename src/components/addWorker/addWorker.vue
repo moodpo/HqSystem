@@ -6,6 +6,13 @@
 	width:100px;
 	margin-left: 50px;
 }
+.forminfo {
+	position: absolute;
+	right:0;
+	top:0;
+	width:15px;
+	height:15px;
+}
 </style>
 <template lang="html">
 	<div class="addWorker">
@@ -25,37 +32,38 @@
 	     <div class="container info">
      			<h3>基础信息</h3>
 	     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="addWorker" >
-     				<validate  class="form-item form-group flex-container">
+     				<validate  class=" form-group flex-container">
 	     		      <label  class="control-label">编号</label>
-	     		      <div class="input-bar">
+	     		      <div class="input-bar" style="position:relative">
 	     		      	<input v-model="form.id" required name="id" class="form-control" :class="[fieldClassName(formstate.id)]" @change="verifyID"/>
+	     		      	<span class="forminfo" v-if="form.idIsUsed"><img :src="usedImg" alt=""></span>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-item form-group flex-container">
+	     		    <validate  class=" form-group flex-container">
 	     		      <label  class="control-label">姓名</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.name" required name="name" class="form-control" :class="[fieldClassName(formstate.name)]"/>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-item form-group flex-container">
+	     		    <validate  class=" form-group flex-container">
 	     		      <label  class="control-label">职称</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.title" required name="title" class="form-control" :class="[fieldClassName(formstate.title)]"/>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-item form-group flex-container">
+	     		    <validate  class=" form-group flex-container">
 	     		      <label  class="control-label">科室</label>
 	     		      <div class="input-bar">
 	     		      	<input v-model="form.department" required name="department" class="form-control" :class="[fieldClassName(formstate.department)]"/>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-item form-group flex-container  height-auto">
+	     		    <validate  class=" form-group flex-container  height-auto">
 	     		      <label  class="control-label">简介</label>
 	     		      <div class="input-bar">
 	     		      	<textarea v-model="form.descText"  name="descText" class="form-control"></textarea>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-item form-group flex-container height-auto">
+	     		    <validate  class=" form-group flex-container height-auto">
 	     		      <label  class="control-label">头像</label>
 	     		      <div class="input-bar">
                          <upLoad @upLoadInfo="showPic($event)" :upLoadUrl="upLoadUrl"></upLoad>	     		      
@@ -91,6 +99,7 @@
     import utils from 'common/utils/utils'
     import modal from '../../common/modal/modal'
     import upLoad from '../../common/upLoad/upLoad'
+    import resourceImg from 'img'
     Vue.use(VueForm)
 	export default {
 		name: 'addWorker',
@@ -109,13 +118,15 @@
                     password: '123456',
                     headPic: '',
                     verifyIDFlag: false,
-                    idValid: false
+                    idValid: false,
+                    idIsUsed: false // id是否已被占用
 				},
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
 					modalShow: false,
 					modalContent: ''
-				}
+				},
+				usedImg: resourceImg.usedImg
 			}
 		},
 		computed: {
@@ -141,7 +152,6 @@
 			this._init()
 		},
 		mounted() {
-			console.log(this.$route.name, this.$route, this.$route.query)
 		},
 		watch: {
 			'form.id': function(val, oldval) {
@@ -217,10 +227,12 @@
 				}).then((res) => {
 					if (res.conflict === 0) {
                         this.form.verifyIDFlag = true;
+                        this.form.idIsUsed = false;
 					} else if (res.conflict === 1) {
 						this.form.verifyIDFlag = false;
 	                    this.modal.modalShow = true;
 	                    this.modal.modalContent = '编号已被占用';
+	                    this.form.idIsUsed = true;
 					}
 				}, (res) => {
 				})

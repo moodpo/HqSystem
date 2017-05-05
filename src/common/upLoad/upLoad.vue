@@ -11,7 +11,7 @@ a:hover {
 </style>
 <template lang="html">
 	<div class="upload">
-		<input type="file"  ref="chooseBtn" class="chooseBtn" @change="change">
+		<input type="file"  ref="chooseBtn" class="chooseBtn" @change="change" accept="image/*">
 		<a class="" @click="chooseFile" ref="upLoadBtn" class="upLoadBtn custom-cursor-pointer">上传</a>
 	</div>
 </div>
@@ -32,6 +32,7 @@ a:hover {
             	this.$refs.chooseBtn.click()
             },
             change() {
+            	console.log('this.$refs.chooseBtn '+this.$refs.chooseBtn.files[0])
             	this.upLoad()
             },
             upLoad() {

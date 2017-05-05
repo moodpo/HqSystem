@@ -3,6 +3,9 @@
 	width:100px;
 	margin-left: 50px;
 }
+.input-bar {
+	margin-left: 15px;
+}
 </style>
 
 <template lang="html">
@@ -50,17 +53,17 @@
 	     		      	<input v-model="form.department" required name="department" class="form-control" :class="[fieldClassName(formstate.department)]"/>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group flex-container">
+	     		    <validate  class="form-group flex-container height-auto">
 	     		      <label  class="control-label">简介</label>
 	     		      <div class="input-bar">
 	     		      	<textarea v-model="form.descText"  name="descText" class="form-control"></textarea>
 	     		      </div>
 	     		    </validate>
-	     		    <validate  class="form-group flex-container">
+	     		    <validate  class="form-group flex-container height-auto">
 	     		      <label  class="control-label">头像</label>
 	     		      <div class="input-bar">
       	     		      <div class="input-bar">
-                               <upLoad @upLoadInfo="showPic($event)" :upLoadUrl="upLoadUrl"></upLoad>	     		      
+                               <upLoad @upLoadInfo="showPic($event)" :upLoadUrl="upLoadUrl"></upLoad>
                                <img :src="form.headPic" alt="" class="head_pic">
                             </div>
 	     		      </div>
