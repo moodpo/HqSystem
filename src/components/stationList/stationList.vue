@@ -2,7 +2,7 @@
 	<div class="stationlist-box">
 	       <middleLine height='8' class="middleline-topbar"></middleLine>
 		   	<div class="card-container">
-			   	<a class="card-box" @click="goToState('addStation')">
+			   	<a class="card-box" @click="goToState('addStation', {'theLastStationID': theLastStationID})">
 			   		<div class="card">
 			   			<div class="card-bg xinjian">
 			   				<i class="iconfont icon-xinjianfenzhentai"></i>
@@ -15,6 +15,9 @@
    						<i class="iconfont icon-fenzhentai2 card-bg"></i>
    						<h3>{{station.name}}</h3>
    					</div>
+   				</a>
+   				<a  class="card-box" v-if="stationListLength == 0">
+   					暂无分诊台
    				</a>
 		   	</div>
         <keep-alive>
@@ -32,8 +35,9 @@
 		data() {
 			return {
 				stationList: '',
-				stationLogo: stationLogo
-				// length: ''
+				stationListLength: 0,
+				stationLogo: stationLogo,
+				theLastStationID: -1 // 最后一次添加分诊台的id，如果没有，记为-1
 			}
 		},
 		computed: {
@@ -52,19 +56,20 @@
 		},
 		methods: {
 			_init() {
-				console.log('_init')
 				this.axios.post(this.serverUrl, {
 					action: 'getList'
 				}).then((res) => {
                     this.stationList = res.stationList
+                    this.stationListLength = this.stationList.length
                     // this.length = res.stationList.length
+                    if (this.stationListLength) {
+                    	this.theLastStationID = this.stationList[this.stationListLength - 1].id
+                    }
 				}, (res) => {
 					console.log('failed')
 				})
 			},
 			goToStationDetail(station) {
-				// todo
-				// 参数传递有点怪异
 				this.$router.push(
 					{ name: 'station',
 					query: {
@@ -73,8 +78,13 @@
 					}
 				})
 			},
-			goToState(state) {
-				this.$router.push({name: state})
+			goToState(state, info) {
+				console.log(info)
+				this.$router.push(
+					{
+						name: state,
+						query: info
+					})
 			}
 		}
 	}

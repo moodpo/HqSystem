@@ -293,6 +293,9 @@
 		computed: {
 			serverUrl() {
 				return this.$store.getters.postUrl('manager', 'station')
+			},
+			theLastStationID() {
+				return Number(this.$route.query.theLastStationID);
 			}
 		},
 		components: {
@@ -309,6 +312,9 @@
 			_init() {
 				this.formControlObj.form1BtnVal = this.formBtnVal[1]
 				this.formControlObj.form2BtnVal = this.formBtnVal[1]
+				if (this.theLastStationID !== -1) {
+                    this.getLastStationInfo()
+				}
 			},
 			// 测试工作站数据源
 			testDB() {
@@ -410,7 +416,6 @@
 			},
 			// 添加工作站
 			addStation() {
-				console.log('addStation')
 				if (this.formstate.form3.$invalid) {
                    this.modal.modalContent = '请填写分诊台名称';
                    this.modal.modalShow = true;
@@ -471,7 +476,17 @@
 						console.log('failed')
 					})
 				}
-                console.log('testSQL')
+			},
+			getLastStationInfo() {
+				this.axios.post(this.serverUrl, {
+					action: 'getInfo',
+					stationID: this.theLastStationID
+				}).then((res) => {
+					console.log(res)
+					this.form = res
+				}, (res) => {
+					console.log('failed')
+				})
 			},
 			cancel() {
 				// todo
