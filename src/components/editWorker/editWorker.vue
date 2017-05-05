@@ -70,7 +70,7 @@
 	     		    	<label  class="control-label">账号</label>
 	     		    	<div class="input-bar">
 	     		    	&nbsp;&nbsp;
-		     		    	<input  type="radio" checked   name="user" class="not-allowed" />&nbsp;&nbsp;（和基础信息编号一样）
+		     		    	<input  type="radio" checked   name="user" class="not-allowed" />&nbsp;&nbsp;{{form.id}}（和基础信息编号一样）
 	     		    	</div>
 	     		    </div>
 	     		    <div class="form-group flex-container">

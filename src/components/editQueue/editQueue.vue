@@ -17,10 +17,7 @@
 
 .footer-space
 	margin-bottom: 40.6px
-
-
 </style>
-
 <template lang="html">
 	<div class="editQueue">
 		<div class="top-bar">
@@ -38,7 +35,7 @@
 		</div>
 		<middleLine height='8' class="middleline-topbar"></middleLine>
 	     <div class="container info">
-     		<vue-form :state="formstate"  class="form-horizontal">
+     		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="editQueue">
      			<h3>基础信息</h3>
      			<div class="form-flex-container">
      				<validate class="form-group flex-container">
@@ -73,13 +70,17 @@
      		    </div>
      		    <middleLine height='6.6'></middleLine>
      		    <h3>所属医生</h3>
+		        <div class="form-group form-item flex-container">
+        		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
+    		        &nbsp;<div  class="input-bar">全部</div>
+		        </div>
      		    <div class="form-flex-container footer-space">
          		    <div class="form-group form-item flex-container" v-for="worker in form.workerList">
 	         		    <input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
          		        <div  class="input-bar">{{worker.name}}</div>
          		    </div>
      		    </div>
-     		    <button type="submit" style="display:none" id="btn1">提交</button>
+     		    <button type="submit" style="display:none"  ref="editQueueSubmit">提交</button>
      		</vue-form>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
 	     		<p slot='body'>{{modal.modalContent}}</p>
@@ -112,7 +113,8 @@
 					sourceQueueList: '',
 					filter: '',
 					password: '',
-					workerLimit: ''
+					workerLimit: '',
+					workerListCheckboxAll: false // 默认不是全选
 				},
 				formBtnVal: ['连接失败', '连接测试', '连接成功'],
 				modal: {
@@ -138,6 +140,21 @@
 				return this.$route.query
 			}
 		},
+		watch: {
+            'form.workerListCheckboxAll': function() {
+            	console.log('form.workerListCheckboxAll')
+            	if (this.form.workerLimitWatch) {
+            		return
+            	}
+            	if (this.form.workerListCheckboxAll) {
+					this.form.workerLimit = this.form.workerList.map(function(ele, index, array) {
+                         return ele.id
+					})
+            	} else {
+            		this.form.workerLimit = []
+            	}
+            }
+		},
 		components: {
 			middleLine,
 			modal
@@ -155,7 +172,7 @@
 				this.getSourceQueueList()
 			},
 			invokeEditQueue() {
-                document.getElementById('btn1').click()
+				this.$refs.editQueueSubmit.click()
 			},
 			editQueue() {
 				if (this.formstate.$invalid) {
@@ -213,6 +230,7 @@
 				})
 			},
 			setParas() {
+				console.log(this.queryParas.info)
 				this.form.name = this.queryParas.info.name
 				this.form.scene = this.queryParas.info.scene
 				this.form.descText = this.queryParas.info.descText
@@ -221,15 +239,10 @@
 				this.form.id = this.queryParas.info.id
 			},
 			cancel() {
-				// todo
-				// 切换回去 有缓存
 				this.$router.go(-1)
 			},
 			// 删除
 			del() {
-				// todo
-				// 弹出框优化
-				console.log('confirm')
 				var flag = confirm('确定删除？')
 				if (!flag) {
 					return;
@@ -247,29 +260,6 @@
 			fieldClassName(field) {
                return utils.fieldClassName(field)
 			}
-			// delCancel() {
-			// 	console.log('delCancel')
-			// 	this.modal.modalShow = false;
-			// },
-			// delConfirm() {
-			// 	this.modal.modalShow = false;
-			// 	this.axios.post(this.queueInfoUrl, {
-			// 		action: 'add',
-			// 		stationID: this.stationID,
-			// 		name: this.form.name,
-			// 		scene: this.form.sceneSupportRadio,
-			// 		descText: this.form.descText,
-			// 		// filter:
-			// 		workerLimit: this.form.workerListCheckbox
-			// 	}).then((res) => {
-   //                 console.log(res)
-   //                 this.modal.modalShow = true;
-   //                 this.modal.modalContent = '保存成功';
-			// 	}, (res) => {
-   //                  this.modal.modalShow = true;
-   //                  this.modal.modalContent = '保存失败';
-			// 	})
-			// }
 		}
 	}
 </script>

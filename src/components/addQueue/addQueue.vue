@@ -13,9 +13,6 @@
 		</div>
 		<middleLine height='8' class="middleline-topbar"></middleLine>
 		<div class="container info">
-			
-	     	
-	     		
      		<vue-form :state="formstate"  class="form-horizontal" @submit.prevent="addQueue">
      			<h3>基础信息</h3>
      			<div class="form-flex-container">
@@ -28,7 +25,7 @@
 	     		    <validate  class="form-group flex-container">
 	     		      	<label  class="control-label">队列描述</label>
 	     		      	<div class="input-bar">
-	     		      		<input v-model="form.descText" required name="descText" class="form-control" :class="[fieldClassName(formstate.user)]"/>
+	     		      		<input v-model="form.descText"  name="descText" class="form-control" :class="[fieldClassName(formstate.user)]"/>
 	     		      	</div>
 	     		    </validate>
 	     		    <div class="form-group flex-container">
@@ -51,11 +48,11 @@
      		    </div>
      		    <middleLine height='6.6'></middleLine>
      		    <h3>所属医生</h3>
+ 		        <div class="form-group form-item flex-container">
+         		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
+     		        &nbsp;<div  class="input-bar">全部</div>
+ 		        </div>
      		    <div class="form-flex-container footer-space">
-     		        <div class="form-group form-item flex-container">
-	         		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
-         		        &nbsp;<div  class="input-bar">全部</div>
-     		        </div><br>
          		    <div class="form-group form-item flex-container" v-for="worker in form.workerList">
 	         		    <input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerListCheckbox"  :value="worker.id" >
          		        &nbsp;<div  class="input-bar">{{worker.name}}</div>
@@ -126,6 +123,18 @@
 		},
 		mounted() {
 		},
+		watch: {
+            'form.workerListCheckboxAll': function() {
+            	console.log('form.workerListCheckboxAll')
+            	if (this.form.workerListCheckboxAll) {
+					this.form.workerListCheckbox = this.form.workerList.map(function(ele, index, array) {
+                         return ele.id
+					})
+            	} else {
+            		this.form.workerListCheckbox = []
+            	}
+            }
+		},
 		methods: {
 			_init() {
 				this.getWorkerList()
@@ -136,16 +145,11 @@
                 document.getElementById('btn1').click()
 			},
 			addQueue() {
+				console.log('addQueue')
 				if (this.formstate.$invalid) {
+					console.log('addQueue invalid')
 					return;
-					// this.modal.modalShow = true;
-					// this.modal.modalContent = '请填写完整数据';
 				} else {
-					if (this.form.workerListCheckboxAll) {
-						this.form.workerListCheckbox = this.form.workerList.map(function(ele, index, array) {
-                             return ele.id
-						})
-					}
 					if (this.form.workerListCheckbox.length === 0) {
 						alert('至少选择一名医生')
 						return;
@@ -157,7 +161,6 @@
 						name: this.form.name,
 						scene: this.form.sceneSupportRadio,
 						descText: this.form.descText,
-						// filter: 'queue=\'' + this.form.filter + '\'',
 						filter: `queue='${this.form.filter}'`,
 						workerLimit: this.form.workerListCheckbox
 					}).then((res) => {
@@ -186,7 +189,6 @@
 					stationID: this.stationID
 				}).then((res) => {
 					this.form.sceneSupportList = res.list;
-					// 默认选择第一个
 					this.form.sceneSupportRadio = this.form.sceneSupportList[0].name
 				}, (res) => {
 					console.log('failed')
@@ -197,15 +199,13 @@
 					action: 'getSourceQueueList',
 					stationID: this.stationID
 				}).then((res) => {
-					console.log(res)
 					this.form.sourceQueueList = res.list;
+					this.form.filter = this.form.sourceQueueList[0];
 				}, (res) => {
 					console.log('failed ')
 				})
 			},
 			cancel() {
-				// todo
-				// 切换回去 有缓存
 				this.$router.go(-1)
 			},
 			fieldClassName(field) {
@@ -216,15 +216,6 @@
 </script>
 
 <style lang="stylus" scoped>
-// h2
-// 	padding-bottom: 24px
-// 	border-bottom: 1px solid #f1f1f1
-
-// h3
-// 	font-size: 14px
-// 	line-height: 60px
-// 	border-bottom: 1px solid #f1f1f1
-// 	margin-bottom: 15px
 
 // 去掉button等默认点击效果
 a, button, input, select, select:active, select:visited
