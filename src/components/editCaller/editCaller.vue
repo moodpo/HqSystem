@@ -35,9 +35,9 @@
 		     		    <validate  class="form-group flex-container">
 		     		      <label  class="control-label">类型</label>
 		     		      <div class="input-bar caller-type">
-		     		      	<input v-model="form.type" required value="soft" name="type" type="radio"/> 虚拟叫号器
+		     		      	<input id="xunicalleredit" v-model="form.type" required value="soft" name="type" type="radio"/><label for="xunicalleredit">虚拟叫号器</label>
 		     		      	&nbsp;&nbsp;
-		     		      	<input v-model="form.type" required value="physic" name="type" type="radio"/> 物理叫号器
+		     		      	<input id="wulicalleredit" v-model="form.type" required value="physic" name="type" type="radio"/><label for="wulicalleredit">物理叫号器</label>
 		     		      </div>
 		     		    </validate>
 		     		    <validate  class="form-group flex-container">
@@ -54,20 +54,20 @@
 		     		    </validate>
 	         		    <h3>可登录医生</h3>
 	    		        <div class="form-group form-item flex-container">
-	            		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
-	        		        &nbsp;<div  class="input-bar">全部</div>
+	            		    <input id="alldoctors" class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
+	        		        &nbsp;<label for="alldoctors" class="input-bar">全部</label>
 	    		        </div>
 	         		    <div class="form-group form-flex-container">
 	         		        <div class="form-group form-item flex-container" v-for="worker in form.workerList">
-    		         		    	<input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
-    	         		        <div  class="col-sm-3 ">{{worker.name}}</div>
+    		         		    	<input class="control-label input-btn" type="checkbox" :id="worker.id + 'checkbox'" v-model="form.workerLimit"  :value="worker.id" >
+    	         		        <label :for="worker.id + 'checkbox'" class="col-sm-3 ">{{worker.name}}</label>
 	         		        </div>
 	         		    </div>
 	         		    <h3>优先队列</h3>
              		    <div class="orm-group form-flex-container">
 	         		        <div  v-for="queue in form.queueList" class="form-group form-item flex-container">
-		    	         		    	<input class="control-label input-btn" type="radio"  v-model="form.priorQueue"  :value="queue.id" >
-		             		        <div  class="col-sm-3 ">{{queue.name}}</div>
+		    	         		    	<input :id="queue.id + 'radio'" class="control-label input-btn" type="radio"  v-model="form.priorQueue"  :value="queue.id" >
+		             		        <label :for="queue.id + 'radio'" class="col-sm-3 ">{{queue.name}}</label>
 	         		        </div>
              		    </div>
              		    <button type="submit" style="display:none" ref="editCallerSubmit">提交</button>
