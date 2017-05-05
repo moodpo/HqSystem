@@ -233,7 +233,7 @@ a:hover
 	
 .icon-xinjianfenzhentai
 	font-size: 60px
-	color: #777
+	color: #D6D6D6
 
 
 </style>
