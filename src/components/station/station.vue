@@ -116,8 +116,6 @@
 	               <div v-if="showInfoNumber == 2" class="btn-bar">
 		               	<div class="item btn btn-success" @click="add('addCaller', stationName)">添加叫号器</div>
 	               </div>
- 						<!-- <div class="item btn btn-success" @click="addStation">提交</div>
- 				     	<div class="item btn btn-warning" @click="cancel">取消</div> -->
  				</div>
  			</div>
  			<middleLine height='8' class="middleline-topbar"></middleLine>

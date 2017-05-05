@@ -88,7 +88,9 @@
 	     		      		<input v-model="form.tableName" required name="table"  :class="{'form-control':formControlObj.formControl}"/>
 	     		      	</div>
 	     		    </validate>
-	     		    <button type="submit" class="center-block test-btn">连接测试</button>
+	     		    <div class="test-btn">
+	     		    	<button type="submit" class="center-block">连接测试</button>
+	     		    </div>
 	     		</vue-form>
 	     	</div>
 	     	<middleLine height='6.6'></middleLine>
@@ -210,14 +212,16 @@
                     	  	</div>
                     	</validate>
 
-                    	<div class="fform-item form-group flex-container">
+                    	<div class="fform-item form-group flex-container" style="height: auto">
                     		<label for="" class="control-label">生成SQL语句</label>
                     		<div class="input-bar">
-                    			<textarea  :class="{'form-control':formControlObj.formControl}" v-model="form.sqlLang"></textarea>
+                    			<textarea  :class="{'form-control':formControlObj.formControl}" v-model="form.sqlLang" rows="4" style="resize: none"></textarea>
                     		</div>
                     	</div>
                     </div>
-	     		    <button type="submit" class="center-block test-btn">连接测试</button>
+                    <div class="test-btn">
+                    	<button type="submit" class="center-block">连接测试</button>
+                    </div>
 	     		  </vue-form>
 	     	</div>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
