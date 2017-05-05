@@ -89,7 +89,9 @@
 	     		      		<input v-model="form.tableName" required name="table"  :class="[fieldClassName(formstate.form1.tableName)]" class="form-control"/>
 	     		      	</div>
 	     		    </validate>
-	     		    <button type="submit" class="center-block test-btn">连接测试</button>
+	     		    <div class="test-btn">
+	     		    	<button type="submit" class="center-block">连接测试</button>
+	     		    </div>
 	     		  </vue-form>
 	     	</div>
 	     	<middleLine height='6.6'></middleLine>
@@ -217,7 +219,10 @@
                     		</div>
                     	</div>
                     </div>
-	     		    <button type="submit" class="center-block test-btn footer-space">连接测试</button>
+                    <div class="test-btn">
+                    	<button type="submit" class="center-block footer-space">连接测试</button>
+                    </div>
+	     		    
 	     		 </vue-form>
 	     	</div>
 	     	<modal v-if="modal.modalShow" @close="modal.modalShow = false">
