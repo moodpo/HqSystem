@@ -14,6 +14,11 @@
 		<middleLine height='8' class="middleline-topbar"></middleLine>
 	     <div class="container info">
      		<h3>数据库信息</h3>
+     		<span class="custom-form-info">
+     			<span class="untest-info" v-if="showInfo.DBtestInfoNum == 0"><img :src="resourceImg.untestImg" alt="" >未测试连接</span>
+     			<span class="failed-info" v-if="showInfo.DBtestInfoNum == 1"><img :src="resourceImg.failedImg" alt="" >连接失败</span>
+     			<span class="success-info" v-if="showInfo.DBtestInfoNum == 2"><img :src="resourceImg.successImg" alt="" >连接成功</span>
+     		</span> 
      		<vue-form :state="formstate.form1"  class="form-horizontal" @submit.prevent="testDB">
      			<div class="form-flex-container">
      				<validate  class="form-item form-group flex-container">
@@ -65,9 +70,15 @@
 	     		      </div>
 	     		    </validate>
      			</div>
-     		    <button type="submit" class="center-block test-btn">连接测试</button>
+     			<div class="test-btn"><button type="submit" class="center-block ">连接测试</button></div>
+     		    
      		</vue-form>
      		<h3>SQL信息</h3>
+     		<span class="custom-form-info">
+     			<span class="untest-info" v-if="showInfo.SQLtestInfoNum == 0"><img :src="resourceImg.untestImg" alt="" >未测试连接</span>
+     			<span class="failed-info" v-if="showInfo.SQLtestInfoNum == 1"><img :src="resourceImg.failedImg" alt="" >连接失败</span>
+     			<span class="success-info" v-if="showInfo.SQLtestInfoNum == 2"><img :src="resourceImg.successImg" alt="" >连接成功</span>
+     		</span> 
      		<vue-form :state="formstate.form2"  class="form-horizontal" @submit.prevent="testSQL">
      			<div class="form-flex-container">
      				<validate  class="form-item form-group flex-container">
@@ -107,14 +118,13 @@
 	     		        </div>
 	     		      </validate>
      			</div>
-     		      
      		      <div class="form-group flex-container">
      		      	<label for="" class="control-label">生成SQL语句</label>
      		      	<div class="input-bar">
      		      		<textarea  :class="{'form-control':formControlObj.formControl}" v-model="form.sqlLang"></textarea>
      		      	</div>
      		      </div>
-     		      <button type="submit" class="center-block test-btn">连接测试</button>
+     		      <div class="test-btn"><button type="submit" class="center-block ">连接测试</button></div>
      		</vue-form>
      		<h3>账号信息</h3>
      		<form novalidate class="form-horizontal footer-space">
@@ -144,7 +154,8 @@
     import middleLine from '../../common/middleLine/middleLine'
     import VueForm from 'vue-form'
     import modal from '../../common/modal/modal'
-    import utils from 'common/utils/utils.js'
+    import utils from 'common/utils/utils'
+    import resourceImg from 'img'
     Vue.use(VueForm)
 	export default {
 		name: 'batchAddWorker',
@@ -182,6 +193,11 @@
 				modal: {
 					modalShow: false,
 					modalContent: ''
+				},
+				resourceImg: resourceImg,
+				showInfo: {
+					DBtestInfoNum: 0,  // 数据库连接提示信息
+					SQLtestInfoNum: 0  // SQL连接提示信息
 				}
 			}
 		},
@@ -234,11 +250,13 @@
 							this.modal.modalContent = '连接失败，请重试';
 							this.modal.modalShow = true;
 							this.formControlObj.form1BtnVal = this.formBtnVal[0]
+							this.showInfo.DBtestInfoNum = 1;
 						} else {
 							this.formstate.form1.linkTest = true;
 							this.formControlObj.form1BtnVal = this.formBtnVal[2];
 							this.modal.modalContent = '连接成功';
 							this.modal.modalShow = true;
+							this.showInfo.DBtestInfoNum = 2;
 						}
 					}, (res) => {
 						console.log(res)
@@ -283,12 +301,14 @@
 							this.modal.modalContent = '连接失败，请重试';
 							this.modal.modalShow = true;
 							this.formControlObj.form2BtnVal = this.formBtnVal[0]
+							this.showInfo.SQLtestInfoNum = 1;
 						} else {
 							this.modal.modalContent = '连接成功';
 							this.modal.modalShow = true;
 							this.form.sqlLang = res.sql;
 							this.formstate.form2.linkTest = true;
 							this.formControlObj.form2BtnVal = this.formBtnVal[2];
+							this.showInfo.SQLtestInfoNum = 2;
 						}
 					}, (res) => {
 						console.log(res)
