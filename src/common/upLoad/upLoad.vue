@@ -27,6 +27,9 @@ a:hover {
 			}
 		},
 		props: ['upLoadUrl'],
+		created() {
+            console.log('upLoad created: ' + this.$el)
+		},
 		methods: {
             chooseFile() {
             	this.$refs.chooseBtn.click()

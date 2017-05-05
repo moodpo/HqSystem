@@ -2,25 +2,20 @@
 	<div class="stationlist-box">
 	       <middleLine height='8' class="middleline-topbar"></middleLine>
 		   	<div class="card-container">
-
-			   	<div class="card-box" @click="goToState('addStation')">
+			   	<a class="card-box" @click="goToState('addStation')">
 			   		<div class="card">
 			   			<div class="card-bg xinjian">
 			   				<i class="iconfont icon-xinjianfenzhentai"></i>
 			   			</div>
 			   			<h3>新建分诊台</h3>
 			   		</div>
-			   	</div>
-   				<div v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
-
+			   	</a>
+   				<a v-for="station in stationList" class="card-box" @click="goToStationDetail(station)">
    					<div class="card">
    						<i class="iconfont icon-fenzhentai2 card-bg"></i>
    						<h3>{{station.name}}</h3>
    					</div>
-
-   				</div>
-
-
+   				</a>
 		   	</div>
         <keep-alive>
           <router-view></router-view>

@@ -27,7 +27,6 @@ const store = new Vuex.Store({
       state.token = null;
     },
     changeTab: (state, data) => {
-      console.log(data)
       state.tab[data.whichTab] = data.num
     }
   },

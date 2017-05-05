@@ -28,6 +28,9 @@
 
 <script>
 export default {
+      created() {
+              console.log('App.vue created: ' + this.$el)
+      }
 }
 
 </script>

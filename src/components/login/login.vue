@@ -48,7 +48,6 @@
 		components: {
 		},
 		mounted() {
-			console.log(this.$router)
 		},
 		methods: {
 			saveForm() {

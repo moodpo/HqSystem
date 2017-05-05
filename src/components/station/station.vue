@@ -278,7 +278,6 @@
 					action: 'getList',
 					stationID: this.stationID
 				}).then((res) => {
-					console.log(res)
 					this.queueList = res.list;
 				}, (res) => {
 					console.log('failed ')
