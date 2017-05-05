@@ -169,7 +169,7 @@
 					aliasID: 'id',
 					aliasTitle: 'title',
 					aliasDepartment: 'department',
-					aliasDescText: 'descText',
+					aliasDescText: '',
 					aliasHeadPic: '',
 					sqlLang: ''
 				},

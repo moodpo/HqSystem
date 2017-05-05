@@ -34,6 +34,8 @@
 	export default {
 		name: 'manage',
 		created() {
+			console.log('created')
+			this._init()
 		},
 		computed: {
             showInfoNumber() {
@@ -41,6 +43,9 @@
             }
 		},
 		methods: {
+			_init() {
+                this.goToState('stationList', 0)
+			},
 			goToState(state, num) {
 				this.$store.commit('changeTab', {
 					whichTab: 'tabShowMoudleNum',
@@ -49,8 +54,14 @@
                 this.$router.push({name: state})
 			},
 			logout() {
+				var flag = confirm('确定退出？')
+				if (!flag) {
+				 	return;
+				}
 				this.$store.commit('logout');
 				this.goToState('login')
+				// 退出时 清除实例
+				this.$destroy()
 			}
 		}
 	}
