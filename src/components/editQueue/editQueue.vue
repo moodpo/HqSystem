@@ -64,20 +64,20 @@
      		    <h3>策略配置</h3>
  		    	<div class="form-flex-container">
          		    <div class="form-item flex-container" v-for="(sceneSupport, index) in form.sceneSupportList">
-	         			<input class="control-label input-btn" type="radio" :id="sceneSupport"  v-model="form.scene"  :value="sceneSupport.name" >
-         		        <div class="input-bar">&nbsp;{{sceneSupport.name}}</div>
+	         			<input class="control-label input-btn" type="radio" :id="sceneSupport.id + 'radio'"  v-model="form.scene"  :value="sceneSupport.name" >
+         		        <label :for="sceneSupport.id + 'radio'" class="input-bar">&nbsp;{{sceneSupport.name}}</label>
          		    </div>
      		    </div>
      		    <middleLine height='6.6'></middleLine>
      		    <h3>所属医生</h3>
 		        <div class="form-group form-item flex-container">
-        		    <input class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
-    		        &nbsp;<div  class="input-bar">全部</div>
+        		    <input id="alledit" class="control-label input-btn" type="checkbox"  v-model="form.workerListCheckboxAll"   >
+    		        &nbsp;<label for="alledit" class="input-bar">全部</label>
 		        </div>
      		    <div class="form-flex-container footer-space">
          		    <div class="form-group form-item flex-container" v-for="worker in form.workerList">
-	         		    <input class="control-label input-btn" type="checkbox" :id="worker.id" v-model="form.workerLimit"  :value="worker.id" >
-         		        <div  class="input-bar">{{worker.name}}</div>
+	         		    <input class="control-label input-btn" type="checkbox" :id="worker.id + 'checkbox'" v-model="form.workerLimit"  :value="worker.id" >
+         		        <label :for="worker.id + 'checkbox'" class="input-bar">{{worker.name}}</label>
          		    </div>
      		    </div>
      		    <button type="submit" style="display:none"  ref="editQueueSubmit">提交</button>
