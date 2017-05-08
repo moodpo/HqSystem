@@ -4,7 +4,7 @@
 		   	<div class="card-container">
 			   	<a class="card-box" @click="goToState('addStation', {'theLastStationID': theLastStationID})">
 			   		<div class="card">
-			   			<div class="card-bg xinjian">
+			   			<div class="card-bg xinjian" >
 			   				<i class="iconfont icon-xinjianfenzhentai"></i>
 			   			</div>
 			   			<h3>新建分诊台</h3>
@@ -97,9 +97,6 @@ h2,h3
 
 h2
 	font-size: 24px
-
-h3
-	line-height: 39px
 	
 label,ul
 	margin: 0
@@ -194,6 +191,7 @@ a:hover
 	
 .card-box
 	width: 133.3px
+	margin-bottom: 2.5em
 
 .card-box:hover
 	cursor: pointer
@@ -201,8 +199,7 @@ a:hover
 .card
 	h3
 		text-align: center
-		margin-top: 0.67em
-		margin-bottom: 1.33em
+		margin-top: 1.33em
 		border-bottom: none
 
 .card-bg
@@ -236,7 +233,7 @@ a:hover
 	
 .icon-xinjianfenzhentai
 	font-size: 60px
-	color: #777
+	color: #D6D6D6
 
 
 </style>

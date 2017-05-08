@@ -32,7 +32,7 @@
 	     		  </vue-form>
 	     	</div>
 	     	<middleLine height='6.6'></middleLine>
-	     	<div class="">
+	     	<div class="connectinfo" style="position:relative">
 	     		<h3>数据库信息</h3>
 	     		<span class="custom-form-info">
 	     			<span class="untest-info" v-if="showInfo.DBtestInfoNum == 0"><img :src="resourceImg.untestImg" alt="" >未测试连接</span>
@@ -94,7 +94,7 @@
 	     		</vue-form>
 	     	</div>
 	     	<middleLine height='6.6'></middleLine>
-	     	<div class="connectinfo">
+	     	<div class="connectinfo" style="position:relative">
 	     		<h3>SQL连接信息</h3>
 	     		<span class="custom-form-info">
 	     			<span class="untest-info" v-if="showInfo.SQLtestInfoNum == 0"><img :src="resourceImg.untestImg" alt="" >未测试连接</span>
