@@ -23,14 +23,8 @@
     <router-view></router-view>
   </keep-alive>
 </div>
-
 </template>
-
 <script>
 export default {
-      created() {
-              console.log('App.vue created: ' + this.$el)
-      }
 }
-
 </script>
