@@ -48,6 +48,7 @@
 		components: {
 		},
 		mounted() {
+			console.log(this)
 		},
 		methods: {
 			saveForm() {

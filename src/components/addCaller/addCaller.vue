@@ -1,4 +1,4 @@
-<style scoped>
+<style scoped >
 	.caller-type {
 		margin-left: 20px;
 	}
