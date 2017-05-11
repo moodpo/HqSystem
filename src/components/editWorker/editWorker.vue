@@ -165,7 +165,7 @@
 				if (this.formstate.$invalid) {
 					return;
 				} else {
-					this.form.user = this.form.name;
+					this.form.user = this.form.id;
 					this.axios.post(this.serverUrl, {
 						action: 'edit',
 						stationID: this.stationID,
