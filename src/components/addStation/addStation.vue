@@ -203,6 +203,24 @@
 	     		    	  		<input v-model="form.aliasWorkerName"  name="aliasWorkerName"  :class="[fieldClassName(formstate.form2.aliasWorkerName)]" class="form-control"/>
 	     		    	  	</div>
 	     		    	</validate>
+	     		    	<validate class="form-item form-group flex-container">
+	     		    	  	<label  class="control-label">病人医保卡(CardID)</label>
+	     		    	  	<div class="input-bar">
+	     		    	  		<input v-model="form.aliasCardID"  name="aliasCardID"  :class="[fieldClassName(formstate.form2.aliasCardID)]" class="form-control"/>
+	     		    	  	</div>
+	     		    	</validate>
+	     		    	<validate class="form-item form-group flex-container">
+	     		    	  	<label  class="control-label">病人身份证(PersonID)</label>
+	     		    	  	<div class="input-bar">
+	     		    	  		<input v-model="form.aliasPersonID"  name="aliasPersonID"  :class="[fieldClassName(formstate.form2.aliasPersonID)]" class="form-control"/>
+	     		    	  	</div>
+	     		    	</validate>
+	     		    	<validate class="form-item form-group flex-container">
+	     		    	  	<label  class="control-label">病人手机号(Phone)</label>
+	     		    	  	<div class="input-bar">
+	     		    	  		<input v-model="form.aliasPhone"  name="aliasPhone"  :class="[fieldClassName(formstate.form2.aliasPhone)]" class="form-control"/>
+	     		    	  	</div>
+	     		    	</validate>
 	     		    </div>
                     <div class="splite-line "></div>
                     <div class="form-horizontal form-flex-container">
@@ -275,6 +293,9 @@
 					aliasDepartment: 'department',
 					aliasDescText: 'descText',
 					aliasStatus: 'status',
+					aliasCardID: 'cardID',
+					aliasPersonID: 'persionID',
+					aliasPhone: 'phone',
 					renewPeriod: '10',
 					sqlLang: ''
 				},
@@ -398,6 +419,9 @@
 					    aliasDepartment: this.form.aliasDepartment,
 					    aliasDescText: this.form.aliasDescText,
 					    aliasStatus: this.form.aliasStatus,
+					    aliasCardID: this.form.aliasCardID,
+					    aliasPersonID: this.form.aliasPersonID,
+					    aliasPhone: this.form.aliasPhone,
 					    renewPeriod: this.form.renewPeriod
 					}).then((res) => {
 						if (res.testResult === 'failed') {
@@ -464,6 +488,9 @@
 					    aliasDepartment: this.form.aliasDepartment,
 					    aliasDescText: this.form.aliasDescText,
 					    aliasStatus: this.form.aliasStatus,
+					    aliasCardID: this.form.aliasCardID,
+					    aliasPersonID: this.form.aliasPersonID,
+					    aliasPhone: this.form.aliasPhone,
 					    renewPeriod: this.form.renewPeriod
 					}).then((res) => {
 						console.log(res)
