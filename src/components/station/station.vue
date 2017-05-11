@@ -104,7 +104,7 @@
  			<div class="top-bar">
  				<div class="container settings">
  					<div class="capital">
- 						<span>分诊台</span>/{{stationName}}
+ 						<span>分诊台</span>/{{stationName}} ( {{stationID}} )
  					</div>
 	                <div v-if="showInfoNumber == 0" class="btn-bar">
 	 	               	<div class="item btn btn-success" @click="add('addWorker', stationName)">添加医生</div>
