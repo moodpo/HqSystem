@@ -179,7 +179,7 @@
 					// this.modal.modalShow = true;
 					// this.modal.modalContent = '请填写完整数据';
 				} else {
-					this.form.user = this.form.name;
+					this.form.user = this.form.id;
 					this.axios.post(this.serverUrl, {
 						action: 'add',
 						stationID: this.stationID,
