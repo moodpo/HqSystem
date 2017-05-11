@@ -1,3 +1,6 @@
+// polyfill IE下的promise
+import 'babel-polyfill'
+
 import Vue from 'vue'
 import App from './App'
 import vueTap from 'v-tap'

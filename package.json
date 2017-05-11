@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "babel-polyfill": "^6.23.0",
     "babel-runtime": "^6.9.0",
     "better-scroll": "^0.1.10",
     "bootstrap": "^3.3.7",
