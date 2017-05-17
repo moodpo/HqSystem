@@ -101,6 +101,7 @@
 		               	   	        <thead>
 		               	   	           <tr>
 		               	   	        	    <th>分诊台ID</th>
+		               	   	        	    <th>名字</th>
 		               	   	        	    <th>用户</th>
 		               	   	        	    <th>密码</th>
 		               	   	        	    <th>类型</th>
@@ -112,6 +113,7 @@
 		               	   	   	        <div class="noData" v-if="accountListLength == 0">没有用户</div>
 		               	   	   	        <tr v-for="account in accountList">
 		               	   	   	            <td>{{account.stationID}}</td>
+		               	   	   	            <td>{{account.descText}}</td>
 		               	   	   	            <td>{{account.user}}</td>
 		               	   	   	        	<td>{{account.password}}</td>
 
