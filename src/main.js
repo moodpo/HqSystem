@@ -3,7 +3,6 @@ import 'babel-polyfill'
 
 import Vue from 'vue'
 import App from './App'
-import vueTap from 'v-tap'
 
 // vuex store
 import store from './store'
